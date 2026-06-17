@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #121214;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,39 +42,37 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
+<li>The user encounters a timeout error when attempting to transfer Tonkeeper Jettons, resulting in a failed transaction and an error message indicating a loop timeout.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a prolonged delay in the transaction processing time, exceeding the predefined timeout threshold set by the Tonkeeper platform, often caused by network congestion or high gas fees.</li>
+<li>The error occurs due to a prolonged waiting period for transaction confirmation, exceeding the predefined timeout threshold, often caused by network congestion or high gas fees in the TON ecosystem.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>To resolve the issue, users can attempt the following:</li>
 <li>Increase the gas limit to prioritize the transaction</li>
-<li>Reduce the transaction amount to decrease gas fees</li>
-<li>Utilize an alternative transfer method, such as a different wallet or exchange</li>
+<li>Reduce the transaction amount to minimize gas fees</li>
+<li>Utilize an alternative transfer method, such as using a different wallet or exchange, as shown in the following example:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>json
-{
-  &quot;transaction&quot;: {
-    &quot;from&quot;: &quot;0x1234567890&quot;,
-    &quot;to&quot;: &quot;0x9876543210&quot;,
-    &quot;value&quot;: 10,
-    &quot;gas&quot;: 20000,
-    &quot;gasPrice&quot;: 20
-  }
-}
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_address&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;recipient_address&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jetton_amount&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;increased_gas_limit&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing a console with advanced debugging capabilities for further troubleshooting.</p>
+<p>Consider using an external console for more advanced troubleshooting and transaction management.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Basic understanding of TON blockchain and its ecosystem</li>
-<li>Familiarity with Tonkeeper wallet and its features</li>
-<li>Access to a computer or mobile device with internet connection</li>
+<li>Familiarity with TON ecosystem and Tonkeeper wallet</li>
+<li>Basic understanding of gas fees and transaction management</li>
+<li>Access to the Tonkeeper wallet and transaction history</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It W</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-manage-tokens-miss-match-with-net.html">Metamask Extension Bug Assets Manage Tokens Miss Match With Net</a></li><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</a></li><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
