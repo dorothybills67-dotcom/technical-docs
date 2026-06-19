@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #1a1a24;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,26 +42,26 @@
 <h1>Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Avalanche network may notice that their Aave v3 WAVAX token balance is being displayed incorrectly, potentially causing confusion and issues with transactions.</li>
+<li>Users of the Metamask extension on the Avalanche network may notice that their Aave v3 WAVAX token balance is displayed incorrectly, potentially causing confusion and affecting their ability to manage their assets effectively.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension's handling of the Aave v3 WAVAX token on the Avalanche network, resulting in an incorrect balance being displayed to the user.</li>
+<li>The error occurs due to a bug in the Metamask extension's handling of the Aave v3 protocol on the Avalanche network, specifically with regards to the WAVAX token. This bug leads to inaccurate balance updates, resulting in the incorrect display of the user's token balance.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Update Metamask to the latest version</li>
-<li>Reset the Metamask account</li>
-<li>Use the following JSON-RPC command to refresh the token balance:</li>
+<li>To temporarily resolve the issue, users can try the following manual overrides:</li>
+<li>Update Metamask to the latest version to ensure any existing bug fixes are applied.</li>
+<li>Manually refresh the token balance by restarting the Metamask extension.</li>
+<li>Execute the following JSON-RPC command to force a balance update:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_call&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...AaveV3WAVAXTokenAddress...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x70a0823100000000000000000000000000000000000000000000000000000000&quot;</span>
+<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...AaveV3ContractAddress...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...balanceOfMethodSignature...&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="s2">&quot;latest&quot;</span>
 <span class="w">  </span><span class="p">],</span>
@@ -69,14 +69,14 @@
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for a more streamlined debugging experience.</p>
+<p>Consider utilizing an external console for a more direct approach to troubleshooting.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured</li>
-<li>Aave v3 WAVAX token added to the Metamask wallet</li>
-<li>Avalanche network selected in Metamask</li>
+<li>Metamask extension installed and configured for the Avalanche network.</li>
+<li>Aave v3 protocol supported and enabled in the Metamask extension.</li>
+<li>WAVAX token added to the Metamask extension's token list.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
